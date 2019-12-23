@@ -1,0 +1,100 @@
+cut -7890
+deal with increment 17
+cut 3131
+deal with increment 60
+cut -5009
+deal into new stack
+deal with increment 42
+cut 9853
+deal with increment 7
+cut 9796
+deal into new stack
+deal with increment 3
+deal into new stack
+deal with increment 20
+cut -8192
+deal with increment 23
+cut 9641
+deal with increment 72
+cut 7468
+deal with increment 69
+cut -7959
+deal into new stack
+deal with increment 54
+cut -3345
+deal with increment 48
+cut 105
+deal with increment 67
+deal into new stack
+deal with increment 66
+cut 877
+deal into new stack
+cut 2789
+deal into new stack
+deal with increment 15
+cut 8475
+deal with increment 30
+cut -7360
+deal with increment 47
+cut -4555
+deal with increment 17
+cut 1907
+deal into new stack
+cut -1934
+deal with increment 53
+deal into new stack
+deal with increment 11
+cut 8486
+deal with increment 46
+cut -4167
+deal with increment 51
+cut 3407
+deal into new stack
+cut 7797
+deal with increment 9
+cut 6983
+deal with increment 13
+cut 4408
+deal into new stack
+deal with increment 37
+cut 422
+deal with increment 18
+cut 6433
+deal with increment 11
+cut 4689
+deal into new stack
+cut 6073
+deal with increment 25
+cut -3262
+deal with increment 21
+cut -2736
+deal into new stack
+deal with increment 53
+cut -8515
+deal with increment 9
+cut 8314
+deal with increment 41
+deal into new stack
+deal with increment 34
+cut 5004
+deal with increment 53
+cut 3004
+deal into new stack
+deal with increment 6
+cut -8757
+deal with increment 38
+cut -9534
+deal with increment 27
+cut 6052
+deal with increment 54
+cut 3907
+deal into new stack
+cut 7995
+deal into new stack
+cut 7291
+deal with increment 15
+cut 3884
+deal with increment 4
+cut -9637
+deal with increment 59
+cut -1150
