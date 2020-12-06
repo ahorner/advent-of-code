@@ -27,7 +27,7 @@ def code(keypad)
   INPUT.split("\n").map do |line|
     line.chars.each { |direction| keypad.move_finger(direction) }
     keypad.current_key
-  end.join("")
+  end.join
 end
 
 standard_keypad = Keypad.new(

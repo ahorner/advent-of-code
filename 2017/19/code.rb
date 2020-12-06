@@ -8,9 +8,10 @@ class Tube
     input.split("\n").each_with_index do |row, y|
       row.split("").each_with_index do |cell, x|
         @grid[[x, y]] =
-          if cell == " "
+          case cell
+          when " "
             false
-          elsif cell =~ /\w/
+          when /\w/
             cell
           else
             true

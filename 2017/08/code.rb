@@ -1,7 +1,10 @@
 registers = Hash.new { |h, k| h[k] = 0 }
 maximum = 0
 
+# rubocop:disable Layout/LineLength
 LINE_PARSER = /(?<register>\w+) (?<instruction>.+) (?<value>-?\d+) if (?<cregister>\w+) (?<comparison>.+) (?<cvalue>-?\d+)/.freeze
+# rubocop:enable Layout/LineLength
+
 INPUT.split("\n").each do |row|
   match = row.match(LINE_PARSER)
   next unless registers[match[:cregister]].send(match[:comparison], match[:cvalue].to_i)

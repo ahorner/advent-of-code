@@ -1,4 +1,4 @@
-PASSWORDS = INPUT.split("\n").map { |row| row.split(" ") }
+PASSWORDS = INPUT.split("\n").map(&:split)
 
 def valid_count(passwords)
   passwords.count do |words|

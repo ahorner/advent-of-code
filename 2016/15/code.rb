@@ -1,4 +1,6 @@
+# rubocop:disable Layout/LineLength
 DISC_MATCHER = /Disc #\d+ has (?<position_count>\d+) positions; at time=0, it is at position (?<starting_position>\d+)\./.freeze
+# rubocop:enable Layout/LineLength
 
 class Disc
   def initialize(positions, starts_at)
@@ -15,14 +17,15 @@ def valid_time(discs)
   valid = false
   time = 0
 
-  begin
+  loop do
     valid = true
     time += 1
 
     discs.each.with_index(1) do |disc, delay|
       break valid = false unless disc.passable_at?(time + delay)
     end
-  end while !valid
+    break if valid
+  end
 
   time
 end

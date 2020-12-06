@@ -64,12 +64,11 @@ end
 def decomposition_steps(formula)
   reactions = REACTIONS
 
-  begin
+  loop do
     steps = decompose(formula, reactions)
     reactions = reactions.shuffle
-  end while steps.nil?
-
-  steps
+    break steps unless steps.nil?
+  end
 end
 
 puts "Steps required to compose formula:", decomposition_steps(FORMULA)

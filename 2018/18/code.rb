@@ -1,6 +1,6 @@
 require "set"
 
-COLLECTION_AREA = INPUT.split("\n").map { |line| line.chars }.freeze
+COLLECTION_AREA = INPUT.split("\n").map(&:chars).freeze
 SIZE = COLLECTION_AREA.size
 
 NEIGHBORS = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]].freeze
@@ -8,7 +8,9 @@ ACRES = { open: ".", forest: "|", lumberyard: "#" }.freeze
 TRANSITIONS = {
   ACRES[:open] => ->(n) { n.count(ACRES[:forest]) >= 3 ? ACRES[:forest] : ACRES[:open] },
   ACRES[:forest] => ->(n) { n.count(ACRES[:lumberyard]) >= 3 ? ACRES[:lumberyard] : ACRES[:forest] },
-  ACRES[:lumberyard] => ->(n) { n.count(ACRES[:forest]) > 0 && n.count(ACRES[:lumberyard]) > 0 ? ACRES[:lumberyard] : ACRES[:open] },
+  ACRES[:lumberyard] => lambda do |n|
+    n.count(ACRES[:forest]) > 0 && n.count(ACRES[:lumberyard]) > 0 ? ACRES[:lumberyard] : ACRES[:open]
+  end,
 }.freeze
 
 def next_state(area)
@@ -39,7 +41,7 @@ def iterate(area, minutes)
   end
 
   starts_at = seen.index(area)
-  looped = seen[starts_at..-1]
+  looped = seen[starts_at..]
   looped[(minutes - starts_at - 1) % looped.size]
 end
 

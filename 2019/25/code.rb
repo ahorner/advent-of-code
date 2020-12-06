@@ -26,7 +26,9 @@ class Room
 end
 
 class Droid
+  # rubocop:disable Layout/LineLength
   PASSWORD_MATCHER = /You should be able to get in by typing (?<password>\d+) on the keypad at the main airlock\./.freeze
+  # rubocop:enable Layout/LineLength
   OVERWEIGHT_MATCHER = /lighter/.freeze
 
   def initialize(intcode)

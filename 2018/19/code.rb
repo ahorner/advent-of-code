@@ -4,7 +4,7 @@ ip, instructions = INPUT.split("\n").partition.with_index { |_, i| i == 0 }
 
 POINTER = ip.first.match(/\#ip (?<ip>\d+)/)[:ip].to_i
 INSTRUCTIONS = instructions.map do |line|
-  line = line.split(" ")
+  line = line.split
   [line.shift.to_sym, *line.map(&:to_i)]
 end
 

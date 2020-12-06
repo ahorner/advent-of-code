@@ -14,8 +14,11 @@ def group(programs, index, seen = [])
   seen = seen.dup
 
   friends = programs[index] - seen
+
+  # rubocop:disable Style/CombinableLoops
   friends.each { |program| seen << program }
   friends.each { |program| seen = group(programs, program, seen) }
+  # rubocop:enable Style/CombinableLoops
 
   seen
 end

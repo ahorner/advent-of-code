@@ -1,4 +1,6 @@
+# rubocop:disable Layout/LineLength
 NODE_PATTERN = %r{/dev/grid/node-x(?<x>\d+)-y(?<y>\d+)\s+(?<size>\d+)T\s+(?<used>\d+)T\s+(?<avail>\d+)T\s+(?<percent>\d+)%}.freeze
+# rubocop:enable Layout/LineLength
 
 class DevNode
   attr_accessor :size, :used, :avail
@@ -52,7 +54,7 @@ def adjacent_nodes(nodes, x, y)
   ].select { |(i, j)| nodes.key?([i, j]) }
 end
 
-nodes = INPUT.split("\n")[2..-1].each_with_object({}) do |line, list|
+nodes = INPUT.split("\n")[2..].each_with_object({}) do |line, list|
   matches = line.match(NODE_PATTERN)
   list[[matches[:x].to_i, matches[:y].to_i]] = DevNode.new(
     matches[:size].to_i,

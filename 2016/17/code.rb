@@ -90,7 +90,7 @@ class Pathfinder
 
     until queue.empty?
       spot, path, steps = queue.next
-      if [spot[0], spot[1]] == target
+      if target == [spot[0], spot[1]]
         yield path
         next
       end

@@ -44,7 +44,9 @@ class Donut
       portals.each_with_object({}) do |(_, portals), warps|
         next if portals.length < 2
 
-        outer, inner = portals.partition { |portal| outerx.include?(portal[0]) || outery.include?(portal[1]) }.map(&:first)
+        outer, inner = portals.partition do |portal|
+          outerx.include?(portal[0]) || outery.include?(portal[1])
+        end.map(&:first)
 
         warps[inner] = [*outer, @recursive ? 1 : 0]
         warps[outer] = [*inner, @recursive ? -1 : 0]
@@ -105,7 +107,7 @@ class Pathfinder
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
 
-    begin
+    loop do
       spot, path, steps = queue.next
       next if found[spot]
 
@@ -122,7 +124,8 @@ class Pathfinder
           [new_spot, [*path, new_spot], new_steps],
         )
       end
-    end while !queue.empty?
+      break if queue.empty?
+    end
   end
 end
 

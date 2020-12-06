@@ -77,7 +77,7 @@ def steps(floorplan)
   @queue = [State.new(floorplan)]
   @cache = {}
 
-  begin
+  loop do
     @queue.shift.valid_moves.each do |move|
       return move.steps if move.solved?
       next if @cache.key?(move.key)
@@ -85,7 +85,8 @@ def steps(floorplan)
       @cache[move.key] = true
       @queue << move
     end
-  end until @queue.empty?
+    break if @queue.empty?
+  end
 end
 
 FLOOR_MATCHER = /\AThe (?<floor>.+) floor contains (?<contents>.+)\.\z/.freeze
@@ -111,5 +112,5 @@ new_items = [
   Item.new("dilithium", :chip),
 ]
 
-new_floorplan = [floorplan[0] + new_items, *floorplan[1..-1]]
+new_floorplan = [floorplan[0] + new_items, *floorplan[1..]]
 puts "You can transport the updated equipment list to the top floor in:", steps(new_floorplan)

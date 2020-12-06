@@ -9,11 +9,26 @@ Layout/LineLength:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
 Metrics/AbcSize:
-  Max: 25
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
 
 Metrics/MethodLength:
-  Max: 20
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 Naming/MethodParameterName:
   Enabled: false
@@ -32,6 +47,9 @@ Style/NumericPredicate:
 
 Style/SignalException:
   EnforcedStyle: only_raise
+
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

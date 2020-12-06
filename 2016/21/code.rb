@@ -65,7 +65,6 @@ def undo(result, command)
     steps = matches[:steps].to_i
     chars.rotate!(dir == "left" ? -steps : steps)
   when RELATIVE_ROTATE_PATTERN
-    matches = command.match(RELATIVE_ROTATE_PATTERN)
     chars.rotate!(1) while result != act(chars, command)
   when MOVE_POSITIONS_PATTERN
     matches = command.match(MOVE_POSITIONS_PATTERN)
@@ -81,9 +80,9 @@ end
 chars = "abcdefgh".split("")
 INPUT.split("\n").each { |line| chars = act(chars, line) }
 
-puts "Your scrambled password is:", chars.join(""), nil
+puts "Your scrambled password is:", chars.join, nil
 
 chars = "fbgdceah".split("")
 INPUT.split("\n").reverse.each { |line| chars = undo(chars, line) }
 
-puts "Your unscrambled password is:", chars.join("")
+puts "Your unscrambled password is:", chars.join

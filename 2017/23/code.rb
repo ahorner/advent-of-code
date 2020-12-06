@@ -1,4 +1,4 @@
-INSTRUCTIONS = INPUT.split("\n").map { |l| l.split(" ") }
+INSTRUCTIONS = INPUT.split("\n").map(&:split)
 
 def resolve(registers, value)
   if value.to_i.to_s == value

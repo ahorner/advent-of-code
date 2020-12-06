@@ -22,7 +22,7 @@ def matched_chars(first, second)
     matches << c if c == second[i]
   end
 
-  matches.join("")
+  matches.join
 end
 
 in_common = IDS.detect.with_index do |first, i|

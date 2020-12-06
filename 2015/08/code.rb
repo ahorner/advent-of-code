@@ -1,10 +1,10 @@
-lines = INPUT.split("\n")
+LINES = INPUT.split("\n")
 
 def evaluated_difference(line)
-  line.length - eval(line).length
+  line.length - eval(line).length # rubocop:disable Security/Eval
 end
 
-total = lines.map { |line| evaluated_difference(line) }.inject(:+)
+total = LINES.map { |line| evaluated_difference(line) }.inject(:+)
 
 puts "The original strings are longer by:", total, nil
 
@@ -12,6 +12,6 @@ def escaped_difference(line)
   line.inspect.length - line.length
 end
 
-total = lines.map { |line| escaped_difference(line) }.inject(:+)
+total = LINES.map { |line| escaped_difference(line) }.inject(:+)
 
 puts "The escaped strings are longer by:", total

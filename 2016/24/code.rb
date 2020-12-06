@@ -54,7 +54,7 @@ class Pathfinder
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
 
-    begin
+    loop do
       spot, path, steps = queue.next
       next if found[spot]
 
@@ -71,7 +71,8 @@ class Pathfinder
           [new_spot, [*path, new_spot], new_steps],
         )
       end
-    end while !queue.empty?
+      break if queue.empty?
+    end
   end
 end
 
@@ -112,9 +113,10 @@ INPUT.split("\n").each_with_index do |line, row|
   line.split("").each_with_index do |char, column|
     node = [row, column]
 
-    if char == "0"
+    case char
+    when "0"
       start = node
-    elsif char =~ /\d/
+    when /\d/
       goals << node
     end
 

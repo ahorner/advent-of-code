@@ -1,9 +1,9 @@
 ROWS = INPUT.split("\n").map do |row|
-  row.split(" ").map(&:to_i)
+  row.split.map(&:to_i)
 end
 
-def total
-  ROWS.map { |row| yield row }.inject(:+)
+def total(&block)
+  ROWS.map(&block).inject(:+)
 end
 
 checksum = total { |row| row.max - row.min }

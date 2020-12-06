@@ -14,10 +14,11 @@ def code_for(row, column)
   r = 1
   c = 1
 
-  begin
+  loop do
     r, c = r == 1 ? [c + 1, 1] : [r - 1, c + 1]
     num = generate(num)
-  end until r == row && c == column
+    break if r == row && c == column
+  end
 
   num
 end

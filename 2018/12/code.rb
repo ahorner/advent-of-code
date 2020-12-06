@@ -12,7 +12,7 @@ end
 
 def result(state, offset)
   final = ""
-  ".....#{state}.....".chars.each_cons(5) { |pot| final << RULES[pot.join("")] }
+  ".....#{state}.....".chars.each_cons(5) { |pot| final << RULES[pot.join] }
   [final, offset + 3]
 end
 

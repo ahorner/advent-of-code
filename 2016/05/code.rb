@@ -1,12 +1,11 @@
 require "digest"
 
 def matching_digest(pattern, value = 0)
-  begin
+  loop do
     value += 1
     digest = Digest::MD5.hexdigest "#{INPUT}#{value}"
-  end while !digest.start_with?(pattern)
-
-  [digest, value]
+    break [digest, value] if digest.start_with?(pattern)
+  end
 end
 
 value = 0
@@ -19,11 +18,12 @@ puts "The password is:", password, nil
 
 value = 0
 password = [nil] * 8
-begin
+loop do
   digest, value = matching_digest("00000", value)
   next unless digest[5] =~ /\A[0-7]\z/
 
   password[digest[5].to_i] ||= digest[6]
-end while password.any?(&:nil?)
+  break unless password.any?(&:nil?)
+end
 
 puts "The position-specified password is:", password.join

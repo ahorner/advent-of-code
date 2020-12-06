@@ -13,7 +13,7 @@ class Program
   end
 
   def corrected_weight
-    weights = @subprograms.map { |subprogram| subprogram.total_weight }
+    weights = @subprograms.map(&:total_weight)
     outlier = weights.detect { |w| weights.count(w) == 1 }
     return if outlier.nil?
 
@@ -27,7 +27,9 @@ class Program
   end
 end
 
+# rubocop:disable Lint/MixedRegexpCaptureTypes
 PROGRAM_MATCHER = /(?<name>\w+) \((?<weight>\d+)\)( -> (?<children>.+))?/.freeze
+# rubocop:enable Lint/MixedRegexpCaptureTypes
 
 def stack(input)
   programs = {}
@@ -42,7 +44,7 @@ def stack(input)
   end
 
   names = programs.keys
-  programs.values.each do |program|
+  programs.each_value do |program|
     program.children.each do |child|
       names.delete(child)
       program.subprograms << programs[child]

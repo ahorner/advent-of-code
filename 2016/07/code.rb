@@ -1,7 +1,7 @@
 ABBA_MATCHER = /(.)((?!\1).)\2\1/.freeze
 
 def supports_tls?(supernet, hypernet)
-  supernet.any? { |s| s =~ ABBA_MATCHER } && !hypernet.any? { |s| s =~ ABBA_MATCHER }
+  supernet.any? { |s| s =~ ABBA_MATCHER } && hypernet.none? { |s| s =~ ABBA_MATCHER }
 end
 
 def count_ips

@@ -28,7 +28,9 @@ class Cookie
 end
 
 class Kitchen
+  # rubocop:disable Layout/LineLength
   INGREDIENT_PATTERN = /(?<ingredient>.+): capacity (?<capacity>.+), durability (?<durability>.+), flavor (?<flavor>.+), texture (?<texture>.+), calories (?<calories>.+)/.freeze
+  # rubocop:enable Layout/LineLength
 
   def initialize
     @ingredients = {}

@@ -1,11 +1,11 @@
-def decompressed_length(input, recursive = false)
+def decompressed_length(input, recursive: false)
   index = 0
   length = 0
 
-  begin
+  loop do
     if input[index] == "("
       index += 1
-      close_index = input[index..-1].index(")")
+      close_index = input[index..].index(")")
       metrics = input[index...(index + close_index)]
 
       gather, repeat = metrics.split("x").map(&:to_i)
@@ -13,7 +13,7 @@ def decompressed_length(input, recursive = false)
 
       sublength =
         if recursive
-          decompressed_length(input[index...(index + gather)], true)
+          decompressed_length(input[index...(index + gather)], recursive: true)
         else
           gather
         end
@@ -25,10 +25,11 @@ def decompressed_length(input, recursive = false)
     end
 
     index += 1
-  end while index < input.length
+    break unless index < input.length
+  end
 
   length
 end
 
 puts "The decompressed length is:", decompressed_length(INPUT.chomp), nil
-puts "The recursively decompressed length is:", decompressed_length(INPUT.chomp, true)
+puts "The recursively decompressed length is:", decompressed_length(INPUT.chomp, recursive: true)

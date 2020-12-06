@@ -4,7 +4,7 @@ class Network
 
   attr_accessor :center
 
-  def initialize(input, evolved = false)
+  def initialize(input, evolved: false)
     @evolved = evolved
     @nodes = Hash.new(".")
 
@@ -68,7 +68,7 @@ carrier = Carrier.new(network)
 
 puts "The number of infections caused by the carrier is:", carrier.infections, nil
 
-network = Network.new(INPUT, true)
+network = Network.new(INPUT, evolved: true)
 carrier = Carrier.new(network)
 10_000_000.times { carrier.burst! }
 

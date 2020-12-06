@@ -31,7 +31,9 @@ class Flight
 end
 
 class Race
+  # rubocop:disable Layout/LineLength
   FLIGHT_PATTERN = %r{(?<reindeer>.+) can fly (?<speed>\d+) km/s for (?<duration>\d+) seconds, but then must rest for (?<recovery>\d+) seconds\.}.freeze
+  # rubocop:enable Layout/LineLength
 
   def initialize
     @flights = []

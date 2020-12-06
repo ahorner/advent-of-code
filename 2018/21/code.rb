@@ -4,7 +4,7 @@ ip, instructions = INPUT.split("\n").partition.with_index { |_, i| i == 0 }
 
 POINTER = ip.first.match(/\#ip (?<ip>\d+)/)[:ip].to_i
 INSTRUCTIONS = instructions.map do |line|
-  line = line.split(" ")
+  line = line.split
   [line.shift.to_sym, *line.map(&:to_i)]
 end
 
@@ -65,14 +65,15 @@ seen = Set.new
 last = nil
 
 value = run([0, 0, 0, 0, 0, 0]) do |registers|
-  if registers[POINTER] == COMPARISON_LINE
+  case registers[POINTER]
+  when COMPARISON_LINE
     break last if seen.include?(registers[COMPARISON_POINTER])
 
     last = registers[COMPARISON_POINTER]
     seen << last
-  elsif registers[POINTER] == RESET_LINE
+  when RESET_LINE
     registers[RESET_POINTER] = registers[MASK_POINTER] / 256
-  elsif registers[POINTER] == LOOP_LINE
+  when LOOP_LINE
     registers[LOOP_POINTER] = 1
   end
 end

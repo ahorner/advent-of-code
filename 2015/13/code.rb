@@ -1,7 +1,9 @@
 require "set"
 
 class Party
+  # rubocop:disable Layout/LineLength
   INTERACTION_MATCHER = /(?<person>.+) would (?<action>.+) (?<units>\d+) happiness units by sitting next to (?<neighbor>.+)\./.freeze
+  # rubocop:enable Layout/LineLength
 
   attr_reader :people
 

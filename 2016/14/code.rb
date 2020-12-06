@@ -17,10 +17,11 @@ class ScratchPad
     i = 0
     found = []
 
-    begin
+    loop do
       found << i if valid?(i)
       i += 1
-    end while found.length < count
+      break unless found.length < count
+    end
 
     found
   end

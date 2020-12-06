@@ -15,13 +15,14 @@ end
 def first_house(elf_sum)
   house = 1
 
-  begin
+  loop do
     house += 1
     elves = elves_for(house)
     elves = yield(house, elves) if block_given?
 
     elf_total = elves.inject(:+)
-  end while elf_total < elf_sum
+    break unless elf_total < elf_sum
+  end
 
   house
 end

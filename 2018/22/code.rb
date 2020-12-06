@@ -85,7 +85,7 @@ time = loop do
 
   times[[x, y, equip]] = minutes
 
-  EQUIPMENT.values.each do |e|
+  EQUIPMENT.each_value do |e|
     next if e == equip || e == CAVE.risk_level([x, y])
     next if times[[x, y, e]] <= minutes + 7
 

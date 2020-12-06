@@ -29,11 +29,11 @@ class Row
   end
 
   def safe_tiles
-    @traps.count { |trap| !trap }
+    @traps.count(&:!)
   end
 
   def to_s
-    @traps.map { |trap| trap ? "^" : "." }.join("")
+    @traps.map { |trap| trap ? "^" : "." }.join
   end
 end
 

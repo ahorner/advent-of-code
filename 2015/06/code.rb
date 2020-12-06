@@ -1,12 +1,7 @@
-def inputs
-  INPUT.split("\n")
-end
-
 INSTRUCTION_MATCHER = /(?<step>turn off|turn on|toggle) (?<x>\d+),(?<y>\d+) through (?<x2>\d+),(?<y2>\d+)/.freeze
+INSTRUCTIONS = INPUT.split("\n").map { |line| INSTRUCTION_MATCHER.match(line) }
 
-def for_step(instruction)
-  step = INSTRUCTION_MATCHER.match(instruction)
-
+def for_step(step)
   (step[:x].to_i..step[:x2].to_i).each do |x|
     (step[:y].to_i..step[:y2].to_i).each do |y|
       yield step[:step], x, y
@@ -25,13 +20,11 @@ def adjust_lights(instruction, lights)
 end
 
 grid = Hash.new(false)
-inputs.each do |line|
+INSTRUCTIONS.each do |line|
   adjust_lights(line, grid)
 end
 
-puts "All of the lights:"
-puts grid.count { |_, light| !!light }
-puts
+puts "All of the lights:", (grid.count { |_, light| !light.nil? }), "\n"
 
 def adjust_brightness(instruction, lights)
   for_step(instruction) do |step, x, y|
@@ -44,9 +37,8 @@ def adjust_brightness(instruction, lights)
 end
 
 grid = Hash.new(0)
-inputs.each do |line|
+INSTRUCTIONS.each do |line|
   adjust_brightness(line, grid)
 end
 
-puts "Required holiday SPF:"
-puts grid.values.inject(:+)
+puts "Required holiday SPF:", grid.values.inject(:+)

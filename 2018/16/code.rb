@@ -3,14 +3,14 @@ OPCODES = %i[addr addi mulr muli banr bani borr bori setr seti gtir gtri gtrr eq
 SAMPLE_MATCHER = /Before: \[(?<input>.+)\]\n(?<command>.+)\nAfter:  \[(?<output>.+)\]/.freeze
 SAMPLES = INPUT.scan(SAMPLE_MATCHER).map do |input, command, output|
   {
-    command: command.split(" ").map(&:to_i),
+    command: command.split.map(&:to_i),
     input: input.split(", ").map(&:to_i),
-    output: output.split(" ").map(&:to_i),
+    output: output.split.map(&:to_i),
   }
 end.freeze
 
 INSTRUCTION_MATCHER = /\n\n\n\n([0-9 \n]+)/.freeze
-INSTRUCTIONS = INPUT.match(INSTRUCTION_MATCHER)[1].split("\n").map { |i| i.split(" ").map(&:to_i) }.freeze
+INSTRUCTIONS = INPUT.match(INSTRUCTION_MATCHER)[1].split("\n").map { |i| i.split.map(&:to_i) }.freeze
 
 def result(registers, opcode, a, b, c)
   registers = registers.dup
@@ -54,14 +54,14 @@ loop do
 
   behaviors.each { |sample, codes| opcode_mappings[sample[:command].first] ||= codes.first if codes.size == 1 }
   behaviors.delete_if { |sample, _| opcode_mappings.key?(sample[:command].first) }
-  behaviors.each { |_, codes| opcode_mappings.values.each { |code| codes.delete(code) } }
+  behaviors.each { |_, codes| opcode_mappings.each_value { |code| codes.delete(code) } }
 end
 
 OPCODE_MAPPINGS = opcode_mappings.freeze
 
 registers = [0, 0, 0, 0]
 INSTRUCTIONS.each do |instruction|
-  registers = result(registers, OPCODE_MAPPINGS[instruction[0]], *instruction[1..-1])
+  registers = result(registers, OPCODE_MAPPINGS[instruction[0]], *instruction[1..])
 end
 
 puts "The result of register 0 after running all instructions is:", registers[0]

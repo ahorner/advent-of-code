@@ -6,9 +6,10 @@ class PasswordGenerator
   def next
     password = @current_password
 
-    begin
+    loop do
       password.succ!
-    end while !valid?(password)
+      break if valid?(password)
+    end
 
     @current_password = password
   end

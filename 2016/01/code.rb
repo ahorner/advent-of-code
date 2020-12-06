@@ -41,7 +41,7 @@ dude = Dude.new
 
 INPUT.split(", ").each do |instruction|
   dude.turn(instruction[0])
-  dude.move(instruction[1..-1].to_i)
+  dude.move(instruction[1..].to_i)
 end
 
 puts "You are #{dude.distance} blocks from where you started."

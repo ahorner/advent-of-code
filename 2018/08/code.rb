@@ -24,7 +24,7 @@ def node_for(definition)
   Node.new(children, metadata)
 end
 
-root = node_for(INPUT.split(" ").map(&:to_i))
+root = node_for(INPUT.split.map(&:to_i))
 
 puts "The sum of all node metadata is:", root.sum, nil
 puts "The value of the root node is:", root.value

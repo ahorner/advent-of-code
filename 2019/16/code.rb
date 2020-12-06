@@ -26,7 +26,7 @@ def partial_fft(signal)
 end
 
 offset = SIGNAL.first(7).join.to_i
-signal = (SIGNAL * 10_000)[offset..-1]
+signal = (SIGNAL * 10_000)[offset..]
 100.times { |_i| signal = partial_fft(signal) }
 
 puts "The eight-digit message is:", signal.first(8).join

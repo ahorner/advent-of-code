@@ -1,7 +1,8 @@
 class Character
   class Dead < RuntimeError; end
 
-  attr_accessor :attack, :armor, :hp, :mp, :mana_used
+  attr_accessor :attack, :armor, :mp, :mana_used
+  attr_reader :hp
 
   def initialize(hp, attack, mp = 0)
     @hp = hp
@@ -75,7 +76,7 @@ SKILLS = [
 class Battle
   attr_reader :hero, :enemy, :skills
 
-  def initialize(hero, enemy, skills, hard_mode = false)
+  def initialize(hero, enemy, skills, hard_mode: false)
     @hero = hero
     @enemy = enemy
     @skills = skills
@@ -131,7 +132,7 @@ class Battle
   end
 
   def save_state
-    Battle.new(hero.clone, enemy.clone, skills.map(&:clone), @hard_mode)
+    Battle.new(hero.clone, enemy.clone, skills.map(&:clone), hard_mode: @hard_mode)
   end
 end
 
@@ -142,5 +143,5 @@ hero = Character.new(50, 0, 500)
 best = Battle.new(hero, enemy, SKILLS).optimal_strategy
 puts "Cheapest strategy:", best, nil
 
-best = Battle.new(hero, enemy, SKILLS, true).optimal_strategy
+best = Battle.new(hero, enemy, SKILLS, hard_mode: true).optimal_strategy
 puts "Cheapest strategy (hard mode):", best

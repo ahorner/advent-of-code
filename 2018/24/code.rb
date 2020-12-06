@@ -1,4 +1,6 @@
+# rubocop:disable Layout/LineLength,Lint/MixedRegexpCaptureTypes
 MATCHER = /(?<unit_count>\d+) units each with (?<health>\d+) hit points(?<specialties>( \(.+\))?) with an attack that does (?<damage>\d+) (?<damage_type>.+) damage at initiative (?<initiative>\d+)/.freeze
+# rubocop:enable Layout/LineLength,Lint/MixedRegexpCaptureTypes
 WEAKNESS_MATCHER = /weak to (?<damage_types>[^;)]+)+/.freeze
 IMMUNITY_MATCHER = /immune to (?<damage_types>[^;)]+)+/.freeze
 
@@ -8,6 +10,7 @@ class Group
   attr_accessor :size, :damage
   attr_reader :team, :multipliers, :health, :initiative
 
+  # rubocop:disable Metrics/ParameterLists
   def initialize(team, size, health, damage, damage_type, initiative, specialties)
     @team = team
     @size = size
@@ -17,6 +20,7 @@ class Group
     @initiative = initiative
     @multipliers = Hash.new(1).merge(specialties)
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def effective_power
     size * damage
@@ -92,7 +96,9 @@ def fight(groups, immune_boost = 0)
     kill_count = 0
     groups.sort_by { |group| -group.initiative }.each do |group|
       next if group.dead?
-      next unless target = targets[group]
+
+      target = targets[group]
+      next unless target
 
       kill_count += kills = group.damage_to(target) / target.health
       target.size = [0, target.size - kills].max

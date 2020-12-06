@@ -95,7 +95,10 @@ map = Computer.new(INTCODE).run.each_with_object({}) do |tile, map|
   end
 end
 
-intersections = map.select { |(x, y), tile| tile == "#" && Navigator::MOVES.all? { |_, (i, j)| map[[x + i, y + j]] == "#" } }
+intersections = map.select do |(x, y), tile|
+  tile == "#" && Navigator::MOVES.all? { |_, (i, j)| map[[x + i, y + j]] == "#" }
+end
+
 puts "The sum of alignment parameters is:", intersections.sum { |(i, j), _| i * j }, "\n"
 
 path = Navigator.new(map).path

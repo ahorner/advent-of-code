@@ -7,7 +7,7 @@ class Circuit
   def assemble(instructions)
     instructions.each do |step|
       source, wire = step.split(" -> ")
-      @wires[wire] = source.split(" ")
+      @wires[wire] = source.split
     end
   end
 

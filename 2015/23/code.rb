@@ -1,5 +1,5 @@
 def parse(instruction, line, registers)
-  parsed_instruction = instruction.split(" ")
+  parsed_instruction = instruction.split
   instr = parsed_instruction.first
 
   case instr

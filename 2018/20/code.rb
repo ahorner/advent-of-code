@@ -81,4 +81,4 @@ end
 distances = base.explore_from(origin)
 
 puts "The shortest path to the furthest room is:", distances.values.max, nil
-puts "The number of rooms 1000 steps or more away is:", distances.values.count { |i| i >= 1000 }
+puts "The number of rooms 1000 steps or more away is:", (distances.values.count { |i| i >= 1000 })

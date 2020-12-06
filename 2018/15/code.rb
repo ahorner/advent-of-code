@@ -77,7 +77,7 @@ def combat!(grid, bonuses = {})
       break false if units.uniq(&:team).size == 1
       next if unit.dead?
 
-      enemies = units.select { |u| u.team != unit.team }
+      enemies = units.reject { |u| u.team == unit.team }
       targets = enemies.flat_map { |enemy| map.neighbors(enemy.position) }
 
       unless targets.include?(unit.position)
@@ -86,7 +86,8 @@ def combat!(grid, bonuses = {})
       end
 
       nearby = enemies.select { |enemy| map.neighbors(enemy.position).include?(unit.position) }
-      next unless target = nearby.min_by { |enemy| [enemy.hp, enemy.position] }
+      target = nearby.min_by { |enemy| [enemy.hp, enemy.position] }
+      next unless target
 
       target.hp -= unit.attack + bonuses[unit.team].to_i
       next unless target.dead?

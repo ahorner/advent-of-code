@@ -113,7 +113,7 @@ class Pathfinder
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
 
-    begin
+    loop do
       spot, path, steps = queue.next
       next if found[spot]
 
@@ -130,7 +130,8 @@ class Pathfinder
           [new_spot, [*path, new_spot], new_steps],
         )
       end
-    end while !queue.empty?
+      break if queue.empty?
+    end
   end
 end
 

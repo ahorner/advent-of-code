@@ -2,11 +2,13 @@ require "digest"
 
 def matching_digest(pattern)
   value = 0
+  digest = nil
 
-  begin
+  loop do
     value += 1
     digest = Digest::MD5.new.hexdigest "#{INPUT}#{value}"
-  end while !digest.start_with?(pattern)
+    break if digest.start_with?(pattern)
+  end
 
   [digest, value]
 end
