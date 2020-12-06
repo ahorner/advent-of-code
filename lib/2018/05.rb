@@ -11,7 +11,7 @@ def reduce(polymer)
 end
 
 polymer = reduce(INPUT)
-puts "The polymer size after reduction is:", polymer.size, nil
+solve!("The polymer size after reduction is:", polymer.size)
 
 sizes = ("a".."z").map { |c| reduce(polymer.gsub(/#{c}/i, "")).size }
-puts "The minimum polymer size (with removal) is:", sizes.min
+solve!("The minimum polymer size (with removal) is:", sizes.min)

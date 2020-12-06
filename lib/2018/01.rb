@@ -1,17 +1,17 @@
 CHANGES = INPUT.split("\n").map(&:to_i)
 
-puts "The final total frequency is:", CHANGES.sum, nil
+solve!("The final total frequency is:", CHANGES.sum)
 
 require "set"
 frequencies = Set.new
-frequency = nil
+frequency = 0
 
 loop do
   change = CHANGES[frequencies.size % CHANGES.size]
-  frequency = frequency.to_i + change
-  break if frequencies.include?(frequency)
-
   frequencies << frequency
+  frequency += change
+
+  break if frequencies.include?(frequency)
 end
 
-puts "The first frequency achieved twice is:", frequency
+solve!("The first frequency achieved twice is:", frequency)

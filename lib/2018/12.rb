@@ -41,5 +41,5 @@ def evolve(state, generations)
   current_score
 end
 
-puts "The score after 20 generations is:", evolve(INITIAL, 20), nil
-puts "The score after 50B generations is:", evolve(INITIAL, 50_000_000_000)
+solve!("The score after 20 generations is:", evolve(INITIAL, 20))
+solve!("The score after 50B generations is:", evolve(INITIAL, 50_000_000_000))

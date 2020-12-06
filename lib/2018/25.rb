@@ -20,4 +20,4 @@ CONSTELLATIONS = INPUT.split("\n").each_with_object([]) do |line, constellations
   end
 end
 
-puts "The number of distinct constellations is:", CONSTELLATIONS.size
+solve!("The number of distinct constellations is:", CONSTELLATIONS.size)

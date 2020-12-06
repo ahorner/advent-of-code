@@ -9,7 +9,7 @@ IDS.each do |id|
   threes += 1 if letters.any? { |l| id.count(l) == 3 }
 end
 
-puts "The final checksum is:", twos * threes, nil
+solve!("The final checksum is:", twos * threes)
 
 def match?(first, second)
   matched_chars(first, second).size == first.size - 1
@@ -34,4 +34,4 @@ in_common = IDS.detect.with_index do |first, i|
   break code if code
 end
 
-puts "The letters in common for the matching IDs are:", in_common
+solve!("The letters in common for the matching IDs are:", in_common)

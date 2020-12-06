@@ -67,5 +67,5 @@ def run(registers)
   factors_of(total_for(registers)).sum
 end
 
-puts "The value of register 0 is:", run([0, 0, 0, 0, 0, 0]), nil
-puts "The value of register 0 (starting at 1) is:", run([1, 0, 0, 0, 0, 0])
+solve!("The value of register 0 is:", run([0, 0, 0, 0, 0, 0]))
+solve!("The value of register 0 (starting at 1) is:", run([1, 0, 0, 0, 0, 0]))

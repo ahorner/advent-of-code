@@ -65,7 +65,7 @@ claims.combination(2) do |(first, second)|
   overlapping << second
 end
 
-puts "The number of overlapping inches is:", overlaps.size, nil
+solve!("The number of overlapping inches is:", overlaps.size)
 
 claim = claims.detect { |c| !overlapping.include?(c) }
-puts "The only non-overlapping claim is:", claim.id
+solve!("The only non-overlapping claim is:", claim.id)

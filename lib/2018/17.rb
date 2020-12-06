@@ -54,5 +54,5 @@ end
 spring = Spring.new(CLAY)
 spring.flow!(500)
 
-puts "The water can reach the following number of spaces:", spring.water.count, nil
-puts "The water will rest in the following number of spaces:", spring.water.values.count(Spring::RESTING)
+solve!("The water can reach the following number of spaces:", spring.water.count)
+solve!("The water will rest in the following number of spaces:", spring.water.values.count(Spring::RESTING))

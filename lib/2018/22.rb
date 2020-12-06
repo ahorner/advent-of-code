@@ -45,7 +45,7 @@ total_risk = (0..data[:y].to_i).sum do |y|
   (0..data[:x].to_i).sum { |x| CAVE.risk_level([x, y]) }
 end
 
-puts "The total risk level of the rectangle from 0,0 to the target is:", total_risk, nil
+solve!("The total risk level of the rectangle from 0,0 to the target is:", total_risk)
 
 class PriorityQueue
   def initialize
@@ -103,4 +103,4 @@ time = loop do
   end
 end
 
-puts "The minimal time to find our friend is:", time
+solve!("The minimal time to find our friend is:", time)

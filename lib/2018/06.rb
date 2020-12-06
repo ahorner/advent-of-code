@@ -37,7 +37,7 @@ finite_coordinates = coordinates.reject do |c|
 end
 
 counts = finite_coordinates.map { |c| paranoid_grid.values.count(c) }
-puts "The largest non-infinite area is:", counts.max, nil
+solve!("The largest non-infinite area is:", counts.max)
 
 friendly_region = friendly_grid.values.count(true)
-puts "The region of friendly locations has a size of:", friendly_region
+solve!("The region of friendly locations has a size of:", friendly_region)

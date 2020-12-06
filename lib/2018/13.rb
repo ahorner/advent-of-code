@@ -67,5 +67,5 @@ loop do
   carts.sort_by! { |cart| [cart.y, cart.x] }
 end
 
-puts "The first collision happens at:", [first_crash.x, first_crash.y].join(","), nil
-puts "The last remaining cart is at:", [carts.last.x, carts.last.y].join(",")
+solve!("The first collision happens at:", [first_crash.x, first_crash.y].join(","))
+solve!("The last remaining cart is at:", [carts.last.x, carts.last.y].join(","))

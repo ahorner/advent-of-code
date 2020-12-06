@@ -117,11 +117,11 @@ GRID = INPUT.split("\n").each_with_object({}).with_index do |(row, g), y|
 end
 
 outcome, = combat!(GRID.dup)
-puts "Outcome after standard combat:", outcome, nil
+solve!("Outcome after standard combat:", outcome)
 
 outcome = 1.step do |elf_bonus|
   score, deaths = combat!(GRID.dup, { Unit::TEAMS[:elf] => elf_bonus })
   break score unless deaths[Unit::TEAMS[:elf]] > 0
 end
 
-puts "Outcome after a decisive elf win:", outcome
+solve!("Outcome after a decisive elf win:", outcome)

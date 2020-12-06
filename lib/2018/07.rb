@@ -35,5 +35,5 @@ def work(tasks, rules, worker_count = 1)
   end
 end
 
-puts "The necessary sequence of tasks is:", work(TASKS, RULES)[:sequence], nil
-puts "The time to complete with helpers is:", work(TASKS, RULES, 5)[:time]
+solve!("The necessary sequence of tasks is:", work(TASKS, RULES)[:sequence])
+solve!("The time to complete with helpers is:", work(TASKS, RULES, 5)[:time])

@@ -29,7 +29,7 @@ NANOBOTS = INPUT.split("\n").map do |line|
 end
 
 signal = NANOBOTS.max_by(&:range)
-puts "The strongest signal reaches N nanobots:", NANOBOTS.count { |n| signal.reaches?(n.position) }, nil
+solve!("The strongest signal reaches N nanobots:", NANOBOTS.count { |n| signal.reaches?(n.position) })
 
 def distance_to(x, y, z)
   x.abs + y.abs + z.abs
@@ -73,4 +73,4 @@ distance = loop do
   ranges = position.map { |i| [(i - 1) * RESOLUTION, (i + 1) * RESOLUTION] }
 end
 
-puts "The distance from 0,0 to the optimal teleport location is:", distance
+solve!("The distance from 0,0 to the optimal teleport location is:", distance)

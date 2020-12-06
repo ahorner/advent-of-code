@@ -123,11 +123,11 @@ def fight(groups, immune_boost = 0)
 end
 
 _, score = fight(groups)
-puts "The number of units remaining for the winning army is:", score, nil
+solve!("The number of units remaining for the winning army is:", score)
 
 final = 1.step do |boost|
   winner, score = fight(groups, boost)
   break score if winner == :immune_system
 end
 
-puts "The number of immune system units remaining after a minimal boost is:", final
+solve!("The number of immune system units remaining after a minimal boost is:", final)

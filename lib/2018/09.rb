@@ -62,7 +62,7 @@ end
 
 data = INPUT.match(MATCHER)
 results = play(data[:players].to_i, data[:points].to_i)
-puts "The winning elf's score is: ", results.max, nil
+solve!("The winning elf's score is: ", results.max)
 
 results = play(data[:players].to_i, data[:points].to_i * 100)
-puts "The winning elf's score in the longer round is:", results.max
+solve!("The winning elf's score in the longer round is:", results.max)

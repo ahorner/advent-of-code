@@ -45,7 +45,7 @@ behaviors = SAMPLES.each_with_object(Hash.new { |h, k| h[k] = [] }) do |sample, 
   end
 end
 
-puts "The number of samples that behave like 3+ opcodes is:", behaviors.count { |_k, v| v.size >= 3 }, nil
+solve!("The number of samples that behave like 3+ opcodes is:", behaviors.count { |_k, v| v.size >= 3 })
 
 opcode_mappings = {}
 
@@ -64,4 +64,4 @@ INSTRUCTIONS.each do |instruction|
   registers = result(registers, OPCODE_MAPPINGS[instruction[0]], *instruction[1..])
 end
 
-puts "The result of register 0 after running all instructions is:", registers[0]
+solve!("The result of register 0 after running all instructions is:", registers[0])

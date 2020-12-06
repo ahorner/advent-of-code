@@ -51,7 +51,7 @@ def resource_value(area)
 end
 
 area = iterate(COLLECTION_AREA, 10)
-puts "The resource value after 10 minutes is:", resource_value(area), nil
+solve!("The resource value after 10 minutes is:", resource_value(area))
 
 area = iterate(COLLECTION_AREA, 1_000_000_000)
-puts "The resource value after 1B minutes is:", resource_value(area)
+solve!("The resource value after 1B minutes is:", resource_value(area))

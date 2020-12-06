@@ -33,7 +33,7 @@ def area(photons)
 end
 
 def render(photons)
-  map = Hash.new(".")
+  map = Hash.new(" ")
   photons.each { |p| map[p.position] = "#" }
 
   minx, maxx = photons.map(&:x).minmax
@@ -63,4 +63,5 @@ loop do
   best = score
 end
 
-puts "The message (at time #{time}) is:", nil, render(photons)
+solve!("The message that appears is:\n\n", render(photons))
+solve!("The time the message appears is:", time)

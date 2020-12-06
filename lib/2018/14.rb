@@ -41,5 +41,5 @@ loop do
   elves.each_index { |i| elves[i] = (elves[i] + scores[i] + 1) % recipes.size }
 end
 
-puts "The score of the recipes after practice is:", recipes.slice(COUNT, 10).join, nil
-puts "The number of recipes preceding the sequence is:", search.previous
+solve!("The score of the recipes after practice is:", recipes.slice(COUNT, 10).join)
+solve!("The number of recipes preceding the sequence is:", search.previous)

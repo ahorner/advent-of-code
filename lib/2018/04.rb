@@ -60,10 +60,9 @@ LOG.each do |line|
 end
 
 most_likely = guards.values.max_by(&:time_asleep)
-puts "Guard ##{most_likely.id} naps most often, at minute #{most_likely.likeliest_nap}:",
-  most_likely.id * most_likely.likeliest_nap,
-  nil
+solve!("Guard ##{most_likely.id} naps most often, at minute #{most_likely.likeliest_nap}:",
+  most_likely.id * most_likely.likeliest_nap)
 
 most_likely = guards.values.max_by(&:max_naps)
-puts "Guard ##{most_likely.id} naps most consistently, at minute #{most_likely.likeliest_nap}:",
-  most_likely.id * most_likely.likeliest_nap
+solve!("Guard ##{most_likely.id} naps most consistently, at minute #{most_likely.likeliest_nap}:",
+  most_likely.id * most_likely.likeliest_nap)

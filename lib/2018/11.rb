@@ -53,7 +53,7 @@ def best_for(grid, size = 3)
   best
 end
 
-puts "The top-left corner of the best 3x3 block is:", best_for(GRID)[1..2].join(","), nil
+solve!("The top-left corner of the best 3x3 block is:", best_for(GRID)[1..2].join(","))
 
 best = (3..SIZE).map { |size| best_for(GRID, size) }.max
-puts "The best block of any size is:", best[1..3].join(",")
+solve!("The best block of any size is:", best[1..3].join(","))

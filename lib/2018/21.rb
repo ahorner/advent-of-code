@@ -48,7 +48,7 @@ value = run([0, 0, 0, 0, 0, 0]) do |registers|
   break registers[COMPARISON_POINTER] if registers[POINTER] == COMPARISON_LINE
 end
 
-puts "The earliest halting value for register 0 is:", value, nil
+solve!("The earliest halting value for register 0 is:", value)
 
 # We can avoid a bunch of extraneous looping by overriding a few separate sets
 # of instructions to condense each inner loop pass down to one or two
@@ -78,4 +78,4 @@ value = run([0, 0, 0, 0, 0, 0]) do |registers|
   end
 end
 
-puts "The last unique halting value for register 0 is:", value
+solve!("The last unique halting value for register 0 is:", value)
