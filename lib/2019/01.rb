@@ -5,7 +5,7 @@ def fuel_requirement(mass)
 end
 
 total = MODULES.sum { |mass| fuel_requirement(mass) }
-puts "The total fuel requirement is:", total, "\n"
+solve!("The total fuel requirement is:", total)
 
 def compounded_fuel_requirement(mass)
   fuel = 0
@@ -15,4 +15,4 @@ def compounded_fuel_requirement(mass)
 end
 
 total = MODULES.sum { |mass| compounded_fuel_requirement(mass) }
-puts "The total fuel requirement (with compounding) is:", total
+solve!("The total fuel requirement (with compounding) is:", total)

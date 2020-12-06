@@ -22,5 +22,5 @@ loop do
   queues[0] << nat.last.dup
 end
 
-puts "The first Y value passed to the NAT is:", nat.first[1], "\n"
-puts "The first Y value delivered by the NAT twice in a row is:", last_y
+solve!("The first Y value passed to the NAT is:", nat.first[1])
+solve!("The first Y value delivered by the NAT twice in a row is:", last_y)

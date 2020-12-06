@@ -19,7 +19,7 @@ end
 
 cabinet = Computer.new(INTCODE)
 screen, = render(cabinet.run)
-puts "The total number of blocks is:", screen.values.count { |tile| tile == TILES.index("#") }, "\n"
+solve!("The total number of blocks is:", screen.values.count { |tile| tile == TILES.index("#") })
 
 playable = INTCODE.dup
 playable[0] = 2
@@ -36,4 +36,4 @@ final_score = loop do
   break score if screen.values.none? { |tile| tile == TILES.index("#") }
 end
 
-puts "The score after breaking all blocks is:", final_score
+solve!("The score after breaking all blocks is:", final_score)

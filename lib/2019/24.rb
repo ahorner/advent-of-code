@@ -41,12 +41,14 @@ end
 
 repeated = loop do
   grid = tick(grid, neighbors)
-  break grid if seen[grid]
+  value = biodiversity(grid)
 
-  seen[grid] = true
+  break value if seen[value]
+
+  seen[value] = true
 end
 
-puts "The biodiversity of the first layout that appears twice is:", biodiversity(repeated), "\n"
+solve!("The biodiversity of the first layout that appears twice is:", repeated)
 
 RECURSIVE_ADJACENCIES = {
   [0, -1, 0] => ->(x) { [x, SIZE - 1] },
@@ -68,6 +70,8 @@ recursive_neighbors = proc do |(x, y, z)|
 end
 
 grid = GRID.dup
-200.times { grid = tick(grid, recursive_neighbors) }
 
-puts "The number of bugs after 200 minutes is:", grid.values.count("#")
+MINUTES ||= 200
+MINUTES.times { grid = tick(grid, recursive_neighbors) }
+
+solve!("The number of bugs after 200 minutes is:", grid.values.count("#"))

@@ -97,4 +97,4 @@ class Droid
 end
 
 droid = Droid.new(INTCODE)
-puts "The password for the main airlock is:", droid.password
+solve!("The password for the main airlock is:", droid.password)

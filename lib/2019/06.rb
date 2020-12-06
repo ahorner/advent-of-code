@@ -34,5 +34,5 @@ class OrbitMap
 end
 
 map = OrbitMap.new(ORBITS)
-puts "The total number of direct and indirect orbits is:", map.total_orbits, "\n"
-puts "The minimum number of orbital transfers to Santa is:", map.transfers_between("YOU", "SAN")
+solve!("The total number of direct and indirect orbits is:", map.total_orbits)
+solve!("The minimum number of orbital transfers to Santa is:", map.transfers_between("YOU", "SAN"))

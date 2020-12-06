@@ -60,9 +60,9 @@ end
 field = AsteroidField.new(GRID)
 station = field.asteroids.max_by { |x, y| field.visible_from(x, y).count }
 
-puts "The number of detectable asteroids from the station is:", field.visible_from(*station).count, "\n"
+solve!("The number of detectable asteroids from the station is:", field.visible_from(*station).count)
 
 TARGET = 200
 x, y = field.sweep_from!(*station)[TARGET - 1]
 
-puts "The number of the 200th vaporized asteroid will be:", x * 100 + y
+solve!("The number of the 200th vaporized asteroid will be:", x * 100 + y)

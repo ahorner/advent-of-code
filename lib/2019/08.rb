@@ -5,7 +5,7 @@ HEIGHT = 6
 LAYERS = PIXELS.each_slice(WIDTH * HEIGHT).to_a
 
 min_layer = LAYERS.min_by { |layer| layer.count(0) }
-puts "The layer checksum is:", min_layer.count(1) * min_layer.count(2), "\n"
+solve!("The layer checksum is:", min_layer.count(1) * min_layer.count(2))
 
 OUTPUTS = { 0 => " ", 1 => "#" }.freeze
 IMAGE = LAYERS.each_with_object(Array.new(WIDTH * HEIGHT)) do |layer, image|
@@ -16,9 +16,9 @@ IMAGE = LAYERS.each_with_object(Array.new(WIDTH * HEIGHT)) do |layer, image|
   end
 end
 
-puts "The final image is:\n\n"
-
-HEIGHT.times do |y|
-  WIDTH.times { |x| print OUTPUTS[IMAGE[WIDTH * y + x]] }
-  print "\n"
+screen = HEIGHT.times.each_with_object("") do |y, output|
+  WIDTH.times { |x| output << OUTPUTS[IMAGE[WIDTH * y + x]] }
+  output << "\n"
 end
+
+solve!("The final image is:\n\n", screen)

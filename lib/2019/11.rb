@@ -37,7 +37,7 @@ end
 
 hull = Hash.new(0)
 run!(hull)
-puts "The number of painted panels is:", hull.count, "\n"
+solve!("The number of painted panels is:", hull.count)
 
 hull = Hash.new(0)
 hull[[0, 0]] = 1
@@ -46,9 +46,9 @@ run!(hull)
 minx, maxx = hull.keys.map(&:first).minmax
 miny, maxy = hull.keys.map(&:last).minmax
 
-puts "The registration identifier is:", "\n"
-
-(miny..maxy).each do |j|
-  (minx..maxx).each { |i| print(hull[[i, j]] == 0 ? "." : "#") }
-  print "\n"
+screen = (miny..maxy).each_with_object("") do |j, output|
+  (minx..maxx).each { |i| output << (hull[[i, j]] == 0 ? " " : "#") }
+  output << "\n"
 end
+
+solve!("The registration identifier is:\n\n", screen)

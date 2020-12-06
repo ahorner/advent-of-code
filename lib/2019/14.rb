@@ -35,7 +35,7 @@ def ore_needed(chemical, quantity = 1)
   requirements["ORE"]
 end
 
-puts "The amount of ORE needed to produce 1 FUEL is:", ore_needed("FUEL"), "\n"
+solve!("The amount of ORE needed to produce 1 FUEL is:", ore_needed("FUEL"))
 
 def maximum_output(chemical, ore)
   maximum = ore_needed(chemical)
@@ -53,4 +53,4 @@ def maximum_output(chemical, ore)
   low
 end
 
-puts "The maximum amount of fuel you can product with 1 trillion ORE is:", maximum_output("FUEL", 1_000_000_000_000)
+solve!("The maximum amount of fuel you can product with 1 trillion ORE is:", maximum_output("FUEL", 1_000_000_000_000))

@@ -12,7 +12,7 @@ def run(noun, verb)
 end
 
 output = run(12, 2)
-puts "The output of the program is:", output, "\n"
+solve!("The output of the program is:", output)
 
 TARGET_OUTPUT = 19_690_720
 
@@ -22,4 +22,4 @@ end
 
 noun, verb = search(INTCODE, TARGET_OUTPUT)
 
-puts "The noun/verb code for the target output is:", noun * 100 + verb
+solve!("The noun/verb code for the target output is:", noun * 100 + verb)

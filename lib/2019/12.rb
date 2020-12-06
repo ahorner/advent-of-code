@@ -44,7 +44,7 @@ end
 moons = MOONS.map { |position| Moon.new(position) }
 1000.times { tick!(moons) }
 
-puts "The total energy after 1000 steps is:", moons.sum(&:energy), "\n"
+solve!("The total energy after 1000 steps is:", moons.sum(&:energy))
 
 moons = MOONS.map { |position| Moon.new(position) }
 cycles = [nil, nil, nil]
@@ -62,4 +62,4 @@ loop do
   break if cycles.all?
 end
 
-puts "The minimum number of steps to repeat the cycle is:", cycles.reduce(1, :lcm)
+solve!("The minimum number of steps to repeat the cycle is:", cycles.reduce(1, :lcm))

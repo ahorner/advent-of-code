@@ -1,7 +1,7 @@
 require_relative "./shared/intcode"
 
 outputs = Computer.new(INTCODE).run(inputs: [1])
-puts "The diagnostic code for the air conditioner unit is:", outputs.last, "\n"
+solve!("The diagnostic code for the air conditioner unit is:", outputs.last)
 
 outputs = Computer.new(INTCODE).run(inputs: [5])
-puts "The diagnostic code for the thermal radiator controller is:", outputs.last
+solve!("The diagnostic code for the thermal radiator controller is:", outputs.last)

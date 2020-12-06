@@ -101,7 +101,7 @@ intersections = map.select do |(x, y), tile|
   tile == "#" && Navigator::MOVES.all? { |_, (i, j)| map[[x + i, y + j]] == "#" }
 end
 
-puts "The sum of alignment parameters is:", intersections.sum { |(i, j), _| i * j }, "\n"
+solve!("The sum of alignment parameters is:", intersections.sum { |(i, j), _| i * j })
 
 path = Navigator.new(map).path
 compressor = PathCompressor.new(path)
@@ -111,4 +111,4 @@ wakeup = INTCODE.dup.tap { |program| program[0] = 2 }
 vacuum = Computer.new(wakeup)
 output = instructions.flat_map { |line| vacuum.run(inputs: line.chars.map(&:ord) + [10]) }
 
-puts "The amount of dust collected is:", output.last
+solve!("The amount of dust collected is:", output.last)

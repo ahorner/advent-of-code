@@ -47,7 +47,7 @@ WIRES.each_with_index { |steps, id| grid.add(id, steps) }
 intersections = grid.intersections
 
 closest = intersections.map { |intersection| intersection.map(&:abs).sum }.min
-puts "The manhattan distance to the closest intersection is:", closest, "\n"
+solve!("The manhattan distance to the closest intersection is:", closest)
 
 min_steps = intersections.map { |intersection| grid.combined_steps(intersection) }.min
-puts "The minimum number of combined steps to any intersection is:", min_steps
+solve!("The minimum number of combined steps to any intersection is:", min_steps)

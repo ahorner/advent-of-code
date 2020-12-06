@@ -18,5 +18,5 @@ def optimal_signal(phases)
   phases.permutation.to_a.map { |phase_settings| amplify(phase_settings) }.max
 end
 
-puts "The maximum thruster signal is:", optimal_signal([0, 1, 2, 3, 4]), "\n"
-puts "The maximum feedback loop thruster signal is:", optimal_signal([5, 6, 7, 8, 9])
+solve!("The maximum thruster signal is:", optimal_signal([0, 1, 2, 3, 4]))
+solve!("The maximum feedback loop thruster signal is:", optimal_signal([5, 6, 7, 8, 9]))

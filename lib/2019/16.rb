@@ -14,7 +14,7 @@ end
 signal = SIGNAL.dup
 100.times { signal = fft(signal) }
 
-puts "The first eight digits are:", signal.first(8).join, "\n"
+solve!("The first eight digits are:", signal.first(8).join)
 
 def partial_fft(signal)
   partial_sum = signal.sum
@@ -29,4 +29,4 @@ offset = SIGNAL.first(7).join.to_i
 signal = (SIGNAL * 10_000)[offset..]
 100.times { |_i| signal = partial_fft(signal) }
 
-puts "The eight-digit message is:", signal.first(8).join
+solve!("The eight-digit message is:", signal.first(8).join)

@@ -13,4 +13,4 @@ if File.exist?(input_file)
   runner.execute!(File.open(input_file).read.chomp("\n"))
 end
 
-puts "\nDONE"
+puts "DONE"

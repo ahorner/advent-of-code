@@ -27,7 +27,7 @@ beam = Beam.new(INTCODE)
 
 grid = {}
 50.times { |y| 50.times { |x| grid[[x, y]] = beam.pulls?(x, y) } }
-puts "The number of beam points in a 50x50 grid is:", grid.count(&:last), "\n"
+solve!("The number of beam points in a 50x50 grid is:", grid.count(&:last))
 
 x, y = beam.fit_point(100)
-puts "The best 100x100 is:", x * 10_000 + y
+solve!("The best 100x100 is:", x * 10_000 + y)

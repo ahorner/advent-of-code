@@ -164,8 +164,8 @@ blueprint = droid.blueprint
 
 pathfinder = Pathfinder.new(blueprint)
 path = pathfinder.path(blueprint.droid, blueprint.oxygen_system)
-puts "The minimum path length to the oxygen system is:", path.length, "\n"
+solve!("The minimum path length to the oxygen system is:", path.length)
 
 oxygen = OxygenSystem.new(blueprint)
 minutes = oxygen.fill_from(blueprint.oxygen_system)
-puts "The number of minutes it will take to fill the map with oxygen is:", minutes
+solve!("The number of minutes it will take to fill the map with oxygen is:", minutes)

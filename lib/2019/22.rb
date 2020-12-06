@@ -105,9 +105,9 @@ end
 deck = Deck.new(10_007, OPERATIONS)
 cards = deck.shuffle
 
-puts "The position of card 2019 after shuffling is:", cards.index(2019), "\n"
+solve!("The position of card 2019 after shuffling is:", cards.index(2019))
 
 deck = Deck.new(119_315_717_514_047, OPERATIONS)
 card = deck.card_at(2020, shuffles: 101_741_582_076_661)
 
-puts "The card at position 2020 after shuffling is:", card
+solve!("The card at position 2020 after shuffling is:", card)

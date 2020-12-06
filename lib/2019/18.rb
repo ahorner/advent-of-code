@@ -118,7 +118,7 @@ end
 
 vault = Vault.new(GRID)
 explorer = Explorer.new(vault.key_paths)
-puts "The minimum number of steps to find all keys is:", explorer.steps_from(vault.chambers), "\n"
+solve!("The minimum number of steps to find all keys is:", explorer.steps_from(vault.chambers))
 
 CHAMBERED_GRID = GRID.dup.tap do |grid|
   x, y = GRID.key(Vault::ENTRANCE)
@@ -128,4 +128,4 @@ end.freeze
 
 vault = Vault.new(CHAMBERED_GRID)
 explorer = Explorer.new(vault.key_paths)
-puts "The minimum number of steps to find all keys in the chambered vault is:", explorer.steps_from(vault.chambers)
+solve!("The minimum number of steps to find all keys in the chambered vault is:", explorer.steps_from(vault.chambers))

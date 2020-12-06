@@ -11,7 +11,7 @@ def valid_password?(number)
 end
 
 count = RANGE.count { |number| valid_password?(number) }
-puts "The number of valid passwords is:", count, "\n"
+solve!("The number of valid passwords is:", count)
 
 def strict_password?(number)
   digits = number.to_s.chars.map(&:to_i)
@@ -23,4 +23,4 @@ def strict_password?(number)
 end
 
 count = RANGE.count { |number| strict_password?(number) }
-puts "The number of (strict) valid passwords is:", count
+solve!("The number of (strict) valid passwords is:", count)
