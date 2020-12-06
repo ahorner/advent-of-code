@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
 
+require_relative("../lib/shared/runner")
 require "date"
 
 date = ARGV[0] || Time.new.localtime("-05:00").strftime("%Y/%d")
 
 puts "Running code for #{date}:", nil
 
-input_file = "#{date}/input.txt"
-INPUT = File.open(input_file).read.chomp("\n") if File.exist?(input_file)
-
-require_relative("../#{date}/code")
+input_file = "inputs/#{date}.txt"
+if File.exist?(input_file)
+  runner = Runner.new(date, logger: $stdout)
+  runner.execute!(File.open(input_file).read.chomp("\n"))
+end
 
 puts "\nDONE"

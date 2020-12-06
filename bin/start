@@ -2,13 +2,26 @@
 
 require "date"
 require "fileutils"
+require "thor"
+
+class CodeGenerator < Thor::Group
+  include Thor::Actions
+
+  argument :date
+
+  def self.source_root
+    File.expand_path("../", File.dirname(__FILE__))
+  end
+
+  def generate!
+    create_file("inputs/#{date}.txt", skip: true)
+    create_file("lib/#{date}.rb", skip: true)
+    template("templates/spec/code_spec.rb.tt", "spec/#{date}_spec.rb", skip: true)
+  end
+end
 
 date = ARGV[0] || (Time.new.localtime("-05:00") + 3600).strftime("%Y/%d")
 
 puts "Creating code and input placeholders for #{date}"
-
-FileUtils.mkdir_p(date)
-FileUtils.touch("#{date}/code.rb")
-FileUtils.touch("#{date}/input.txt")
-
+CodeGenerator.start([date])
 puts "DONE"

@@ -1,0 +1,17 @@
+require "spec_helper"
+
+describe "Day N: Challenge Title" do
+  let(:runner) { Runner.new("<%= date %>") }
+  let(:input) do
+    <<~TXT
+    TXT
+  end
+
+  describe "Part One" do
+    let(:solution) { runner.execute!(input).first }
+  end
+
+  describe "Part Two" do
+    let(:solution) { runner.execute!(input).last }
+  end
+end
