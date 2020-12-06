@@ -11,7 +11,8 @@ class Beam
 
   def fit_point(size)
     offset = size - 1
-    x, y = 0, size + 1
+    x = 0
+    y = size + 1
 
     loop do
       x += 1 until pulls?(x, y)
@@ -29,4 +30,4 @@ grid = {}
 puts "The number of beam points in a 50x50 grid is:", grid.count(&:last), "\n"
 
 x, y = beam.fit_point(100)
-puts "The best 100x100 is:", x * 10000 + y
+puts "The best 100x100 is:", x * 10_000 + y

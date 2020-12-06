@@ -5,8 +5,8 @@ VECTORS = {
   left: [-1, 0],
   down: [0, 1],
   right: [1, 0],
-}
-DIRECTIONS = [:up, :right, :down, :left]
+}.freeze
+DIRECTIONS = %i[up right down left].freeze
 
 def rotate_by(direction, rotate)
   rotation = rotate == 0 ? -1 : 1
@@ -20,7 +20,8 @@ end
 
 def run!(hull)
   robot = Computer.new(INTCODE)
-  x, y = 0, 0
+  x = 0
+  y = 0
   direction = 0
 
   loop do

@@ -32,9 +32,10 @@ class Droid
   REVERSE = { 1 => 2, 2 => 1, 3 => 4, 4 => 3 }.freeze
   SUCCESS_CODES = [1, 2].freeze
 
-  def initialize(program)
+  def initialize(_program)
     @computer = Computer.new(INTCODE)
-    @x, @y = 0, 0
+    @x = 0
+    @y = 0
   end
 
   def blueprint
@@ -58,11 +59,12 @@ class Droid
       output = @computer.run(inputs: [direction]).last
       map[[newx, newy]] ||= output
 
-      if SUCCESS_CODES.include?(output)
-        @x, @y = newx, newy
-        queues[[@x, @y]] ||= MOVEMENTS.keys - [REVERSE[direction]]
-        path << direction
-      end
+      next unless SUCCESS_CODES.include?(output)
+
+      @x = newx
+      @y = newy
+      queues[[@x, @y]] ||= MOVEMENTS.keys - [REVERSE[direction]]
+      path << direction
     end
 
     Blueprint.new(map)
@@ -100,13 +102,13 @@ class Pathfinder
   end
 
   def path(start, target)
-    estimator = Proc.new { |(x, y)| (target[0] - x).abs + (target[1] - y).abs }
+    estimator = proc { |(x, y)| (target[0] - x).abs + (target[1] - y).abs }
     traverse(start, estimator: estimator) { |spot, path| return path if spot == target }
   end
 
   private
 
-  def traverse(start, estimator: Proc.new { 0 })
+  def traverse(start, estimator: proc { 0 })
     found = {}
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
@@ -120,6 +122,7 @@ class Pathfinder
       found[spot] = true
       @map.adjacent_coords(spot).each do |new_spot|
         next if found[new_spot]
+
         new_steps = steps + 1
 
         queue.add(
@@ -148,6 +151,7 @@ class OxygenSystem
       end
 
       break minutes if sources.empty?
+
       minutes += 1
     end
   end

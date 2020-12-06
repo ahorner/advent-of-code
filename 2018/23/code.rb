@@ -17,7 +17,7 @@ class Nanobot
   end
 end
 
-MATCHER = /pos\=\<(?<x>-?\d+),(?<y>-?\d+),(?<z>-?\d+)\>, r\=(?<range>\d+)/
+MATCHER = /pos=<(?<x>-?\d+),(?<y>-?\d+),(?<z>-?\d+)>, r=(?<range>\d+)/.freeze
 NANOBOTS = INPUT.split("\n").map do |line|
   data = line.match(MATCHER)
   Nanobot.new(

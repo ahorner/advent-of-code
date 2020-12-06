@@ -1,5 +1,4 @@
 class Cookie
-
   def initialize
     @qualities = Hash.new(0)
   end
@@ -26,12 +25,10 @@ class Cookie
   def score_for(quality)
     [@qualities[quality], 0].max
   end
-
 end
 
 class Kitchen
-
-  INGREDIENT_PATTERN = /(?<ingredient>.+)\: capacity (?<capacity>.+), durability (?<durability>.+), flavor (?<flavor>.+), texture (?<texture>.+), calories (?<calories>.+)/
+  INGREDIENT_PATTERN = /(?<ingredient>.+): capacity (?<capacity>.+), durability (?<durability>.+), flavor (?<flavor>.+), texture (?<texture>.+), calories (?<calories>.+)/.freeze
 
   def initialize
     @ingredients = {}
@@ -67,7 +64,6 @@ class Kitchen
   def recipes(teaspoons)
     @ingredients.keys.repeated_combination(teaspoons).to_a
   end
-
 end
 
 kitchen = Kitchen.new

@@ -5,10 +5,10 @@ SLOPES = [
   [5, 1],
   [7, 1],
   [1, 2],
-]
+].freeze
 
 class Map
-  TREE = "#"
+  TREE = "#".freeze
 
   def initialize(pattern)
     @pattern = pattern
@@ -20,7 +20,9 @@ class Map
   end
 
   def collisions(dx, dy)
-    x, y, count = [0, 0, 0]
+    x = 0
+    y = 0
+    count = 0
 
     loop do
       x += dx

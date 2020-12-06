@@ -1,5 +1,4 @@
 class PasswordGenerator
-
   def initialize(seed)
     @current_password = seed
   end
@@ -33,7 +32,6 @@ class PasswordGenerator
   def bad_chars?(string)
     string =~ /[iol]/
   end
-
 end
 
 generator = PasswordGenerator.new(INPUT)

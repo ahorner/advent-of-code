@@ -1,7 +1,6 @@
 require "set"
 
 class Reaction
-
   attr_reader :base, :result
 
   def initialize(base, result)
@@ -31,7 +30,6 @@ class Reaction
   def decompose(formula)
     formula.sub(result, base)
   end
-
 end
 
 lines = INPUT.split("\n").reject(&:empty?)

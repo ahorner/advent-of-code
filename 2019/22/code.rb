@@ -44,7 +44,7 @@ class Deck
       operations = simplify(operations + operations)
     end
 
-    operations = phases.flat_map { |power, ops| shuffles & power != 0 ? ops : [] }
+    operations = phases.flat_map { |power, ops| shuffles & power == 0 ? [] : ops }
     simplify(operations).reverse_each do |operation, argument|
       position =
         case operation
@@ -71,12 +71,12 @@ class Deck
 
         steps[i, 2] =
           case [first_op, second_op]
-          when [:cut, :cut] then [[:cut, (first_arg + second_arg) % @size]]
-          when [:cut, :deal] then [[:deal, second_arg], [:cut, (first_arg * second_arg) % @size]]
-          when [:deal, :deal] then [[:deal, (first_arg * second_arg) % @size]]
-          when [:flip, :cut] then [[:cut, -second_arg], [:flip]]
-          when [:flip, :deal] then [[:deal, second_arg], [:cut, -second_arg + 1], [:flip]]
-          when [:flip, :flip] then []
+          when %i[cut cut] then [[:cut, (first_arg + second_arg) % @size]]
+          when %i[cut deal] then [[:deal, second_arg], [:cut, (first_arg * second_arg) % @size]]
+          when %i[deal deal] then [[:deal, (first_arg * second_arg) % @size]]
+          when %i[flip cut] then [[:cut, -second_arg], [:flip]]
+          when %i[flip deal] then [[:deal, second_arg], [:cut, -second_arg + 1], [:flip]]
+          when %i[flip flip] then []
           else steps[i, 2]
           end
       end
@@ -88,7 +88,9 @@ class Deck
 
   # Apologies to: https://rosettacode.org/wiki/Modular_inverse#Ruby
   def modular_inverse(value)
-    n, inverse, x = @size, 1, 0
+    n = @size
+    inverse = 1
+    x = 0
 
     while value > 1
       inverse -= (value / n) * x

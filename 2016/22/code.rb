@@ -1,7 +1,6 @@
-NODE_PATTERN = /\/dev\/grid\/node-x(?<x>\d+)-y(?<y>\d+)\s+(?<size>\d+)T\s+(?<used>\d+)T\s+(?<avail>\d+)T\s+(?<percent>\d+)\%/
+NODE_PATTERN = %r{/dev/grid/node-x(?<x>\d+)-y(?<y>\d+)\s+(?<size>\d+)T\s+(?<used>\d+)T\s+(?<avail>\d+)T\s+(?<percent>\d+)%}.freeze
 
 class DevNode
-
   attr_accessor :size, :used, :avail
 
   def initialize(size, used, avail)
@@ -28,11 +27,9 @@ class DevNode
   def empty?
     @used == 0
   end
-
 end
 
 class NodePair
-
   def initialize(a, b)
     @a = a
     @b = b
@@ -41,9 +38,9 @@ class NodePair
   def valid?
     return false if @a.empty?
     return false if @b == @a
+
     @b.fits?(@a)
   end
-
 end
 
 def adjacent_nodes(nodes, x, y)
@@ -104,7 +101,7 @@ puts "The number of viable pairs is:", viable_pairs, nil
 # Thanks for creating the first truly unenjoyable challenge, topaz.
 
 high_nodes = nodes.select { |_, node| node.size > 400 }
-wall = high_nodes.min_by { |(x, y)| x }
+wall = high_nodes.min_by { |(x, _y)| x }
 
 empty_node = nodes.detect { |_, node| node.empty? }
 x, y = empty_node.first
@@ -115,4 +112,3 @@ steps_to_goal = 36 * 5
 total_steps = steps_to_target + additional_steps + steps_to_goal
 
 puts "The minimum step count is:", total_steps
-

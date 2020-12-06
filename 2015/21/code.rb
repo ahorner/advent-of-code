@@ -1,31 +1,30 @@
 WEAPONS = {
-  "Dagger"     => { cost: 8,  attack: 4, defense: 0 },
+  "Dagger" => { cost: 8,  attack: 4, defense: 0 },
   "Shortsword" => { cost: 10, attack: 5, defense: 0 },
-  "Warhammer"  => { cost: 25, attack: 6, defense: 0 },
-  "Longsword"  => { cost: 40, attack: 7, defense: 0 },
-  "Greataxe"   => { cost: 74, attack: 8, defense: 0 },
+  "Warhammer" => { cost: 25, attack: 6, defense: 0 },
+  "Longsword" => { cost: 40, attack: 7, defense: 0 },
+  "Greataxe" => { cost: 74, attack: 8, defense: 0 },
 }.values
 
 ARMOR = {
-  "Naked"      => { cost: 0,   attack: 0, defense: 0 },
-  "Leather"    => { cost: 13,  attack: 0, defense: 1 },
-  "Chainmail"  => { cost: 31,  attack: 0, defense: 2 },
+  "Naked" => { cost: 0, attack: 0, defense: 0 },
+  "Leather" => { cost: 13, attack: 0, defense: 1 },
+  "Chainmail" => { cost: 31, attack: 0, defense: 2 },
   "Splintmail" => { cost: 53,  attack: 0, defense: 3 },
   "Bandedmail" => { cost: 75,  attack: 0, defense: 4 },
-  "Platemail"  => { cost: 102, attack: 0, defense: 5 },
+  "Platemail" => { cost: 102, attack: 0, defense: 5 },
 }.values
 
 RINGS = {
-  "Damage +1"  => { cost: 25,  attack: 1, defense: 0 },
-  "Damage +2"  => { cost: 50,  attack: 2, defense: 0 },
-  "Damage +3"  => { cost: 100, attack: 3, defense: 0 },
+  "Damage +1" => { cost: 25,  attack: 1, defense: 0 },
+  "Damage +2" => { cost: 50,  attack: 2, defense: 0 },
+  "Damage +3" => { cost: 100, attack: 3, defense: 0 },
   "Defense +1" => { cost: 20,  attack: 0, defense: 1 },
   "Defense +2" => { cost: 40,  attack: 0, defense: 2 },
   "Defense +3" => { cost: 80,  attack: 0, defense: 3 },
 }.values
 
 class Equipment
-
   def initialize(items = [])
     @items = items
   end
@@ -41,11 +40,9 @@ class Equipment
   def cost
     @items.map { |i| i[:cost] }.inject(0, :+)
   end
-
 end
 
 class Character
-
   attr_reader :hp
 
   def initialize(hit_points, attack, defense)
@@ -76,7 +73,6 @@ class Character
   def equipment
     @equipment || Equipment.new
   end
-
 end
 
 def loadouts

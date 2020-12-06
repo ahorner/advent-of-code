@@ -1,7 +1,6 @@
 require "set"
 
 class Map
-
   def initialize
     @cities = Set.new
     @edges = {}
@@ -53,14 +52,13 @@ class Map
   def distance(origin, destination)
     @edges[[origin, destination].sort]
   end
-
 end
 
 map = Map.new
 map.fill(INPUT.split("\n"))
 
 puts "Best route:"
-puts *map.best_route, nil
+puts(*map.best_route, nil)
 
 puts "Worst route:"
-puts *map.worst_route
+puts(*map.worst_route)

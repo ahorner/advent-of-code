@@ -14,9 +14,9 @@ end
 output = run(12, 2)
 puts "The output of the program is:", output, "\n"
 
-TARGET_OUTPUT = 19690720
+TARGET_OUTPUT = 19_690_720
 
-def search(intcode, target)
+def search(_intcode, target)
   (0..99).each { |n| (0..99).each { |v| return [n, v] if run(n, v) == target } }
 end
 

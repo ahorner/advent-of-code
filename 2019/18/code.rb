@@ -5,11 +5,11 @@ end.freeze
 class Vault
   DIRECTIONS = [[0, -1], [0, 1], [-1, 0], [1, 0]].freeze
 
-  KEY_MATCHER = /\A[[:lower:]]\z/
-  DOOR_MATCHER = /\A[[:upper:]]\z/
+  KEY_MATCHER = /\A[[:lower:]]\z/.freeze
+  DOOR_MATCHER = /\A[[:upper:]]\z/.freeze
 
-  ENTRANCE = "@"
-  WALL = "#"
+  ENTRANCE = "@".freeze
+  WALL = "#".freeze
 
   def initialize(map)
     @map = map
@@ -35,10 +35,10 @@ class Vault
           keys << [@map[target], requirements, distances[target]] if key?(target)
 
           queue << if interactive?(target)
-            [target, requirements + [@map[target].downcase]]
-          else
-            [target, requirements]
-          end
+                     [target, requirements + [@map[target].downcase]]
+                   else
+                     [target, requirements]
+                   end
         end
       end
 

@@ -11,7 +11,7 @@ def real?(key, counts)
     alphabet -= [highest.last]
   end
 
-  highest.all?{ |c| key.include?(c) }
+  highest.all? { |c| key.include?(c) }
 end
 
 def decrypt(code, shift)
@@ -29,11 +29,11 @@ INPUT.split("\n").each do |line|
   counts = Hash.new(0)
   line[:code].chars.each { |c| counts[c] += 1 unless c == "-" }
 
-  if real?(line[:checksum], counts)
-    vector_sums += line[:sector_id].to_i
-    decrypted = decrypt(line[:code], line[:sector_id])
-    room_id = line[:sector_id] if decrypted.delete(" ") == TARGET_ROOM
-  end
+  next unless real?(line[:checksum], counts)
+
+  vector_sums += line[:sector_id].to_i
+  decrypted = decrypt(line[:code], line[:sector_id])
+  room_id = line[:sector_id] if decrypted.delete(" ") == TARGET_ROOM
 end
 
 puts "The sum of the real vector IDs is:", vector_sums, nil

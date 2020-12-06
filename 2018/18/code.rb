@@ -6,9 +6,9 @@ SIZE = COLLECTION_AREA.size
 NEIGHBORS = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]].freeze
 ACRES = { open: ".", forest: "|", lumberyard: "#" }.freeze
 TRANSITIONS = {
-  ACRES[:open] => -> (n) { n.count(ACRES[:forest]) >= 3 ? ACRES[:forest] : ACRES[:open] },
-  ACRES[:forest] => -> (n) { n.count(ACRES[:lumberyard]) >= 3 ? ACRES[:lumberyard] : ACRES[:forest] },
-  ACRES[:lumberyard] => -> (n) { n.count(ACRES[:forest]) > 0 && n.count(ACRES[:lumberyard]) > 0 ? ACRES[:lumberyard] : ACRES[:open] }
+  ACRES[:open] => ->(n) { n.count(ACRES[:forest]) >= 3 ? ACRES[:forest] : ACRES[:open] },
+  ACRES[:forest] => ->(n) { n.count(ACRES[:lumberyard]) >= 3 ? ACRES[:lumberyard] : ACRES[:forest] },
+  ACRES[:lumberyard] => ->(n) { n.count(ACRES[:forest]) > 0 && n.count(ACRES[:lumberyard]) > 0 ? ACRES[:lumberyard] : ACRES[:open] },
 }.freeze
 
 def next_state(area)
@@ -33,7 +33,7 @@ end
 def iterate(area, minutes)
   seen = []
 
-  minutes.times do |i|
+  minutes.times do |_i|
     area = next_state(area)
     seen.include?(area) ? break : seen << area
   end

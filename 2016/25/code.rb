@@ -25,7 +25,7 @@ end
 
 def optimize(instructions)
   instructions.each_cons(6).with_index do |lines, index|
-    if lines.map(&:first).map(&:to_sym) == [:cpy, :inc, :dec, :jnz, :dec, :jnz]
+    if lines.map(&:first).map(&:to_sym) == %i[cpy inc dec jnz dec jnz]
       instructions[index] = ["mul", lines[1][1], lines[0][1], lines[-1][1]]
       5.times { |i| instructions[index + i + 1] = ["jnz", 0, 0] }
     end
@@ -39,7 +39,7 @@ def sequence(&generator)
     n = 0
     loop do
       yielder.yield generator.call(n)
-      n = n + 1
+      n += 1
     end
   end
 end

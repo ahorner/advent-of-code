@@ -1,5 +1,4 @@
 class Tube
-
   attr_reader :opening
 
   def initialize(input)
@@ -29,17 +28,15 @@ class Tube
   def letter(space)
     @grid[space].is_a?(String) ? @grid[space] : nil
   end
-
 end
 
 class Packet
-
   DIRECTIONS = {
     up: [0, -1],
     down: [0, 1],
     left: [-1, 0],
     right: [1, 0],
-  }
+  }.freeze
 
   attr_reader :collection, :steps
 
@@ -79,6 +76,7 @@ class Packet
     end
 
     return [nil, nil] unless new_direction
+
     [new_direction, move(new_direction)]
   end
 
@@ -88,7 +86,6 @@ class Packet
       @position[1] + DIRECTIONS[direction][1],
     ]
   end
-
 end
 
 tube = Tube.new(INPUT)
@@ -97,5 +94,3 @@ packet.navigate
 
 puts "The packet collected letters in the order:", packet.collection.join, nil
 puts "The number of steps the packet moved is:", packet.steps
-
-

@@ -1,6 +1,5 @@
 class Firewall
-
-  def initialize(input)
+  def initialize(_input)
     @layers = Hash.new(0)
     INPUT.split("\n").each do |layer|
       depth, range = layer.split(": ").map(&:to_i)
@@ -20,13 +19,13 @@ class Firewall
 
   def scanned?(depth, time)
     return false unless @layers.key?(depth)
+
     time % ((@layers[depth] * 2) - 2) == 0
   end
 
   def max_depth
     @max_depth ||= @layers.keys.max
   end
-
 end
 
 firewall = Firewall.new(INPUT)
@@ -45,4 +44,3 @@ loop do
 end
 
 puts "The minimum delay to traverse the firewall undetected is:", delay
-

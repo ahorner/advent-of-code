@@ -3,7 +3,6 @@ require "set"
 WIRES = INPUT.split("\n").map { |instructions| instructions.split(",") }.freeze
 
 class Grid
-
   STEPS = {
     "U" => [0, -1],
     "D" => [0, 1],
@@ -16,7 +15,9 @@ class Grid
   end
 
   def add(id, steps)
-    x, y, total = 0, 0, 0
+    x = 0
+    y = 0
+    total = 0
 
     steps.each do |step|
       distance = step.scan(/\d+/)[0].to_i
@@ -39,7 +40,6 @@ class Grid
   def combined_steps(intersection)
     @grid[intersection].map(&:last).sum
   end
-
 end
 
 grid = Grid.new

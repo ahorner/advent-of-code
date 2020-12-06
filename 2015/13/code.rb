@@ -1,8 +1,7 @@
 require "set"
 
 class Party
-
-  INTERACTION_MATCHER =   /(?<person>.+) would (?<action>.+) (?<units>\d+) happiness units by sitting next to (?<neighbor>.+)\./
+  INTERACTION_MATCHER = /(?<person>.+) would (?<action>.+) (?<units>\d+) happiness units by sitting next to (?<neighbor>.+)\./.freeze
 
   attr_reader :people
 
@@ -30,11 +29,9 @@ class Party
       SeatingChart.new(arrangement, @relationships)
     end.max
   end
-
 end
 
 class SeatingChart
-
   def initialize(arrangement, relationships)
     @relationships = relationships
     @arrangement = arrangement
@@ -60,7 +57,6 @@ class SeatingChart
   def to_s
     (@arrangement + [@arrangement.first]).join(" - ")
   end
-
 end
 
 party = Party.new

@@ -10,6 +10,7 @@ loop do
   change = CHANGES[frequencies.size % CHANGES.size]
   frequency = frequency.to_i + change
   break if frequencies.include?(frequency)
+
   frequencies << frequency
 end
 

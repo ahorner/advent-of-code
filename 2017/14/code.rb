@@ -1,5 +1,4 @@
 class KnotHash
-
   MAGIC_NUMBERS = [17, 31, 73, 47, 23].freeze
 
   def initialize(input)
@@ -31,7 +30,6 @@ class KnotHash
 
     list.rotate(-rotations)
   end
-
 end
 
 GRID_SIZE = 128
@@ -56,6 +54,7 @@ def group_members(x, y, members = [])
   ].each do |i, j|
     next unless MAP[[i, j]] == "1"
     next if members.include?([i, j])
+
     members = group_members(i, j, members + [[i, j]])
   end
 
@@ -66,11 +65,11 @@ regions = {}
 region_count = 0
 
 MAP.each do |(x, y), c|
-  if c == "1" && !regions[[x, y]]
-    region_count += 1
-    regions[[x, y]] = region_count
-    group_members(x, y).each { |i, j| regions[[i, j]] = region_count }
-  end
+  next unless c == "1" && !regions[[x, y]]
+
+  region_count += 1
+  regions[[x, y]] = region_count
+  group_members(x, y).each { |i, j| regions[[i, j]] = region_count }
 end
 
 puts "The number of distinct regions is:", region_count

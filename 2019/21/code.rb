@@ -14,25 +14,25 @@ end
 program = Computer.new(INTCODE)
 droid = SpringDroid.new(program)
 hull_damage = droid.run([
-  "NOT C J",
-  "AND D J",
-  "NOT A T",
-  "OR T J",
-  "WALK",
-])
+                          "NOT C J",
+                          "AND D J",
+                          "NOT A T",
+                          "OR T J",
+                          "WALK",
+                        ])
 
 puts "The amount of hull damage after walking is:", hull_damage, "\n"
 
 program = Computer.new(INTCODE)
 droid = SpringDroid.new(program)
 hull_damage = droid.run([
-  "NOT H J",
-  "OR C J",
-  "AND B J",
-  "AND A J",
-  "NOT J J",
-  "AND D J",
-  "RUN",
-])
+                          "NOT H J",
+                          "OR C J",
+                          "AND B J",
+                          "AND A J",
+                          "NOT J J",
+                          "AND D J",
+                          "RUN",
+                        ])
 
 puts "The amount of hull damage after running is:", hull_damage, "\n"

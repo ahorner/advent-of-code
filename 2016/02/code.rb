@@ -1,5 +1,4 @@
 class Keypad
-
   def initialize(layout)
     @layout = layout
     @y = layout.index { |row| row.include?("5") }
@@ -22,7 +21,6 @@ class Keypad
   def current_key
     @layout[@y][@x]
   end
-
 end
 
 def code(keypad)
@@ -34,9 +32,9 @@ end
 
 standard_keypad = Keypad.new(
   [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", "9"],
+    %w[1 2 3],
+    %w[4 5 6],
+    %w[7 8 9],
   ],
 )
 
@@ -46,7 +44,7 @@ wonky_keypad = Keypad.new(
   [
     [nil, nil, "1", nil, nil],
     [nil, "2", "3", "4", nil],
-    ["5", "6", "7", "8", "9"],
+    %w[5 6 7 8 9],
     [nil, "A", "B", "C", nil],
     [nil, nil, "D", nil, nil],
   ],

@@ -1,5 +1,4 @@
 class Program
-
   attr_accessor :name, :weight, :children, :subprograms
 
   def initialize(name, weight, children = [])
@@ -24,12 +23,11 @@ class Program
 
     proper_weight = (weights - [outlier]).first
     weight_difference = outlier - proper_weight
-    return faulty.weight - weight_difference
+    faulty.weight - weight_difference
   end
-
 end
 
-PROGRAM_MATCHER = /(?<name>\w+) \((?<weight>\d+)\)( -> (?<children>.+))?/
+PROGRAM_MATCHER = /(?<name>\w+) \((?<weight>\d+)\)( -> (?<children>.+))?/.freeze
 
 def stack(input)
   programs = {}
@@ -58,4 +56,3 @@ root = stack(INPUT)
 
 puts "The root program is:", root.name, nil
 puts "The expected weight for the faulty program is:", root.corrected_weight
-

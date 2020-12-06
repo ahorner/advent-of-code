@@ -1,6 +1,6 @@
-START_MATCHER = /Begin in state (?<state>\w)\./
-STEPS_MATCHER = /Perform a diagnostic checksum after (?<steps>\d+) steps\./
-RULE_MATCHER = /In state (?<state>\w):\n  If the current value is 0:\n    - Write the value (?<zero_value>\d)\.\n    - Move one slot to the (?<zero_direction>\w+)\.\n    - Continue with state (?<zero_state>\w)\.\n  If the current value is 1:\n    - Write the value (?<one_value>\d)\.\n    - Move one slot to the (?<one_direction>\w+)\.\n    - Continue with state (?<one_state>\w)\./
+START_MATCHER = /Begin in state (?<state>\w)\./.freeze
+STEPS_MATCHER = /Perform a diagnostic checksum after (?<steps>\d+) steps\./.freeze
+RULE_MATCHER = /In state (?<state>\w):\n  If the current value is 0:\n    - Write the value (?<zero_value>\d)\.\n    - Move one slot to the (?<zero_direction>\w+)\.\n    - Continue with state (?<zero_state>\w)\.\n  If the current value is 1:\n    - Write the value (?<one_value>\d)\.\n    - Move one slot to the (?<one_direction>\w+)\.\n    - Continue with state (?<one_state>\w)\./.freeze
 
 rules = {}
 INPUT.scan(RULE_MATCHER) do

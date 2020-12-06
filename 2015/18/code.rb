@@ -1,5 +1,4 @@
 class Light
-
   attr_reader :x, :y, :grid
 
   def initialize(grid, x, y, on)
@@ -25,6 +24,7 @@ class Light
 
   def on?
     return true if @stuck
+
     !!@on
   end
 
@@ -45,11 +45,9 @@ class Light
   def stuck!
     @stuck = true
   end
-
 end
 
 class Grid
-
   def initialize(instructions)
     @lights = {}
 
@@ -71,7 +69,6 @@ class Grid
   def count
     @lights.values.count(&:on?)
   end
-
 end
 
 grid = Grid.new(INPUT)

@@ -8,11 +8,11 @@ def elves_for(house)
   exponents = powers.map { |i| (0..i).to_a }
 
   exponents.shift.product(*exponents).map do |powers|
-    primes.zip(powers).map { |prime, power| prime ** power }.inject(:*)
+    primes.zip(powers).map { |prime, power| prime**power }.inject(:*)
   end
 end
 
-def first_house(elf_sum, &block)
+def first_house(elf_sum)
   house = 1
 
   begin

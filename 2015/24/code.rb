@@ -8,12 +8,12 @@ def target_subsets(array, sum)
   target = sum - first
 
   if target == 0
-    return [[first]]
+    [[first]]
   elsif target < 0
-    return target_subsets(rest, sum)
+    target_subsets(rest, sum)
   else
     subsets = target_subsets(rest, target).map { |subset| [first, *subset] }
-    return target_subsets(rest, sum) + subsets
+    target_subsets(rest, sum) + subsets
   end
 end
 
@@ -28,6 +28,5 @@ def minimal_entanglement(group_weight)
   sets.select { |set| set.size == min_size }.map { |set| quantum_entanglement(set) }.min
 end
 
-
-puts "Optimal QE with good legroom:", minimal_entanglement(TOTAL_WEIGHT/3), nil
-puts "Optimal QE with good legroom (and a trunk):", minimal_entanglement(TOTAL_WEIGHT/4)
+puts "Optimal QE with good legroom:", minimal_entanglement(TOTAL_WEIGHT / 3), nil
+puts "Optimal QE with good legroom (and a trunk):", minimal_entanglement(TOTAL_WEIGHT / 4)

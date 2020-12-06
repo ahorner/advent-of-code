@@ -1,5 +1,4 @@
 class Node
-
   def initialize
     @sources = {}
   end
@@ -26,7 +25,6 @@ class Node
   def high
     values.last
   end
-
 end
 
 GRANT_PATTERN = /value (?<value>\d+) goes to (?<bot>bot \d+)/.freeze
@@ -53,4 +51,3 @@ puts "The bot responsible for comparing #{TARGET_VALUES} is:", bot, nil
 
 product = TARGET_NODES.map { |id| nodes[id].values.first }.inject(:*)
 puts "The product of chip numbers in #{TARGET_NODES} is:", product
-

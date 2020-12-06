@@ -1,5 +1,4 @@
 class Program
-
   INSTRUCTIONS = INPUT.split("\n").map do |line|
     action, *args = line.split
     [action.to_sym, args.map { |i| i =~ /-?\d+/ ? i.to_i : i }]
@@ -56,9 +55,8 @@ class Program
   private
 
   def value_for(n)
-    String === n ? @registers[n] : n
+    n.is_a?(String) ? @registers[n] : n
   end
-
 end
 
 program = Program.new
@@ -74,6 +72,7 @@ program1.run
 
 loop do
   break if program0.outputs.empty? && program1.outputs.empty?
+
   program0.resume(program1.outputs.shift) if program1.outputs.any?
   program1.resume(program0.outputs.shift) if program0.outputs.any?
 end

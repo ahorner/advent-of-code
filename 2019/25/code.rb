@@ -1,10 +1,10 @@
 require_relative "../shared/intcode"
 
 class Room
-  NAME_MATCHER = /^== (?<name>.+) ==$/
-  DIRECTIONS = ["north", "east", "south", "west"].freeze
+  NAME_MATCHER = /^== (?<name>.+) ==$/.freeze
+  DIRECTIONS = %w[north east south west].freeze
   TRAPS = ["escape pod", "giant electromagnet", "infinite loop", "molten lava", "photons"].freeze
-  CHECKPOINT = "Security Checkpoint"
+  CHECKPOINT = "Security Checkpoint".freeze
 
   def initialize(description)
     @description = description
@@ -26,8 +26,8 @@ class Room
 end
 
 class Droid
-  PASSWORD_MATCHER = /You should be able to get in by typing (?<password>\d+) on the keypad at the main airlock\./
-  OVERWEIGHT_MATCHER = /lighter/
+  PASSWORD_MATCHER = /You should be able to get in by typing (?<password>\d+) on the keypad at the main airlock\./.freeze
+  OVERWEIGHT_MATCHER = /lighter/.freeze
 
   def initialize(intcode)
     @computer = Computer.new(intcode)
@@ -70,6 +70,7 @@ class Droid
 
       inventory += room.items.each { |item| run!("take #{item}") }
       (checkpoint = path.dup) && next if room.name == Room::CHECKPOINT
+
       queue[room.name] = room.doors - [reverse(direction)]
     end
 

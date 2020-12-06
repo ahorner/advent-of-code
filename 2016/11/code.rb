@@ -1,5 +1,4 @@
 class Item
-
   attr_reader :element, :type
 
   def initialize(element, type)
@@ -10,11 +9,9 @@ class Item
   def chip?
     type == :chip
   end
-
 end
 
 class State
-
   attr_reader :steps
 
   def initialize(floorplan, floor = 0, steps = 0)
@@ -74,7 +71,6 @@ class State
 
     locations.values.map(&:values).sort
   end
-
 end
 
 def steps(floorplan)
@@ -85,6 +81,7 @@ def steps(floorplan)
     @queue.shift.valid_moves.each do |move|
       return move.steps if move.solved?
       next if @cache.key?(move.key)
+
       @cache[move.key] = true
       @queue << move
     end

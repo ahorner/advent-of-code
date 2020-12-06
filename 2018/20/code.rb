@@ -54,6 +54,7 @@ class Base
       room, steps = queue.shift
       room.neighbors.each do |neighbor|
         next if explored.key?(neighbor) && explored[neighbor] <= steps + 1
+
         explored[neighbor] = steps + 1
         queue << [neighbor, steps + 1]
       end

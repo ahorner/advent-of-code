@@ -9,11 +9,11 @@ EXPECTED_READINGS = {
   trees: 3,
   cars: 2,
   perfumes: 1,
-}
+}.freeze
 
 def parse(lines)
   lines.map do |line|
-    readings = line.scan(/(\w+)\: (\d)/).flat_map do |(reading, value)|
+    readings = line.scan(/(\w+): (\d)/).flat_map do |(reading, value)|
       [reading.to_sym, value.to_i]
     end
 

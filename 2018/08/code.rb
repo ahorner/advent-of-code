@@ -10,6 +10,7 @@ class Node
 
   def value
     return @metadata.sum if @children.none?
+
     @metadata.sum { |i| @children[i - 1]&.value.to_i }
   end
 end

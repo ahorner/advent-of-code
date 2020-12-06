@@ -1,6 +1,6 @@
 require "set"
 
-MATCHER = /\#(?<id>\d+) \@ (?<x>\d+)\,(?<y>\d+)\: (?<width>\d+)x(?<height>\d+)/
+MATCHER = /\#(?<id>\d+) @ (?<x>\d+),(?<y>\d+): (?<width>\d+)x(?<height>\d+)/.freeze
 
 class Range
   def overlaps?(other)
@@ -8,10 +8,11 @@ class Range
   end
 
   def intersection(other)
-    return nil if (self.max < other.begin || other.max < self.begin)
-    [self.begin, other.begin].max..[self.max, other.max].min
+    return nil if max < other.begin || other.max < self.begin
+
+    [self.begin, other.begin].max..[max, other.max].min
   end
-  alias_method :&, :intersection
+  alias & intersection
 end
 
 class Claim

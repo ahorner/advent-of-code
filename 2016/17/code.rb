@@ -1,7 +1,6 @@
 require "digest"
 
 class Maze
-
   OPEN_MATCHER = /[b-f]/.freeze
 
   def initialize(width = 4, height = 4)
@@ -37,12 +36,10 @@ class Maze
 
     @grid[string][direction]
   end
-
 end
 
 # Apologies to http://branch14.org/snippets/a_star_in_ruby.html
 class PriorityQueue
-
   def initialize
     @list = []
   end
@@ -59,11 +56,9 @@ class PriorityQueue
   def empty?
     @list.empty?
   end
-
 end
 
 class Pathfinder
-
   def initialize(maze)
     @maze = maze
   end
@@ -93,7 +88,7 @@ class Pathfinder
     queue = PriorityQueue.new
     queue.add(1, [start, [start], 0])
 
-    while !queue.empty?
+    until queue.empty?
       spot, path, steps = queue.next
       if [spot[0], spot[1]] == target
         yield path
@@ -111,7 +106,6 @@ class Pathfinder
       end
     end
   end
-
 end
 
 START = [0, 0].freeze

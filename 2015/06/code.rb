@@ -2,7 +2,7 @@ def inputs
   INPUT.split("\n")
 end
 
-INSTRUCTION_MATCHER = /(?<step>turn off|turn on|toggle) (?<x>\d+),(?<y>\d+) through (?<x2>\d+),(?<y2>\d+)/
+INSTRUCTION_MATCHER = /(?<step>turn off|turn on|toggle) (?<x>\d+),(?<y>\d+) through (?<x2>\d+),(?<y2>\d+)/.freeze
 
 def for_step(instruction)
   step = INSTRUCTION_MATCHER.match(instruction)
@@ -17,9 +17,9 @@ end
 def adjust_lights(instruction, lights)
   for_step(instruction) do |step, x, y|
     case step
-    when "turn on" then lights[[x,y]] = true
-    when "turn off" then lights[[x,y]] = false
-    when "toggle" then lights[[x,y]] = !lights[[x,y]]
+    when "turn on" then lights[[x, y]] = true
+    when "turn off" then lights[[x, y]] = false
+    when "toggle" then lights[[x, y]] = !lights[[x, y]]
     end
   end
 end
@@ -36,9 +36,9 @@ puts
 def adjust_brightness(instruction, lights)
   for_step(instruction) do |step, x, y|
     case step
-    when "turn on" then lights[[x,y]] += 1
-    when "turn off" then lights[[x,y]] = [0, lights[[x,y]] - 1].max
-    when "toggle" then lights[[x,y]] += 2
+    when "turn on" then lights[[x, y]] += 1
+    when "turn off" then lights[[x, y]] = [0, lights[[x, y]] - 1].max
+    when "toggle" then lights[[x, y]] += 2
     end
   end
 end

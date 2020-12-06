@@ -1,7 +1,6 @@
 ELF_COUNT = INPUT.to_i
 
 class Elf
-
   attr_accessor :gifts, :next, :prev, :number
 
   def initialize(number)
@@ -17,7 +16,6 @@ class Elf
     elf.prev.next = elf.next
     elf.next.prev = elf.prev
   end
-
 end
 
 def elf_ring
@@ -53,13 +51,13 @@ end
 def take_from_across(start_with, elf_count)
   current_elf = start_with
   target = current_elf
-  (elf_count/2).times { target = target.next }
+  (elf_count / 2).times { target = target.next }
 
   while current_elf.next != current_elf
     current_elf.take_from(target)
     elf_count -= 1
 
-    target = ((elf_count % 2) == 1 ? target.next.next : target.next)
+    target = (elf_count.odd? ? target.next.next : target.next)
     current_elf = current_elf.next
   end
 
@@ -71,4 +69,3 @@ puts "The number of the last elf standing is:", winner.number, nil
 
 winner = take_from_across(elf_ring, ELF_COUNT)
 puts "The number of the last elf standing (advanced) is:", winner.number
-

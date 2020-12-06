@@ -1,6 +1,6 @@
-MATCHER = /(?<unit_count>\d+) units each with (?<health>\d+) hit points(?<specialties>( \(.+\))?) with an attack that does (?<damage>\d+) (?<damage_type>.+) damage at initiative (?<initiative>\d+)/
-WEAKNESS_MATCHER = /weak to (?<damage_types>[^;)]+)+/
-IMMUNITY_MATCHER = /immune to (?<damage_types>[^;)]+)+/
+MATCHER = /(?<unit_count>\d+) units each with (?<health>\d+) hit points(?<specialties>( \(.+\))?) with an attack that does (?<damage>\d+) (?<damage_type>.+) damage at initiative (?<initiative>\d+)/.freeze
+WEAKNESS_MATCHER = /weak to (?<damage_types>[^;)]+)+/.freeze
+IMMUNITY_MATCHER = /immune to (?<damage_types>[^;)]+)+/.freeze
 
 class Group
   TEAMS = { immune: "Immune System", infection: "Infection" }.freeze
@@ -9,7 +9,12 @@ class Group
   attr_reader :team, :multipliers, :health, :initiative
 
   def initialize(team, size, health, damage, damage_type, initiative, specialties)
-    @team, @size, @health, @damage, @type, @initiative = team, size, health, damage, damage_type, initiative
+    @team = team
+    @size = size
+    @health = health
+    @damage = damage
+    @type = damage_type
+    @initiative = initiative
     @multipliers = Hash.new(1).merge(specialties)
   end
 
@@ -108,7 +113,7 @@ def fight(groups, immune_boost = 0)
       :neither
     end
 
-  return [winner, groups.map(&:size).sum]
+  [winner, groups.map(&:size).sum]
 end
 
 _, score = fight(groups)

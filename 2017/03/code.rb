@@ -9,7 +9,8 @@ def grid_to(input, &value_for)
   }
 
   value = 1
-  direction, move = [:x, 1]
+  direction = :x
+  move = 1
 
   while value <= input
     current[direction] = current[direction] + move

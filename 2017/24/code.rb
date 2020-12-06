@@ -1,5 +1,4 @@
 class Bridge
-
   COMPONENTS = INPUT.split("\n").map { |l| l.split("/").map(&:to_i) }
 
   def initialize(components = [], open_port = 0)
@@ -34,7 +33,6 @@ class Bridge
       extended_with(c).possibilities(components - [c])
     end
   end
-
 end
 
 bridges = Bridge.new.possibilities

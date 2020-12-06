@@ -1,5 +1,4 @@
 class Circuit
-
   def initialize(signals = {})
     @signals = signals
     @wires = {}
@@ -18,6 +17,7 @@ class Circuit
 
   def signal(wire)
     return wire.to_i if wire =~ /\A\d+\z/
+
     @signals[wire] ||= begin
       sources = @wires[wire]
 

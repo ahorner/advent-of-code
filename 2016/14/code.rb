@@ -1,7 +1,6 @@
 require "digest"
 
 class ScratchPad
-
   TRIPLE_MATCHER = /(\w)\1\1/.freeze
 
   def initialize(salt, stretch = 0)
@@ -30,7 +29,7 @@ class ScratchPad
     matches = generate(value).match(TRIPLE_MATCHER)
     return false unless matches
 
-    matcher = Regexp.new("#{matches[1]}" * 5)
+    matcher = Regexp.new((matches[1]).to_s * 5)
     (1..1000).any? { |i| generate(value + i) =~ matcher }
   end
 
@@ -43,7 +42,6 @@ class ScratchPad
       digest
     end
   end
-
 end
 
 SALT = INPUT.chomp

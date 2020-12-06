@@ -1,6 +1,5 @@
 class Generator
-
-  DIVISOR = 2147483647
+  DIVISOR = 2_147_483_647
 
   def initialize(start, factor, check = 1)
     @current = start
@@ -14,13 +13,12 @@ class Generator
       break @current if @current % @check == 0
     end
   end
-
 end
 
 FACTORS = {
-  a: 16807,
-  b: 48271,
-}
+  a: 16_807,
+  b: 48_271,
+}.freeze
 
 CHECK_MASK = (1 << 16) - 1
 

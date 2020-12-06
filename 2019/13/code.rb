@@ -18,7 +18,7 @@ def render(tiles)
 end
 
 cabinet = Computer.new(INTCODE)
-screen, _ = render(cabinet.run)
+screen, = render(cabinet.run)
 puts "The total number of blocks is:", screen.values.count { |tile| tile == TILES.index("#") }, "\n"
 
 playable = INTCODE.dup
@@ -26,8 +26,8 @@ playable[0] = 2
 cabinet = Computer.new(playable)
 
 final_score = loop do
-  ball, _ = screen.detect { |coords, tile| tile == TILES.index("o") }
-  paddle, _ = screen.detect { |coords, tile| tile == TILES.index("_") }
+  ball, = screen.detect { |_coords, tile| tile == TILES.index("o") }
+  paddle, = screen.detect { |_coords, tile| tile == TILES.index("_") }
   joystick = ball[0] <=> paddle[0]
 
   updates, score = render(cabinet.run(inputs: [joystick]))

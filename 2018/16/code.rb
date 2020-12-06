@@ -1,6 +1,6 @@
 OPCODES = %i[addr addi mulr muli banr bani borr bori setr seti gtir gtri gtrr eqir eqri eqrr].freeze
 
-SAMPLE_MATCHER = /Before\: \[(?<input>.+)\]\n(?<command>.+)\nAfter\:  \[(?<output>.+)\]/
+SAMPLE_MATCHER = /Before: \[(?<input>.+)\]\n(?<command>.+)\nAfter:  \[(?<output>.+)\]/.freeze
 SAMPLES = INPUT.scan(SAMPLE_MATCHER).map do |input, command, output|
   {
     command: command.split(" ").map(&:to_i),
@@ -9,7 +9,7 @@ SAMPLES = INPUT.scan(SAMPLE_MATCHER).map do |input, command, output|
   }
 end.freeze
 
-INSTRUCTION_MATCHER = /\n\n\n\n([0-9 \n]+)/
+INSTRUCTION_MATCHER = /\n\n\n\n([0-9 \n]+)/.freeze
 INSTRUCTIONS = INPUT.match(INSTRUCTION_MATCHER)[1].split("\n").map { |i| i.split(" ").map(&:to_i) }.freeze
 
 def result(registers, opcode, a, b, c)
@@ -45,7 +45,7 @@ behaviors = SAMPLES.each_with_object(Hash.new { |h, k| h[k] = [] }) do |sample, 
   end
 end
 
-puts "The number of samples that behave like 3+ opcodes is:", behaviors.count { |k, v| v.size >= 3 }, nil
+puts "The number of samples that behave like 3+ opcodes is:", behaviors.count { |_k, v| v.size >= 3 }, nil
 
 opcode_mappings = {}
 

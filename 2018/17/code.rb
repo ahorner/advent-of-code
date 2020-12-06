@@ -1,4 +1,4 @@
-MATCHER = /(?<static>x|y)=(?<point>\d+), (?<range>x|y)=(?<min>\d+)..(?<max>\d+)/
+MATCHER = /(?<static>x|y)=(?<point>\d+), (?<range>x|y)=(?<min>\d+)..(?<max>\d+)/.freeze
 CLAY = INPUT.split("\n").each_with_object(Hash.new(false)) do |line, clay|
   data = line.match(MATCHER)
   (data[:min].to_i..data[:max].to_i).each do |i|
@@ -8,8 +8,8 @@ CLAY = INPUT.split("\n").each_with_object(Hash.new(false)) do |line, clay|
 end
 
 class Spring
-  RESTING = "~"
-  FLOWING = "|"
+  RESTING = "~".freeze
+  FLOWING = "|".freeze
 
   attr_reader :water
 
@@ -34,7 +34,8 @@ class Spring
   end
 
   def fill!(x, y)
-    left, right = x, x
+    left = x
+    right = x
     left -= 1 until @clay[[left - 1, y]] || !rests?(left, y)
     right += 1 until @clay[[right + 1, y]] || !rests?(right, y)
 

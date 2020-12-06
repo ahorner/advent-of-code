@@ -1,5 +1,5 @@
-REACTION_MATCHER = /\A(?<inputs>.+) => (?<output>.+)\z/
-CHEMICAL_MATCHER = /(?<quantity>\d+) (?<name>.+)/
+REACTION_MATCHER = /\A(?<inputs>.+) => (?<output>.+)\z/.freeze
+CHEMICAL_MATCHER = /(?<quantity>\d+) (?<name>.+)/.freeze
 
 REACTIONS = INPUT.split("\n").each_with_object({}) do |line, reactions|
   reaction = line.match(REACTION_MATCHER)
@@ -39,7 +39,8 @@ puts "The amount of ORE needed to produce 1 FUEL is:", ore_needed("FUEL"), "\n"
 
 def maximum_output(chemical, ore)
   maximum = ore_needed(chemical)
-  low, high = 0, ore / maximum * 2
+  low = 0
+  high = ore / maximum * 2
 
   loop do
     break if low >= high

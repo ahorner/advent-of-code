@@ -4,7 +4,9 @@ def distance(x, y, z)
   (x.abs + y.abs + z.abs) / 2
 end
 
-x, y, z = [0, 0, 0]
+x = 0
+y = 0
+z = 0
 max = 0
 
 MOVEMENTS.each do |movement|

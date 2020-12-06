@@ -1,6 +1,5 @@
 class Particle
-
-  PARTICLE_MATCHER = /p=\<(?<position>.+)\>, v=\<(?<velocity>.+)\>, a=\<(?<acceleration>.+)\>/
+  PARTICLE_MATCHER = /p=<(?<position>.+)>, v=<(?<velocity>.+)>, a=<(?<acceleration>.+)>/.freeze
 
   attr_reader :id, :position
 
@@ -29,7 +28,6 @@ class Particle
     @velocity = @velocity.zip(@acceleration).map(&:sum)
     @position = @position.zip(@velocity).map(&:sum)
   end
-
 end
 
 particles = []

@@ -11,6 +11,7 @@ OUTPUTS = { 0 => " ", 1 => "#" }.freeze
 IMAGE = LAYERS.each_with_object(Array.new(WIDTH * HEIGHT)) do |layer, image|
   layer.each_with_index do |pixel, i|
     next if pixel == 2
+
     image[i] ||= pixel
   end
 end

@@ -4,7 +4,7 @@ blocks = BLOCKS.dup
 seen_states = {}
 count = 0
 
-while !seen_states.key?(blocks)
+until seen_states.key?(blocks)
   seen_states[blocks.dup] = count
 
   cursor = blocks.index(blocks.max)

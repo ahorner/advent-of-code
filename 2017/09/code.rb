@@ -24,10 +24,12 @@ STREAM.each do |c|
     ignore = true if garbage
   when "{"
     next if garbage
+
     open_groups += 1
     group_score += open_groups
   when "}"
     next if garbage
+
     open_groups -= 1 if open_groups > 0
   end
 end

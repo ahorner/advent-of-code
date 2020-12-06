@@ -8,7 +8,7 @@ CONSTELLATIONS = INPUT.split("\n").each_with_object([]) do |line, constellations
   point = line.split(",").map(&:to_i)
   merges = []
 
-  constellations.each_with_index do |constellation, index|
+  constellations.each_with_index do |constellation, _index|
     merges << constellation if constellation.any? { |p| constellation?(point, p) }
   end
 

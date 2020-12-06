@@ -1,5 +1,5 @@
-INITIAL_MATCHER = /initial state: (?<state>.+)/
-CONVERSION_MATCHER = /(?<pattern>.+) => (?<result>.)/
+INITIAL_MATCHER = /initial state: (?<state>.+)/.freeze
+CONVERSION_MATCHER = /(?<pattern>.+) => (?<result>.)/.freeze
 
 RULES = Hash.new(".")
 

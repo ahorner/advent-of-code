@@ -1,7 +1,6 @@
 class Network
-
-  STAGES = %w[. #]
-  EVOLVED_STAGES = %w[. W # F]
+  STAGES = %w[. #].freeze
+  EVOLVED_STAGES = %w[. W # F].freeze
 
   attr_accessor :center
 
@@ -9,7 +8,8 @@ class Network
     @evolved = evolved
     @nodes = Hash.new(".")
 
-    rows, columns = [0, 0]
+    rows = 0
+    columns = 0
 
     input.split("\n").each_with_index do |line, y|
       rows = [rows, y].max
@@ -19,7 +19,7 @@ class Network
       end
     end
 
-    @center = [rows/2, columns/2]
+    @center = [rows / 2, columns / 2]
   end
 
   def [](position)
@@ -30,12 +30,10 @@ class Network
     stages = @evolved ? EVOLVED_STAGES : STAGES
     @nodes[position] = stages[(stages.index(@nodes[position]) + 1) % stages.size]
   end
-
 end
 
 class Carrier
-
-  DIRECTIONS = %i[u r d l]
+  DIRECTIONS = %i[u r d l].freeze
   MOVES = { u: [0, -1], r: [1, 0], d: [0, 1], l: [-1, 0] }.freeze
   TURNS = { "." => -1, "W" => 0, "#" => 1, "F" => 2 }.freeze
 
@@ -62,7 +60,6 @@ class Carrier
   def turn!(amount)
     @direction = DIRECTIONS[(DIRECTIONS.index(@direction) + amount) % DIRECTIONS.size]
   end
-
 end
 
 network = Network.new(INPUT)

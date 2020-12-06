@@ -1,4 +1,4 @@
-MATCHER = /(?<players>\d+) players\; last marble is worth (?<points>\d+) points/
+MATCHER = /(?<players>\d+) players; last marble is worth (?<points>\d+) points/.freeze
 
 class Marble
   attr_accessor :next, :prev
@@ -66,5 +66,3 @@ puts "The winning elf's score is: ", results.max, nil
 
 results = play(data[:players].to_i, data[:points].to_i * 100)
 puts "The winning elf's score in the longer round is:", results.max
-
-

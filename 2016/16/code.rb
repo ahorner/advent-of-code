@@ -20,4 +20,4 @@ def checksum_for(length)
 end
 
 puts "The checksum for length 272 is:", checksum_for(272), nil
-puts "The checksum for length 35651584 is:", checksum_for(35651584)
+puts "The checksum for length 35651584 is:", checksum_for(35_651_584)

@@ -1,5 +1,4 @@
 class Character
-
   class Dead < RuntimeError; end
 
   attr_accessor :attack, :armor, :hp, :mp, :mana_used
@@ -24,11 +23,9 @@ class Character
   def debuff
     @armor = 0
   end
-
 end
 
 class Skill
-
   attr_reader :name, :cost
 
   def initialize(name, cost, cooldown = 0, &callback)
@@ -52,6 +49,7 @@ class Skill
 
   def tick(caster, enemy)
     return unless active?
+
     @effect.call(caster, enemy)
     @timer -= 1
   end
@@ -63,20 +61,18 @@ class Skill
   def active?
     @timer > 0
   end
-
 end
 
 SKILLS = [
   # DRAIN is less efficient than MAGIC MISSILE, and only prolongs the battle
   # Skill.new("DRAIN", 73) { |hero, enemy| enemy.hit(2) && hero.hp += 2 },
-  Skill.new("MAGIC MISSILE", 53) { |hero, enemy| enemy.hit(4) },
-  Skill.new("SHIELD", 113, 6) { |hero, enemy| hero.armor = 7 },
-  Skill.new("POISON", 173, 6) { |hero, enemy| enemy.hit(3) },
-  Skill.new("RECHARGE", 229, 5) { |hero, enemy| hero.mp += 101 },
-]
+  Skill.new("MAGIC MISSILE", 53) { |_hero, enemy| enemy.hit(4) },
+  Skill.new("SHIELD", 113, 6) { |hero, _enemy| hero.armor = 7 },
+  Skill.new("POISON", 173, 6) { |_hero, enemy| enemy.hit(3) },
+  Skill.new("RECHARGE", 229, 5) { |hero, _enemy| hero.mp += 101 },
+].freeze
 
 class Battle
-
   attr_reader :hero, :enemy, :skills
 
   def initialize(hero, enemy, skills, hard_mode = false)
@@ -137,7 +133,6 @@ class Battle
   def save_state
     Battle.new(hero.clone, enemy.clone, skills.map(&:clone), @hard_mode)
   end
-
 end
 
 enemy_stats = INPUT.split("\n").map { |i| i.scan(/\d+/).join.to_i }

@@ -1,7 +1,7 @@
 ORBITS = Hash[INPUT.split("\n").map { |orbit| orbit.split(")").reverse }]
 
 class OrbitMap
-  CENTER = "COM"
+  CENTER = "COM".freeze
 
   def initialize(orbits)
     @map = orbits
@@ -24,7 +24,7 @@ class OrbitMap
   def orbits_for(object)
     orbits = []
 
-    until object == CENTER do
+    until object == CENTER
       object = @map[object]
       orbits.push(object)
     end

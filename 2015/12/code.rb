@@ -8,6 +8,7 @@ def deep_sum(object, ignore: nil)
     object.map { |i| deep_sum(i, ignore: ignore) }.inject(:+)
   when Hash
     return 0 if object.values.include?(ignore)
+
     deep_sum(object.values, ignore: ignore)
   else
     object.to_i

@@ -37,7 +37,7 @@ STARTING_GRID = [
   ".#.",
   "..#",
   "###",
-]
+].freeze
 
 grid = STARTING_GRID.dup
 5.times { grid = enhance(grid) }

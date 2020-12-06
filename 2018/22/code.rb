@@ -1,12 +1,13 @@
-MATCHER = /depth: (?<depth>\d+)\ntarget: (?<x>\d+),(?<y>\d+)/
+MATCHER = /depth: (?<depth>\d+)\ntarget: (?<x>\d+),(?<y>\d+)/.freeze
 
 class Cave
-  EROSION_MOD = 20183
-  X_MULTIPLIER = 16807
-  Y_MULTIPLIER = 48271
+  EROSION_MOD = 20_183
+  X_MULTIPLIER = 16_807
+  Y_MULTIPLIER = 48_271
 
   def initialize(depth, target)
-    @depth, @target = depth, target
+    @depth = depth
+    @target = target
 
     @geologic_indices = {}
     @erosion_levels = {}
@@ -15,7 +16,7 @@ class Cave
 
   def geologic_index(region)
     @geologic_indices[region] ||=
-      if region == [0, 0] || region == @target
+      if [[0, 0], @target].include?(region)
         0
       elsif region[1] == 0
         region[0] * X_MULTIPLIER
@@ -37,11 +38,11 @@ class Cave
 end
 
 data = INPUT.match(MATCHER)
-TARGET = [data[:x].to_i, data[:y].to_i]
+TARGET = [data[:x].to_i, data[:y].to_i].freeze
 CAVE = Cave.new(data[:depth].to_i, TARGET)
 
 total_risk = (0..data[:y].to_i).sum do |y|
-  (0..data[:x].to_i).sum { |x|  CAVE.risk_level([x, y]) }
+  (0..data[:x].to_i).sum { |x| CAVE.risk_level([x, y]) }
 end
 
 puts "The total risk level of the rectangle from 0,0 to the target is:", total_risk, nil
@@ -92,7 +93,8 @@ time = loop do
   end
 
   [[-1, 0], [1, 0], [0, -1], [0, 1]].each do |dx, dy|
-    nx, ny = x + dx, y + dy
+    nx = x + dx
+    ny = y + dy
     next if nx < 0 || nx > TARGET[0] * 4 || ny < 0 || ny > TARGET[1] * 4
     next if CAVE.risk_level([nx, ny]) == equip
     next if times[[nx, ny, equip]] <= minutes + 1

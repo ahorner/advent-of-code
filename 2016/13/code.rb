@@ -1,5 +1,4 @@
 class Maze
-
   def initialize(magic_number)
     @magic_number = magic_number
   end
@@ -17,12 +16,10 @@ class Maze
       ([x, y - 1] if y - 1 >= 0),
     ].compact.reject { |spot| wall?(spot) }
   end
-
 end
 
 # Apologies to http://branch14.org/snippets/a_star_in_ruby.html
 class PriorityQueue
-
   def initialize
     @list = []
   end
@@ -39,17 +36,15 @@ class PriorityQueue
   def empty?
     @list.empty?
   end
-
 end
 
 class Pathfinder
-
   def initialize(maze)
     @maze = maze
   end
 
   def path(start, target)
-    estimator = Proc.new { |(x, y)| (target[0] - x).abs + (target[1] - y).abs }
+    estimator = proc { |(x, y)| (target[0] - x).abs + (target[1] - y).abs }
     traverse(start, estimator: estimator) { |spot, path| return path if spot == target }
   end
 
@@ -62,7 +57,7 @@ class Pathfinder
 
   private
 
-  def traverse(start, estimator: Proc.new { 0 }, maximum_steps: 10_000)
+  def traverse(start, estimator: proc { 0 }, maximum_steps: 10_000)
     found = {}
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
@@ -77,6 +72,7 @@ class Pathfinder
       found[spot] = true
       @maze.adjacent_spots(spot).each do |new_spot|
         next if found[new_spot]
+
         new_steps = steps + 1
 
         queue.add(
@@ -86,12 +82,11 @@ class Pathfinder
       end
     end while !queue.empty?
   end
-
 end
 
 NUMBER = INPUT.chomp.to_i
 START = [1, 1].freeze
-TARGET = [31,39].freeze
+TARGET = [31, 39].freeze
 MAXIMUM_STEPS = 50
 
 maze = Maze.new(NUMBER)

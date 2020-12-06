@@ -4,7 +4,7 @@ end
 
 class Donut
   DIRECTIONS = [[0, -1, 0], [0, 1, 0], [-1, 0, 0], [1, 0, 0]].freeze
-  PATH = "."
+  PATH = ".".freeze
 
   def initialize(map, recursive: false)
     @map = map
@@ -94,13 +94,13 @@ class Pathfinder
   end
 
   def path(start, target)
-    estimator = Proc.new { |(x, y, z)| (target[0] - x).abs + (target[1] - y).abs + (target[2] - z).abs ** 3 }
+    estimator = proc { |(x, y, z)| (target[0] - x).abs + (target[1] - y).abs + (target[2] - z).abs**3 }
     traverse(start, estimator: estimator) { |spot, path| return path if spot == target }
   end
 
   private
 
-  def traverse(start, estimator: Proc.new { 0 })
+  def traverse(start, estimator: proc { 0 })
     found = {}
     queue = PriorityQueue.new
     queue.add(1, [start, [], 0])
@@ -114,6 +114,7 @@ class Pathfinder
       found[spot] = true
       @map.adjacent_coords(spot).each do |new_spot|
         next if found[new_spot]
+
         new_steps = steps + 1
 
         queue.add(

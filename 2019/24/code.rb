@@ -11,7 +11,7 @@ def tick(grid, neighbors)
     updated[position] =
       case grid[position]
       when "#" then bugs == 1 ? "#" : "."
-      when "." then bugs == 1 || bugs == 2 ? "#" : "."
+      when "." then [1, 2].include?(bugs) ? "#" : "."
       end
   end
 end
@@ -19,7 +19,7 @@ end
 def biodiversity(grid)
   (0...SIZE).sum do |y|
     (0...SIZE).sum do |x|
-      grid[[x, y, 0]] == "#" ? 2 ** (y * SIZE + x) : 0
+      grid[[x, y, 0]] == "#" ? 2**(y * SIZE + x) : 0
     end
   end
 end
@@ -34,6 +34,7 @@ seen = {}
 neighbors = proc do |(x, y, z)|
   ADJACENCIES.map do |i, j, k|
     next if x + i < 0 || y + j < 0 || x + i >= SIZE || y + j >= SIZE
+
     [x + i, y + j, z + k]
   end.compact
 end
@@ -41,16 +42,17 @@ end
 repeated = loop do
   grid = tick(grid, neighbors)
   break grid if seen[grid]
+
   seen[grid] = true
 end
 
 puts "The biodiversity of the first layout that appears twice is:", biodiversity(repeated), "\n"
 
 RECURSIVE_ADJACENCIES = {
-  [0, -1, 0] => -> (x) { [x, SIZE - 1] },
-  [1, 0, 0] => -> (y) { [0, y] },
-  [0, 1, 0] => -> (x) { [x, 0] },
-  [-1, 0, 0] => -> (y) { [SIZE - 1, y] },
+  [0, -1, 0] => ->(x) { [x, SIZE - 1] },
+  [1, 0, 0] => ->(y) { [0, y] },
+  [0, 1, 0] => ->(x) { [x, 0] },
+  [-1, 0, 0] => ->(y) { [SIZE - 1, y] },
 }.freeze
 
 recursive_neighbors = proc do |(x, y, z)|
@@ -69,5 +71,3 @@ grid = GRID.dup
 200.times { grid = tick(grid, recursive_neighbors) }
 
 puts "The number of bugs after 200 minutes is:", grid.values.count("#")
-
-

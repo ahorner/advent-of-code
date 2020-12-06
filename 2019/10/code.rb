@@ -34,14 +34,21 @@ class AsteroidField
   end
 
   def line_of_sight?(x, y, i, j)
-    cx, cy, dx, dy = x, y, i - x, j - y
+    cx = x
+    cy = y
+    dx = i - x
+    dy = j - y
 
     2.upto([dx.abs, dy.abs].max) do |n|
-      dx, dy = dx / n, dy / n while dx % n == 0 && dy % n == 0
+      while dx % n == 0 && dy % n == 0
+        dx /= n
+        dy /= n
+      end
     end
 
     loop do
-      cx, cy = [cx + dx, cy + dy]
+      cx += dx
+      cy += dy
       break if cx == i && cy == j
       return false if @field[[cx, cy]]
     end

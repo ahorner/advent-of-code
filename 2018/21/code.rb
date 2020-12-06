@@ -67,6 +67,7 @@ last = nil
 value = run([0, 0, 0, 0, 0, 0]) do |registers|
   if registers[POINTER] == COMPARISON_LINE
     break last if seen.include?(registers[COMPARISON_POINTER])
+
     last = registers[COMPARISON_POINTER]
     seen << last
   elsif registers[POINTER] == RESET_LINE

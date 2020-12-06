@@ -1,5 +1,4 @@
 class Row
-
   TRAP_SETUPS = [
     [true, false, false],
     [true, true, false],
@@ -36,7 +35,6 @@ class Row
   def to_s
     @traps.map { |trap| trap ? "^" : "." }.join("")
   end
-
 end
 
 def grid_for(input, size)

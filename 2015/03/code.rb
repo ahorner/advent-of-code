@@ -1,7 +1,8 @@
 class Sled
   def initialize(map)
     @map = map
-    @x, @y = [0, 0]
+    @x = 0
+    @y = 0
 
     drop_gift
   end

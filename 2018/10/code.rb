@@ -1,4 +1,4 @@
-MATCHER = /position\=\<(?<x>\s*\-?\d+),(?<y>\s*\-?\d+)\> velocity\=\<(?<dx>\s*\-?\d+),(?<dy>\s*\-?\d+)\>/
+MATCHER = /position=<(?<x>\s*-?\d+),(?<y>\s*-?\d+)> velocity=<(?<dx>\s*-?\d+),(?<dy>\s*-?\d+)>/.freeze
 
 class Photon
   attr_reader :x, :y
@@ -40,7 +40,7 @@ def render(photons)
   miny, maxy = photons.map(&:y).minmax
 
   (miny..maxy).each_with_object("") do |y, output|
-    (minx..maxx).each { |x| output << map[[x,y]] }
+    (minx..maxx).each { |x| output << map[[x, y]] }
     output << "\n"
   end
 end

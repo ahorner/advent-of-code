@@ -11,19 +11,22 @@ def act(chars, command)
   case command
   when SWAP_POSITION_PATTERN
     matches = command.match(SWAP_POSITION_PATTERN)
-    x, y = matches[:x].to_i, matches[:y].to_i
+    x = matches[:x].to_i
+    y = matches[:y].to_i
     char = chars[x]
     chars[x] = chars[y]
     chars[y] = char
   when SWAP_LETTER_PATTERN
     matches = command.match(SWAP_LETTER_PATTERN)
-    x, y = chars.index(matches[:x]), chars.index(matches[:y])
+    x = chars.index(matches[:x])
+    y = chars.index(matches[:y])
     char = chars[x]
     chars[x] = chars[y]
     chars[y] = char
   when ABSOLUTE_ROTATE_PATTERN
     matches = command.match(ABSOLUTE_ROTATE_PATTERN)
-    dir, steps = matches[:direction], matches[:steps].to_i
+    dir = matches[:direction]
+    steps = matches[:steps].to_i
     chars.rotate!(dir == "left" ? steps : -steps)
   when RELATIVE_ROTATE_PATTERN
     matches = command.match(RELATIVE_ROTATE_PATTERN)
@@ -33,14 +36,16 @@ def act(chars, command)
     chars.rotate!(-1 - shift - additional)
   when REVERSE_POSITIONS_PATTERN
     matches = command.match(REVERSE_POSITIONS_PATTERN)
-    x, y = matches[:x].to_i, matches[:y].to_i
+    x = matches[:x].to_i
+    y = matches[:y].to_i
     tmp = chars[x..y]
     tmp.reverse.each_with_index do |c, i|
       chars[x + i] = c
     end
   when MOVE_POSITIONS_PATTERN
     matches = command.match(MOVE_POSITIONS_PATTERN)
-    x, y = matches[:x].to_i, matches[:y].to_i
+    x = matches[:x].to_i
+    y = matches[:y].to_i
     char = chars.delete_at(x)
     chars.insert(y, char)
   end
@@ -56,14 +61,16 @@ def undo(result, command)
     chars = act(chars, command)
   when ABSOLUTE_ROTATE_PATTERN
     matches = command.match(ABSOLUTE_ROTATE_PATTERN)
-    dir, steps = matches[:direction], matches[:steps].to_i
+    dir = matches[:direction]
+    steps = matches[:steps].to_i
     chars.rotate!(dir == "left" ? -steps : steps)
   when RELATIVE_ROTATE_PATTERN
     matches = command.match(RELATIVE_ROTATE_PATTERN)
     chars.rotate!(1) while result != act(chars, command)
   when MOVE_POSITIONS_PATTERN
     matches = command.match(MOVE_POSITIONS_PATTERN)
-    x, y = matches[:x].to_i, matches[:y].to_i
+    x = matches[:x].to_i
+    y = matches[:y].to_i
     char = chars.delete_at(y)
     chars.insert(x, char)
   end

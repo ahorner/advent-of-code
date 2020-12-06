@@ -59,7 +59,7 @@ def factors_of(number)
   primes, powers = number.prime_division.transpose
   exponents = powers.map { |i| (0..i).to_a }
   exponents.shift.product(*exponents).map do |powers|
-    primes.zip(powers).map { |prime, power| prime ** power }.inject(:*)
+    primes.zip(powers).map { |prime, power| prime**power }.inject(:*)
   end
 end
 

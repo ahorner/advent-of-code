@@ -1,5 +1,5 @@
-MATCHER = /\A\[(?<year>\d+)-(?<month>\d+)-(?<date>\d+) (?<hour>\d+)\:(?<minute>\d+)\] (?<activity>.+)\z/
-SHIFT_MATCHER = /Guard #(?<id>\d+) begins shift/
+MATCHER = /\A\[(?<year>\d+)-(?<month>\d+)-(?<date>\d+) (?<hour>\d+):(?<minute>\d+)\] (?<activity>.+)\z/.freeze
+SHIFT_MATCHER = /Guard #(?<id>\d+) begins shift/.freeze
 
 class Guard
   attr_reader :id
@@ -32,6 +32,7 @@ class Guard
 
   def max_naps
     return 0 unless @status.any?
+
     @status.values.max
   end
 end

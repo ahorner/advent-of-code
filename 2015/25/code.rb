@@ -1,4 +1,4 @@
-INSTRUCTION_MATCHER = /row (?<row>\d+), column (?<column>\d+)/
+INSTRUCTION_MATCHER = /row (?<row>\d+), column (?<column>\d+)/.freeze
 
 instructions = INSTRUCTION_MATCHER.match(INPUT)
 
@@ -6,11 +6,11 @@ row = instructions[:row].to_i
 column = instructions[:column].to_i
 
 def generate(num)
-  num * 252533 % 33554393
+  num * 252_533 % 33_554_393
 end
 
 def code_for(row, column)
-  num = 20151125
+  num = 20_151_125
   r = 1
   c = 1
 

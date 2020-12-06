@@ -12,7 +12,7 @@ class Memory
     parameter = @state[pointer]
 
     opcode = parameter % 100
-    modes = (2..4).map { |i| (parameter / (10 ** i)) % 10 }
+    modes = (2..4).map { |i| (parameter / (10**i)) % 10 }
 
     [opcode, modes.zip([pointer + 1, pointer + 2, pointer + 3])]
   end
@@ -67,7 +67,7 @@ class Computer
         outputs << @memory[arguments[0]]
         @pointer += 2
       when 5
-        @pointer = @memory[arguments[0]] != 0 ? @memory[arguments[1]] : @pointer + 3
+        @pointer = @memory[arguments[0]] == 0 ? @pointer + 3 : @memory[arguments[1]]
       when 6
         @pointer = @memory[arguments[0]] == 0 ? @memory[arguments[1]] : @pointer + 3
       when 7

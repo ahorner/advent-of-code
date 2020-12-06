@@ -1,4 +1,4 @@
-MATCHER = /<x=(?<x>-?\d+), y=(?<y>-?\d+), z=(?<z>-?\d+)>/
+MATCHER = /<x=(?<x>-?\d+), y=(?<y>-?\d+), z=(?<z>-?\d+)>/.freeze
 MOONS = INPUT.split("\n").map { |line| line.match(MATCHER).captures.map(&:to_i) }.freeze
 
 class Moon

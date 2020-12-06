@@ -4,7 +4,10 @@ class Cart
   attr_reader :x, :y
 
   def initialize(x, y, dx, dy)
-    @x, @y, @dx, @dy = x, y, dx, dy
+    @x = x
+    @y = y
+    @dx = dx
+    @dy = dy
     @choices = 0
   end
 
@@ -60,6 +63,7 @@ loop do
   end
 
   break if carts.size <= 1
+
   carts.sort_by! { |cart| [cart.y, cart.x] }
 end
 

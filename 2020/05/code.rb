@@ -1,6 +1,6 @@
 require "set"
 
-PASS_MATCHER = /^(?<row>[FB]{7})(?<column>[LR]{3})$/
+PASS_MATCHER = /^(?<row>[FB]{7})(?<column>[LR]{3})$/.freeze
 
 def seat_id(boarding_pass)
   row = boarding_pass[:row].tr("FB", "01").to_i(2)
@@ -20,4 +20,4 @@ def my_seat?(seat)
 end
 
 MISSING_PASSES = Set.new(1...PASSES.max).subtract(PASSES)
-puts "Your seat ID is:", MISSING_PASSES.detect { |seat| my_seat?(seat) }
+puts "Your seat ID is:", (MISSING_PASSES.detect { |seat| my_seat?(seat) })

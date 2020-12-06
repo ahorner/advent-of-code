@@ -5,7 +5,8 @@ class Unit
   attr_accessor :hp, :position
 
   def initialize(team, position)
-    @team, @position = team, position
+    @team = team
+    @position = position
     @hp = 200
     @attack = 3
   end
@@ -27,12 +28,13 @@ class Map
   end
 
   def search(start, targets)
-    queue =[[start, 0]]
+    queue = [[start, 0]]
     graph = { start => nil }
     destinations = []
 
     loop do
       break if queue.empty?
+
       spot, steps = queue.shift
 
       if targets.include?(spot)
@@ -87,14 +89,15 @@ def combat!(grid, bonuses = {})
       next unless target = nearby.min_by { |enemy| [enemy.hp, enemy.position] }
 
       target.hp -= unit.attack + bonuses[unit.team].to_i
-      if target.dead?
-        deaths[target.team] += 1
-        grid[target.position] = false
-        units.delete(target)
-      end
+      next unless target.dead?
+
+      deaths[target.team] += 1
+      grid[target.position] = false
+      units.delete(target)
     end
 
     break unless round
+
     rounds += 1
   end
 
@@ -112,7 +115,7 @@ GRID = INPUT.split("\n").each_with_object({}).with_index do |(row, g), y|
   end
 end
 
-outcome, _ = combat!(GRID.dup)
+outcome, = combat!(GRID.dup)
 puts "Outcome after standard combat:", outcome, nil
 
 outcome = 1.step do |elf_bonus|

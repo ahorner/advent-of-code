@@ -1,5 +1,4 @@
 class Screen
-
   attr_reader :pixels
 
   def initialize(width, height)
@@ -31,7 +30,6 @@ class Screen
       @width.times.map { |x| (@pixels[[y, x]] ? "#" : " ") }.join
     end.join("\n")
   end
-
 end
 
 RECT_PATTERN = /rect (?<width>[0-9]+)x(?<height>[0-9]+)/.freeze
@@ -50,7 +48,5 @@ INPUT.split("\n").each do |line|
   end
 end
 
-
 puts "#{screen.pixels.count { |_, v| v }} pixels are lit up.", nil
 puts "You can read the screen below:", nil, screen
-

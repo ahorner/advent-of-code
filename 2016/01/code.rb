@@ -1,6 +1,5 @@
 class Dude
-
-  DIRECTIONS = ["N", "E", "S", "W"].freeze
+  DIRECTIONS = %w[N E S W].freeze
 
   attr_reader :visited
 
@@ -36,7 +35,6 @@ class Dude
   def track_position
     @visited << "(#{@x}, #{@y})"
   end
-
 end
 
 dude = Dude.new

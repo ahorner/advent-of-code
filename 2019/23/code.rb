@@ -1,4 +1,4 @@
-require_relative '../shared/intcode'
+require_relative "../shared/intcode"
 
 NETWORK = 50.times.map { |id| Computer.new(INTCODE).tap { |c| c.run(inputs: [id]) } }.freeze
 NAT_ADDRESS = 255
@@ -24,4 +24,3 @@ end
 
 puts "The first Y value passed to the NAT is:", nat.first[1], "\n"
 puts "The first Y value delivered by the NAT twice in a row is:", last_y
-

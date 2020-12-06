@@ -18,7 +18,15 @@ class Navigator
     loop do
       i, j = MOVES[dir]
 
-      if @map[[x + i, y + j]] != "#"
+      if @map[[x + i, y + j]] == "#"
+        count = 0
+        while @map[[x + i, y + j]] == "#"
+          x += i
+          y += j
+          count += 1
+        end
+        path << count
+      else
         turn = TURNS.keys.detect do |t|
           m, n = MOVES[turn_to(dir, t)]
           @map[[x + m, y + n]] == "#"
@@ -28,10 +36,6 @@ class Navigator
 
         path << turn
         dir = turn_to(dir, turn)
-      else
-        count = 0
-        x, y, count = x + i, y + j, count + 1 while @map[[x + i, y + j]] == "#"
-        path << count
       end
     end
 
@@ -47,7 +51,7 @@ class Navigator
 end
 
 class PathCompressor
-  FUNCTIONS = ["A", "B", "C"].freeze
+  FUNCTIONS = %w[A B C].freeze
   MEMORY_LIMIT = 20
 
   def initialize(path)
@@ -73,15 +77,17 @@ class PathCompressor
   private
 
   def normalize(path)
-    path.sub(/^\,+/, "").sub(/\,+$/, "")
+    path.sub(/^,+/, "").sub(/,+$/, "")
   end
 end
 
-x, y = 0, 0
+x = 0
+y = 0
 
 map = Computer.new(INTCODE).run.each_with_object({}) do |tile, map|
   if tile == 10
-    x, y = 0, y + 1
+    x = 0
+    y += 1
     next
   else
     map[[x, y]] = tile.chr

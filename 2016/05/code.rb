@@ -6,7 +6,7 @@ def matching_digest(pattern, value = 0)
     digest = Digest::MD5.hexdigest "#{INPUT}#{value}"
   end while !digest.start_with?(pattern)
 
-  return digest, value
+  [digest, value]
 end
 
 value = 0
@@ -27,4 +27,3 @@ begin
 end while password.any?(&:nil?)
 
 puts "The position-specified password is:", password.join
-

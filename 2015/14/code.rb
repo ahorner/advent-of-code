@@ -1,5 +1,4 @@
 class Flight
-
   attr_reader :reindeer, :distance, :points
 
   def initialize(reindeer, speed, duration, recovery)
@@ -29,12 +28,10 @@ class Flight
   def flying?
     (@elapsed % (@duration + @recovery)) < @duration
   end
-
 end
 
 class Race
-
-  FLIGHT_PATTERN = /(?<reindeer>.+) can fly (?<speed>\d+) km\/s for (?<duration>\d+) seconds, but then must rest for (?<recovery>\d+) seconds\./
+  FLIGHT_PATTERN = %r{(?<reindeer>.+) can fly (?<speed>\d+) km/s for (?<duration>\d+) seconds, but then must rest for (?<recovery>\d+) seconds\.}.freeze
 
   def initialize
     @flights = []
@@ -68,7 +65,7 @@ class Race
   def run(time)
     @flights.each(&:ready_steady!)
 
-    (1..time).each do |t|
+    (1..time).each do |_t|
       @flights.each(&:go!)
       @flights.max_by(&:distance).good_job!
     end

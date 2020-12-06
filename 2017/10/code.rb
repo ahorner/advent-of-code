@@ -26,4 +26,3 @@ result = tie_knot(INPUT.bytes + MAGIC_NUMBERS, 64)
 knot_hash = result.each_slice(16).map { |block| format("%02x", block.inject(:"^")) }.join
 
 puts "The Knot Hash for the input is:", knot_hash
-

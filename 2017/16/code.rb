@@ -1,5 +1,5 @@
 MOVES = INPUT.split(",")
-DANCERS = %w[a b c d e f g h i j k l m n o p]
+DANCERS = %w[a b c d e f g h i j k l m n o p].freeze
 
 def dance(performances = 1)
   dancers = DANCERS.dup
@@ -12,11 +12,11 @@ def dance(performances = 1)
       when /s(\d+)/
         steps = Regexp.last_match[1].to_i
         dancers = dancers.rotate(-steps)
-      when /x(\d+)\/(\d+)/
+      when %r{x(\d+)/(\d+)}
         first = Regexp.last_match[1].to_i
         second = Regexp.last_match[2].to_i
         dancers[first], dancers[second] = dancers[second], dancers[first]
-      when /p(.+)\/(.+)/
+      when %r{p(.+)/(.+)}
         first = dancers.index(Regexp.last_match[1])
         second = dancers.index(Regexp.last_match[2])
         dancers[first], dancers[second] = dancers[second], dancers[first]
@@ -24,6 +24,7 @@ def dance(performances = 1)
     end
 
     break if positions.include?(dancers)
+
     positions << dancers.dup
   end
 
@@ -32,4 +33,3 @@ end
 
 puts "The order of dancers after their performance is:", dance, nil
 puts "The order of dancers after one billion performances is:", dance(1_000_000_000)
-

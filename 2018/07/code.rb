@@ -1,4 +1,4 @@
-MATCHER = /\AStep (\w+) must be finished before step (\w+) can begin\.\z/
+MATCHER = /\AStep (\w+) must be finished before step (\w+) can begin\.\z/.freeze
 RULES = INPUT.split("\n").map do |line|
   match = line.match(MATCHER)
   [match[1], match[2]]

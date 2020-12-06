@@ -1,7 +1,6 @@
 DISC_MATCHER = /Disc #\d+ has (?<position_count>\d+) positions; at time=0, it is at position (?<starting_position>\d+)\./.freeze
 
 class Disc
-
   def initialize(positions, starts_at)
     @positions = positions
     @starts_at = starts_at
@@ -10,7 +9,6 @@ class Disc
   def passable_at?(ticks)
     (@starts_at + ticks) % @positions == 0
   end
-
 end
 
 def valid_time(discs)
