@@ -19,7 +19,7 @@ describe "Day 3: Toboggan Trajectory" do
   end
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input).first }
+    let(:solution) { runner.execute!(input, part_one: true)[0] }
 
     it "properly counts tree collisions" do
       expect(solution).to eq 7
@@ -27,7 +27,7 @@ describe "Day 3: Toboggan Trajectory" do
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input).last }
+    let(:solution) { runner.execute!(input)[1] }
 
     it "properly multiplies tree collisions across slopes" do
       expect(solution).to eq 336

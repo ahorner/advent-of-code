@@ -4,7 +4,7 @@ describe "Day 6: Custom Customs" do
   let(:runner) { Runner.new("2020/06") }
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input).first }
+    let(:solution) { runner.execute!(input, part_one: true)[0] }
 
     describe "first example" do
       let(:input) do
@@ -48,7 +48,7 @@ describe "Day 6: Custom Customs" do
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input).last }
+    let(:solution) { runner.execute!(input)[1] }
     let(:input) do
       <<~TXT
         abc

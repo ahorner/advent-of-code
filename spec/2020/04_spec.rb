@@ -4,7 +4,7 @@ describe "Day 4: Passport Processing" do
   let(:runner) { Runner.new("2020/04") }
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input).first }
+    let(:solution) { runner.execute!(input, part_one: true)[0] }
     let(:input) do
       <<~TXT
         ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -29,7 +29,7 @@ describe "Day 4: Passport Processing" do
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input).last }
+    let(:solution) { runner.execute!(input)[1] }
 
     describe "valid passports" do
       let(:input) do

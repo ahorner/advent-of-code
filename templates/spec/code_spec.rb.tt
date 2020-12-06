@@ -8,10 +8,10 @@ describe "Day N: Challenge Title" do
   end
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input).first }
+    let(:solution) { runner.execute!(input, part_one: true)[0] }
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input).last }
+    let(:solution) { runner.execute!(input)[1] }
   end
 end
