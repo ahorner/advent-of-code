@@ -43,7 +43,7 @@ MAP = (0...GRID_SIZE).each_with_object({}) do |i, grid|
 end.freeze
 
 used = MAP.values.count("1")
-puts "The number of used squares is:", used, nil
+solve!("The number of used squares is:", used)
 
 def group_members(x, y, members = [])
   [
@@ -72,4 +72,4 @@ MAP.each do |(x, y), c|
   group_members(x, y).each { |i, j| regions[[i, j]] = region_count }
 end
 
-puts "The number of distinct regions is:", region_count
+solve!("The number of distinct regions is:", region_count)

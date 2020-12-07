@@ -39,9 +39,11 @@ STARTING_GRID = [
   "###",
 ].freeze
 
+ITERATIONS ||= 5
+
 grid = STARTING_GRID.dup
-5.times { grid = enhance(grid) }
-puts "The number of pixels that stay on after 5 enhancements is:", grid.join.count("#"), nil
+ITERATIONS.times { grid = enhance(grid) }
+solve!("The number of pixels that stay on after 5 enhancements is:", grid.join.count("#"))
 
 13.times { grid = enhance(grid) }
-puts "The number of pixels that stay on after 18 enhancements is:", grid.join.count("#")
+solve!("The number of pixels that stay on after 18 enhancements is:", grid.join.count("#"))

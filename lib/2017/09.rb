@@ -34,5 +34,5 @@ STREAM.each do |c|
   end
 end
 
-puts "The number of points from groups is:", group_score, nil
-puts "The number of garbage characters is:", garbage_score
+solve!("The number of points from groups is:", group_score)
+solve!("The number of garbage characters is:", garbage_score)

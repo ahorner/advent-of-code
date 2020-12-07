@@ -66,10 +66,10 @@ network = Network.new(INPUT)
 carrier = Carrier.new(network)
 10_000.times { carrier.burst! }
 
-puts "The number of infections caused by the carrier is:", carrier.infections, nil
+solve!("The number of infections caused by the carrier is:", carrier.infections)
 
 network = Network.new(INPUT, evolved: true)
 carrier = Carrier.new(network)
 10_000_000.times { carrier.burst! }
 
-puts "The number of evolved infections caused by the carrier is:", carrier.infections
+solve!("The number of evolved infections caused by the carrier is:", carrier.infections)

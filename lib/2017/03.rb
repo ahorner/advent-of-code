@@ -53,5 +53,5 @@ def above(input)
   end.values.last
 end
 
-puts "The Manhattan distance from 1 to #{INPUT} is:", distance(INPUT.to_i), nil
-puts "The first number above #{INPUT} is:", above(INPUT.to_i)
+solve!("The Manhattan distance from 1 to #{INPUT} is:", distance(INPUT.to_i))
+solve!("The first number above #{INPUT} is:", above(INPUT.to_i))

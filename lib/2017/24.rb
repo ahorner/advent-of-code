@@ -36,7 +36,7 @@ class Bridge
 end
 
 bridges = Bridge.new.possibilities
-puts "The maximum bridge strength is:", bridges.max_by(&:strength).strength, nil
+solve!("The maximum bridge strength is:", bridges.max_by(&:strength).strength)
 
 _max_length, long_bridges = bridges.group_by(&:length).max
-puts "The strength of the longest bridge is:", long_bridges.max_by(&:strength).strength
+solve!("The strength of the longest bridge is:", long_bridges.max_by(&:strength).strength)

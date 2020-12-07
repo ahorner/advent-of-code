@@ -19,5 +19,5 @@ INPUT.split("\n").each do |row|
   maximum = [maximum, registers[match[:register]]].max
 end
 
-puts "The highest value in a register after runtime is:", registers.values.max, nil
-puts "The highest value ever held in a register was:", maximum
+solve!("The highest value in a register after runtime is:", registers.values.max)
+solve!("The highest value ever held in a register was:", maximum)

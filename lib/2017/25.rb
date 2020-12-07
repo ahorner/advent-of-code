@@ -31,4 +31,4 @@ steps.times do
   state = rule[:state]
 end
 
-puts "The number of 1s in the checksum is:", slots.values.count(1)
+solve!("The number of 1s in the checksum is:", slots.values.count(1))

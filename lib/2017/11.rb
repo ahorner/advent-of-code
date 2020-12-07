@@ -23,5 +23,5 @@ MOVEMENTS.each do |movement|
   max = [max, distance(x, y, z)].max
 end
 
-puts "The distance to the child's final tile is:", distance(x, y, z), nil
-puts "The furthest distance at any point was:", max
+solve!("The distance to the child's final tile is:", distance(x, y, z))
+solve!("The furthest distance at any point was:", max)

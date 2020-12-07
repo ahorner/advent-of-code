@@ -43,9 +43,10 @@ end
 a = Generator.new(start_values[:a], FACTORS[:a])
 b = Generator.new(start_values[:b], FACTORS[:b])
 
-puts "The judge's count after 40,000,000 checks is:", match_count(a, b, 40_000_000), nil
+CHECKS ||= 40_000_000
+solve!("The judge's count after 40,000,000 checks is:", match_count(a, b, CHECKS))
 
 a = Generator.new(start_values[:a], FACTORS[:a], 4)
 b = Generator.new(start_values[:b], FACTORS[:b], 8)
 
-puts "The judge's count after 5,000,000 picky checks is:", match_count(a, b, 5_000_000)
+solve!("The judge's count after 5,000,000 picky checks is:", match_count(a, b, 5_000_000))

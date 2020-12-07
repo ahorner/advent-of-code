@@ -62,7 +62,7 @@ end
 program = Program.new
 program.run
 
-puts "The last value output by the program was:", program.outputs.last, nil
+solve!("The last value output by the program was:", program.outputs.last)
 
 program0 = Program.new(0)
 program1 = Program.new(1)
@@ -77,4 +77,4 @@ loop do
   program1.resume(program0.outputs.shift) if program0.outputs.any?
 end
 
-puts "The number of outputs sent by Program 1 was:", program1.sent
+solve!("The number of outputs sent by Program 1 was:", program1.sent)

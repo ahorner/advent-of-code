@@ -1,5 +1,5 @@
 MOVES = INPUT.split(",")
-DANCERS = %w[a b c d e f g h i j k l m n o p].freeze
+DANCERS ||= %w[a b c d e f g h i j k l m n o p].freeze
 
 def dance(performances = 1)
   dancers = DANCERS.dup
@@ -31,5 +31,5 @@ def dance(performances = 1)
   positions[performances % positions.length].join
 end
 
-puts "The order of dancers after their performance is:", dance, nil
-puts "The order of dancers after one billion performances is:", dance(1_000_000_000)
+solve!("The order of dancers after their performance is:", dance)
+solve!("The order of dancers after one billion performances is:", dance(1_000_000_000))

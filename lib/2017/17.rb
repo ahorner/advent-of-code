@@ -1,15 +1,17 @@
 STEPS = INPUT.to_i
+LAST_VALUE = 2017
 
 buffer = [0]
 cursor = 0
-2017.times do |i|
+
+LAST_VALUE.times do |i|
   cursor += STEPS
   cursor %= buffer.length
   buffer.insert(cursor + 1, i + 1)
   cursor += 1
 end
 
-puts "The value after 2017 is:", buffer[buffer.index(0) + 1], nil
+solve!("The value after 2017 is:", buffer[buffer.index(LAST_VALUE) + 1])
 
 value = 0
 cursor = 0
@@ -20,4 +22,4 @@ cursor = 0
   cursor += 1
 end
 
-puts "The value after 0 (after 50 million inserts) is:", value
+solve!("The value after 0 (after 50 million inserts) is:", value)

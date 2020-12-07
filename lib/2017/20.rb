@@ -36,7 +36,7 @@ INPUT.split("\n").each_with_index do |line, i|
 end
 
 closest = particles.min_by { |p| [p.acceleration, p.speed, p.displacement] }
-puts "The long-term closest particle is:", closest.id, nil
+solve!("The long-term closest particle is:", closest.id)
 
 100.times do
   particles.each(&:tick!)
@@ -45,4 +45,4 @@ puts "The long-term closest particle is:", closest.id, nil
   particles.reject! { |p| counts[p.position] > 1 }
 end
 
-puts "The number of particles remaining after collisions is:", particles.count
+solve!("The number of particles remaining after collisions is:", particles.count)

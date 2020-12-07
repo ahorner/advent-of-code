@@ -56,5 +56,5 @@ end
 
 root = stack(INPUT)
 
-puts "The root program is:", root.name, nil
-puts "The expected weight for the faulty program is:", root.corrected_weight
+solve!("The root program is:", root.name)
+solve!("The expected weight for the faulty program is:", root.corrected_weight)

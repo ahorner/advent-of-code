@@ -20,5 +20,5 @@ until seen_states.key?(blocks)
   count += 1
 end
 
-puts "The number of cycles required to find an optimal balance is:", count, nil
-puts "The number of cycles between optimal states is:", count - seen_states[blocks]
+solve!("The number of cycles required to find an optimal balance is:", count)
+solve!("The number of cycles between optimal states is:", count - seen_states[blocks])

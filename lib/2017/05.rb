@@ -18,10 +18,10 @@ count = steps(LIST.dup) do |list, index|
   list[index] += 1
 end
 
-puts "The number of steps to escape is:", count
+solve!("The number of steps to escape is:", count)
 
 count = steps(LIST.dup) do |list, index|
   list[index] += list[index] >= 3 ? -1 : 1
 end
 
-puts "The number of steps to escape (with decrementing) is:", count
+solve!("The number of steps to escape (with decrementing) is:", count)

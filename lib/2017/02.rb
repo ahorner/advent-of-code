@@ -7,7 +7,7 @@ def total(&block)
 end
 
 checksum = total { |row| row.max - row.min }
-puts "The checksum by difference is:", checksum, nil
+solve!("The checksum by difference is:", checksum)
 
 checksum = total do |row|
   row.detect do |i|
@@ -15,4 +15,4 @@ checksum = total do |row|
     break (i / divisor) if divisor
   end
 end
-puts "The checksum by division is:", checksum
+solve!("The checksum by division is:", checksum)

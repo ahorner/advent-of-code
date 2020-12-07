@@ -32,7 +32,7 @@ loop do
   cursor += 1
 end
 
-puts "The number of `mul` instructions run is:", runs["mul"], nil
+solve!("The number of `mul` instructions run is:", runs["mul"])
 
 # We're counting non-prime numbers.
 require "prime"
@@ -42,4 +42,4 @@ starts = values[0] * values[4] - values[5]
 ends = starts - values[7]
 nonprimes = (starts..ends).step(-values[30]).count { |n| !Prime.prime?(n) }
 
-puts "The value of register h is:", nonprimes
+solve!("The value of register h is:", nonprimes)

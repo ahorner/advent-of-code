@@ -23,7 +23,7 @@ def group(programs, index, seen = [])
   seen
 end
 
-puts "The number of programs in 0's group is:", group(programs, "0").count, nil
+solve!("The number of programs in 0's group is:", group(programs, "0").count)
 
 groups = []
 
@@ -32,4 +32,4 @@ while programs.count > 0
   programs = programs.reject { |k, _| groups.last.include?(k) }
 end
 
-puts "The total number of groups is:", groups.count
+solve!("The total number of groups is:", groups.count)

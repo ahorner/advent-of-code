@@ -93,5 +93,5 @@ tube = Tube.new(INPUT)
 packet = Packet.new(tube)
 packet.navigate
 
-puts "The packet collected letters in the order:", packet.collection.join, nil
-puts "The number of steps the packet moved is:", packet.steps
+solve!("The packet collected letters in the order:", packet.collection.join)
+solve!("The number of steps the packet moved is:", packet.steps)

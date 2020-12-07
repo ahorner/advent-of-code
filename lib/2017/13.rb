@@ -33,7 +33,7 @@ firewall = Firewall.new(INPUT)
 severity = 0
 firewall.traverse { |depth, range| severity += depth * range }
 
-puts "The severity of traversing the firewall immediately is:", severity, nil
+solve!("The severity of traversing the firewall immediately is:", severity)
 
 delay = 0
 
@@ -43,4 +43,4 @@ loop do
   break if success
 end
 
-puts "The minimum delay to traverse the firewall undetected is:", delay
+solve!("The minimum delay to traverse the firewall undetected is:", delay)

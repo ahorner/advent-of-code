@@ -10,5 +10,5 @@ def sum(sequence, gap = 1)
   sum
 end
 
-puts "The sum of matching numbers is:", sum(SEQUENCE), nil
-puts "The sum of matching numbers (with a gap) is:", sum(SEQUENCE, SEQUENCE.length / 2)
+solve!("The sum of matching numbers is:", sum(SEQUENCE))
+solve!("The sum of matching numbers (with a gap) is:", sum(SEQUENCE, SEQUENCE.length / 2))
