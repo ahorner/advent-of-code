@@ -4,7 +4,7 @@ describe "Day 6: Custom Customs" do
   let(:runner) { Runner.new("2020/06") }
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input, part_one: true)[0] }
+    let(:solution) { runner.execute!(input, part: 1) }
 
     describe "first example" do
       let(:input) do
@@ -16,7 +16,7 @@ describe "Day 6: Custom Customs" do
       end
 
       it "calculates a proper sum" do
-        expect(solution).to eq 6
+        expect(solution).to eq(6)
       end
     end
 
@@ -42,13 +42,13 @@ describe "Day 6: Custom Customs" do
       end
 
       it "calculates a proper sum" do
-        expect(solution).to eq 11
+        expect(solution).to eq(11)
       end
     end
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input)[1] }
+    let(:solution) { runner.execute!(input, part: 2) }
     let(:input) do
       <<~TXT
         abc
@@ -70,7 +70,7 @@ describe "Day 6: Custom Customs" do
     end
 
     it "calculates a proper sum" do
-      expect(solution).to eq 6
+      expect(solution).to eq(6)
     end
   end
 end

@@ -17,7 +17,7 @@ describe "Day 7: Handy Haversacks" do
   end
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input, part_one: true)[0] }
+    let(:solution) { runner.execute!(input, part: 1) }
 
     it "determines the correct number of outermost bags" do
       expect(solution).to eq(4)
@@ -25,7 +25,7 @@ describe "Day 7: Handy Haversacks" do
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input)[1] }
+    let(:solution) { runner.execute!(input, part: 2) }
 
     it "determines how many bags your bag contains" do
       expect(solution).to eq(32)

@@ -14,18 +14,18 @@ describe "Day 1: Report Repair" do
   end
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input, part_one: true)[0] }
+    let(:solution) { runner.execute!(input, part: 1) }
 
     it "correctly identifies two entries that sum to 2020" do
-      expect(solution).to eq 514_579
+      expect(solution).to eq(514_579)
     end
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input)[1] }
+    let(:solution) { runner.execute!(input, part: 2) }
 
     it "correctly identifies three entries that sum to 2020" do
-      expect(solution).to eq 241_861_950
+      expect(solution).to eq(241_861_950)
     end
   end
 end

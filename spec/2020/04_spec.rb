@@ -4,7 +4,7 @@ describe "Day 4: Passport Processing" do
   let(:runner) { Runner.new("2020/04") }
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input, part_one: true)[0] }
+    let(:solution) { runner.execute!(input, part: 1) }
     let(:input) do
       <<~TXT
         ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -24,12 +24,12 @@ describe "Day 4: Passport Processing" do
     end
 
     it "counts passports with all required fields" do
-      expect(solution).to eq 2
+      expect(solution).to eq(2)
     end
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input)[1] }
+    let(:solution) { runner.execute!(input, part: 2) }
 
     describe "valid passports" do
       let(:input) do
@@ -50,7 +50,7 @@ describe "Day 4: Passport Processing" do
       end
 
       it "counts passports with fully valid fields" do
-        expect(solution).to eq 4
+        expect(solution).to eq(4)
       end
     end
 
@@ -74,7 +74,7 @@ describe "Day 4: Passport Processing" do
       end
 
       it "rejects passports with any invalid fields" do
-        expect(solution).to eq 0
+        expect(solution).to eq(0)
       end
     end
   end

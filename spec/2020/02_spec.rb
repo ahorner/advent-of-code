@@ -11,18 +11,18 @@ describe "Day 2: Password Philosophy" do
   end
 
   describe "Part One" do
-    let(:solution) { runner.execute!(input, part_one: true)[0] }
+    let(:solution) { runner.execute!(input, part: 1) }
 
     it "validates passwords" do
-      expect(solution).to eq 2
+      expect(solution).to eq(2)
     end
   end
 
   describe "Part Two" do
-    let(:solution) { runner.execute!(input)[1] }
+    let(:solution) { runner.execute!(input, part: 2) }
 
     it "validates passwords using positional values" do
-      expect(solution).to eq 1
+      expect(solution).to eq(1)
     end
   end
 end
