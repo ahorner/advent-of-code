@@ -25,9 +25,9 @@ class Screen
     shifted.each_with_index { |value, i| @pixels[key.call(i)] = value }
   end
 
-  def to_s
+  def render
     @height.times.map do |y|
-      @width.times.map { |x| (@pixels[[y, x]] ? "#" : " ") }.join
+      @width.times.map { |x| (@pixels[[y, x]] ? "#" : ".") }.join
     end.join("\n")
   end
 end
@@ -35,7 +35,8 @@ end
 RECT_PATTERN = /rect (?<width>[0-9]+)x(?<height>[0-9]+)/.freeze
 ROTATE_PATTERN = /rotate (?<type>\w*) .=(?<index>[0-9]+) by (?<shift>[0-9]+)/.freeze
 
-screen = Screen.new(50, 6)
+SCREEN_DIMENSIONS ||= [50, 6].freeze
+screen = Screen.new(*SCREEN_DIMENSIONS)
 
 INPUT.split("\n").each do |line|
   case line
@@ -48,5 +49,5 @@ INPUT.split("\n").each do |line|
   end
 end
 
-puts "#{screen.pixels.count { |_, v| v }} pixels are lit up.", nil
-puts "You can read the screen below:", nil, screen
+solve!("The number of lit pixels is:", screen.pixels.count { |_, v| v })
+solve!("You can read the screen below:\n\n", screen.render)

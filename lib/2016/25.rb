@@ -34,4 +34,4 @@ while start.nil?
   i += 1
 end
 
-puts "The first number that initiates a clock sequence is:", start, nil
+solve!("The first number that initiates a clock sequence is:", start)

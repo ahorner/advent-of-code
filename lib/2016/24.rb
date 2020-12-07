@@ -127,8 +127,8 @@ end
 maze = Maze.new(nodes)
 path = minimum_path(maze, start, goals)
 
-puts "The minimal path length to hit all goals is:", path.length, nil
+solve!("The minimal path length to hit all goals is:", path.length)
 
 path = minimum_path(maze, start, goals, return_home: true)
 
-puts "The minimal path length to hit all goals and come back home is:", path.length
+solve!("The minimal path length to hit all goals and come back home is:", path.length)

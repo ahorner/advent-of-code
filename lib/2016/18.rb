@@ -48,8 +48,9 @@ def grid_for(input, size)
   grid
 end
 
-grid = grid_for(INPUT, 40)
-puts "The number of safe tiles in 40 rows is:", grid.map(&:safe_tiles).inject(:+), nil
+ROW_COUNT ||= 40
+grid = grid_for(INPUT, ROW_COUNT)
+solve!("The number of safe tiles in 40 rows is:", grid.map(&:safe_tiles).inject(:+))
 
 grid = grid_for(INPUT, 400_000)
-puts "The number of safe tiles in 400,000 rows is:", grid.map(&:safe_tiles).inject(:+)
+solve!("The number of safe tiles in 400,000 rows is:", grid.map(&:safe_tiles).inject(:+))

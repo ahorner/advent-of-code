@@ -1,6 +1,6 @@
 MATCHER = /\A(?<code>.*)-(?<sector_id>[0-9]+)\[(?<checksum>.*)\]\z/.freeze
 ALPHABET = ("a".."z").to_a.freeze
-TARGET_ROOM = "northpoleobjectstorage".freeze
+TARGET_ROOM ||= "northpoleobjectstorage".freeze
 
 def real?(key, counts)
   highest = []
@@ -20,7 +20,7 @@ def decrypt(code, shift)
   end.join
 end
 
-vector_sums = 0
+sector_sums = 0
 room_id = nil
 
 INPUT.split("\n").each do |line|
@@ -31,10 +31,10 @@ INPUT.split("\n").each do |line|
 
   next unless real?(line[:checksum], counts)
 
-  vector_sums += line[:sector_id].to_i
+  sector_sums += line[:sector_id].to_i
   decrypted = decrypt(line[:code], line[:sector_id])
   room_id = line[:sector_id] if decrypted.delete(" ") == TARGET_ROOM
 end
 
-puts "The sum of the real vector IDs is:", vector_sums, nil
-puts "The vector ID of the North Pole Object Storage is:", room_id
+solve!("The sum of the real sector IDs is:", sector_sums)
+solve!("The sector ID of the North Pole Object Storage is:", room_id)

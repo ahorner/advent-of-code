@@ -77,12 +77,14 @@ def undo(result, command)
   chars
 end
 
-chars = "abcdefgh".split("")
+SCRAMBLE ||= %w[a b c d e f g h].freeze
+chars = SCRAMBLE
 INPUT.split("\n").each { |line| chars = act(chars, line) }
 
-puts "Your scrambled password is:", chars.join, nil
+solve!("Your scrambled password is:", chars.join)
 
-chars = "fbgdceah".split("")
+UNSCRAMBLE ||= %w[f b g d c e a h].freeze
+chars = UNSCRAMBLE
 INPUT.split("\n").reverse.each { |line| chars = undo(chars, line) }
 
-puts "Your unscrambled password is:", chars.join
+solve!("Your unscrambled password is:", chars.join)

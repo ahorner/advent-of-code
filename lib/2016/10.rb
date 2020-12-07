@@ -29,7 +29,7 @@ end
 
 GRANT_PATTERN = /value (?<value>\d+) goes to (?<bot>bot \d+)/.freeze
 ASSIGN_PATTERN = /(?<bot>bot \d+) gives low to (?<low_output>.+ \d+) and high to (?<high_output>.+ \d+)/.freeze
-TARGET_VALUES = [17, 61].freeze
+TARGET_VALUES ||= [17, 61].freeze
 TARGET_NODES = ["output 0", "output 1", "output 2"].freeze
 
 nodes = Hash.new { |h, k| h[k] = Node.new }
@@ -47,7 +47,7 @@ INPUT.split("\n").each do |line|
 end
 
 bot = nodes.keys.find { |id| nodes[id].values == TARGET_VALUES }
-puts "The bot responsible for comparing #{TARGET_VALUES} is:", bot, nil
+solve!("The bot responsible for comparing #{TARGET_VALUES} is:", bot)
 
 product = TARGET_NODES.map { |id| nodes[id].values.first }.inject(:*)
-puts "The product of chip numbers in #{TARGET_NODES} is:", product
+solve!("The product of chip numbers in #{TARGET_NODES} is:", product)

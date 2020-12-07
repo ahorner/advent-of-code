@@ -13,7 +13,7 @@ def count_ips
 end
 
 count = count_ips { |supernet, hypernet| supports_tls?(supernet, hypernet) }
-puts "There are #{count} IPs that support TLS", nil
+solve!("The number of IPs that support TLS:", count)
 
 ABA_MATCHER = /\A.*([^,])((?!\1)[^,])\1.*~.*\2\1\2.*\z/.freeze
 
@@ -22,4 +22,4 @@ def supports_ssl?(supernet, hypernet)
 end
 
 count = count_ips { |supernet, hypernet| supports_ssl?(supernet, hypernet) }
-puts "There are #{count} IPs that support SSL"
+solve!("The number of IPs that support SSL", count)

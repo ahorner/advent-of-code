@@ -35,7 +35,7 @@ discs = INPUT.split("\n").map do |line|
   Disc.new(matches[:position_count].to_i, matches[:starting_position].to_i)
 end
 
-puts "The first valid drop time is:", valid_time(discs), nil
+solve!("The first valid drop time is:", valid_time(discs))
 
 discs << Disc.new(11, 0)
-puts "The first valid drop time (with the extra disc) is:", valid_time(discs)
+solve!("The first valid drop time (with the extra disc) is:", valid_time(discs))

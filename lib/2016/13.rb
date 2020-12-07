@@ -86,16 +86,16 @@ class Pathfinder
   end
 end
 
-NUMBER = INPUT.chomp.to_i
+NUMBER = INPUT.to_i
 START = [1, 1].freeze
-TARGET = [31, 39].freeze
+TARGET ||= [31, 39].freeze
 MAXIMUM_STEPS = 50
 
 maze = Maze.new(NUMBER)
 pathfinder = Pathfinder.new(maze)
 
 path = pathfinder.path(START, TARGET)
-puts "The minimal path length from #{START} to #{TARGET} is:", path.length, nil
+solve!("The minimal path length from #{START} to #{TARGET} is:", path.length)
 
 nodes = pathfinder.reachable(START, MAXIMUM_STEPS)
-puts "The number of spots reachable within #{MAXIMUM_STEPS} steps is:", nodes.length
+solve!("The number of spots reachable within #{MAXIMUM_STEPS} steps is:", nodes.length)

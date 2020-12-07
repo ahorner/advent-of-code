@@ -13,7 +13,8 @@ def decompressed_length(input, recursive: false)
 
       sublength =
         if recursive
-          decompressed_length(input[index...(index + gather)], recursive: true)
+          next_index = (index + 1)
+          decompressed_length(input[next_index...(next_index + gather)], recursive: true)
         else
           gather
         end
@@ -25,11 +26,11 @@ def decompressed_length(input, recursive: false)
     end
 
     index += 1
-    break unless index < input.length
+    break if index >= input.length
   end
 
   length
 end
 
-puts "The decompressed length is:", decompressed_length(INPUT.chomp), nil
-puts "The recursively decompressed length is:", decompressed_length(INPUT.chomp, recursive: true)
+solve!("The decompressed length is:", decompressed_length(INPUT))
+solve!("The recursively decompressed length is:", decompressed_length(INPUT, recursive: true))

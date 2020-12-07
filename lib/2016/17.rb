@@ -72,7 +72,7 @@ class Pathfinder
     max = nil
 
     traverse(start, target) do |path|
-      max = path if max.nil? || path.length > max.length
+      max = [max, path].compact.max_by(&:length)
     end
 
     path_string(max).delete(start.last)
@@ -114,8 +114,8 @@ TARGET = [3, 3].freeze
 maze = Maze.new
 pathfinder = Pathfinder.new(maze)
 
-min_path = pathfinder.min_path([*START, INPUT.chomp], TARGET)
-puts "The minimum path is:", min_path, nil
+min_path = pathfinder.min_path([*START, INPUT], TARGET)
+solve!("The minimum path is:", min_path)
 
-max_path = pathfinder.max_path([*START, INPUT.chomp], TARGET)
-puts "The maximum path length is:", max_path.length
+max_path = pathfinder.max_path([*START, INPUT], TARGET)
+solve!("The maximum path length is:", max_path.length)

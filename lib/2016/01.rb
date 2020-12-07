@@ -33,7 +33,7 @@ class Dude
   end
 
   def track_position
-    @visited << "(#{@x}, #{@y})"
+    @visited << [@x, @y]
   end
 end
 
@@ -44,7 +44,7 @@ INPUT.split(", ").each do |instruction|
   dude.move(instruction[1..].to_i)
 end
 
-puts "You are #{dude.distance} blocks from where you started."
+solve!("The distance to Easter Bunny HQ:", dude.distance)
 
 position = dude.visited.detect { |pos| dude.visited.count(pos) > 1 }
-puts "The first place you visited twice was #{position}"
+solve!("The distance to the first place you visited twice is:", position.sum(&:abs))

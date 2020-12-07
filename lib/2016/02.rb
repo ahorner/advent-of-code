@@ -38,7 +38,7 @@ standard_keypad = Keypad.new(
   ],
 )
 
-puts "The first keycode is #{code(standard_keypad)}"
+solve!("The first keycode is:", code(standard_keypad))
 
 wonky_keypad = Keypad.new(
   [
@@ -49,4 +49,4 @@ wonky_keypad = Keypad.new(
     [nil, nil, "D", nil, nil],
   ],
 )
-puts "The second keycode is #{code(wonky_keypad)}"
+solve!("The second keycode is:", code(wonky_keypad))

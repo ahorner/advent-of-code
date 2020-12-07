@@ -45,7 +45,7 @@ class ScratchPad
   end
 end
 
-SALT = INPUT.chomp
+SALT = INPUT
 
-puts "The index of the 64th scratch pad value is:", ScratchPad.new(SALT).index(64), nil
-puts "The index of the 64th scratch pad value (with stretching) is:", ScratchPad.new(SALT, 2016).index(64)
+solve!("The index of the 64th scratch pad value is:", ScratchPad.new(SALT).index(64))
+solve!("The index of the 64th scratch pad value (with stretching) is:", ScratchPad.new(SALT, 2016).index(64))

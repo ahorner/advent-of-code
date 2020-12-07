@@ -12,9 +12,9 @@ value = 0
 password = 8.times.map do
   digest, value = matching_digest("00000", value)
   digest[5]
-end.join
+end
 
-puts "The password is:", password, nil
+solve!("The password is:", password.join)
 
 value = 0
 password = [nil] * 8
@@ -26,4 +26,4 @@ loop do
   break unless password.any?(&:nil?)
 end
 
-puts "The position-specified password is:", password.join
+solve!("The position-specified password is:", password.join)

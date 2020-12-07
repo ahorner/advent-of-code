@@ -8,7 +8,7 @@ INPUT.split("\n").each do |line|
 end
 
 password = counts.map { |count| count.keys.max_by { |c| count[c] } }
-puts "The password by most common character is:", password.join, nil
+solve!("The password by most common character is:", password.join)
 
 password = counts.map { |count| count.keys.min_by { |c| count[c] } }
-puts "The password by least common character is:", password.join, nil
+solve!("The password by least common character is:", password.join)

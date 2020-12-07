@@ -13,11 +13,12 @@ def checksum(string)
 end
 
 def checksum_for(length)
-  output = transform(INPUT.chomp)
+  output = transform(INPUT)
   output = transform(output) while output.length < length
 
   checksum(output[0...length])
 end
 
-puts "The checksum for length 272 is:", checksum_for(272), nil
-puts "The checksum for length 35651584 is:", checksum_for(35_651_584)
+DISK_LENGTH ||= 272
+solve!("The checksum for length 272 is:", checksum_for(DISK_LENGTH))
+solve!("The checksum for length 35651584 is:", checksum_for(35_651_584))

@@ -22,7 +22,7 @@ def elf_ring
   first_elf = Elf.new(1)
   current_elf = first_elf
 
-  ELF_COUNT.times.with_index(2) do |_, number|
+  (ELF_COUNT - 1).times.with_index(2) do |_, number|
     next_elf = Elf.new(number)
 
     current_elf.next = next_elf
@@ -55,9 +55,9 @@ def take_from_across(start_with, elf_count)
 
   while current_elf.next != current_elf
     current_elf.take_from(target)
-    elf_count -= 1
-
     target = (elf_count.odd? ? target.next.next : target.next)
+
+    elf_count -= 1
     current_elf = current_elf.next
   end
 
@@ -65,7 +65,7 @@ def take_from_across(start_with, elf_count)
 end
 
 winner = take_from_next(elf_ring)
-puts "The number of the last elf standing is:", winner.number, nil
+solve!("The number of the last elf standing is:", winner.number)
 
 winner = take_from_across(elf_ring, ELF_COUNT)
-puts "The number of the last elf standing (advanced) is:", winner.number
+solve!("The number of the last elf standing (advanced) is:", winner.number)

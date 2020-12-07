@@ -103,7 +103,7 @@ floorplan = INPUT.split("\n").map do |line|
   items
 end
 
-puts "You can transport all equipment to the top floor in:", steps(floorplan), nil
+solve!("You can transport all equipment to the top floor in:", steps(floorplan))
 
 new_items = [
   Item.new("elerium", :generator),
@@ -113,4 +113,4 @@ new_items = [
 ]
 
 new_floorplan = [floorplan[0] + new_items, *floorplan[1..]]
-puts "You can transport the updated equipment list to the top floor in:", steps(new_floorplan)
+solve!("You can transport the updated equipment list to the top floor in:", steps(new_floorplan))
