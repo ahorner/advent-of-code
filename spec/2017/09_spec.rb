@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 9: Stream Processing" do
+RSpec.describe "Day 9: Stream Processing" do
   let(:runner) { Runner.new("2017/09") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 15: Dueling Generators" do
+RSpec.describe "Day 15: Dueling Generators" do
   let(:runner) { Runner.new("2017/15") }
   let(:input) do
     <<~TXT

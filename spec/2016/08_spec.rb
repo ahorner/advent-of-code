@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 8: Two-Factor Authentication" do
+RSpec.describe "Day 8: Two-Factor Authentication" do
   let(:runner) { Runner.new("2016/08") }
   let(:input) do
     <<~TXT

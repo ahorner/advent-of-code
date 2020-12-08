@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 3: Spiral Memory" do
+RSpec.describe "Day 3: Spiral Memory" do
   let(:runner) { Runner.new("2017/03") }
 
   describe "Part One" do

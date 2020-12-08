@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 11: Corporate Policy" do
+RSpec.describe "Day 11: Corporate Policy" do
   let(:runner) { Runner.new("2015/11") }
 
   describe "Part One" do

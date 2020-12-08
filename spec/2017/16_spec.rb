@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 16: Permutation Promenade" do
+RSpec.describe "Day 16: Permutation Promenade" do
   let(:runner) { Runner.new("2017/16") }
   let(:input) { "s1,x3/4,pe/b" }
 

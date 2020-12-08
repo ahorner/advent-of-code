@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 2: 1202 Program Alarm" do
+RSpec.describe "Day 2: 1202 Program Alarm" do
   let(:runner) { Runner.new("2019/02") }
 
   describe "Part One" do

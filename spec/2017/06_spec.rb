@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 6: Memory Reallocation" do
+RSpec.describe "Day 6: Memory Reallocation" do
   let(:runner) { Runner.new("2017/06") }
   let(:input) { "0 2 7 0" }
 

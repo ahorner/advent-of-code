@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 12: Subterranean Sustainability" do
+RSpec.describe "Day 12: Subterranean Sustainability" do
   let(:runner) { Runner.new("2018/12") }
   let(:input) do
     <<~TXT

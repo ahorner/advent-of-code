@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 8: Space Image Format" do
+RSpec.describe "Day 8: Space Image Format" do
   let(:runner) { Runner.new("2019/08") }
 
   describe "Part One" do

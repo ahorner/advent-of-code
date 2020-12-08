@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 16: Dragon Checksum" do
+RSpec.describe "Day 16: Dragon Checksum" do
   let(:runner) { Runner.new("2016/16") }
   let(:input) { "10000" }
 

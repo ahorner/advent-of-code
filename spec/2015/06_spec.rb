@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 6: Probably a Fire Hazard" do
+RSpec.describe "Day 6: Probably a Fire Hazard" do
   let(:runner) { Runner.new("2015/06") }
 
   describe "Part One" do

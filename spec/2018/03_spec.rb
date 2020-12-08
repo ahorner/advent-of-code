@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 3: No Matter How You Slice It" do
+RSpec.describe "Day 3: No Matter How You Slice It" do
   let(:runner) { Runner.new("2018/03") }
   let(:input) do
     <<~TXT

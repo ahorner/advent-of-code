@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 3: Squares With Three Sides" do
+RSpec.describe "Day 3: Squares With Three Sides" do
   let(:runner) { Runner.new("2016/03") }
   let(:input) do
     <<~TXT

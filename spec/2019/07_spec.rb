@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 7: Amplification Circuit" do
+RSpec.describe "Day 7: Amplification Circuit" do
   let(:runner) { Runner.new("2019/07") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 2: Password Philosophy" do
+RSpec.describe "Day 2: Password Philosophy" do
   let(:runner) { Runner.new("2020/02") }
   let(:input) do
     <<~TXT

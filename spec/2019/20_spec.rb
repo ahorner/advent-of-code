@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 20: Donut Maze" do
+RSpec.describe "Day 20: Donut Maze" do
   let(:runner) { Runner.new("2019/20") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 22: Sporifica Virus" do
+RSpec.describe "Day 22: Sporifica Virus" do
   let(:runner) { Runner.new("2017/22") }
   let(:input) do
     <<~TXT

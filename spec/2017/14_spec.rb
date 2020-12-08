@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 14: Disk Defragmentation" do
+RSpec.describe "Day 14: Disk Defragmentation" do
   let(:runner) { Runner.new("2017/14") }
   let(:input) { "flqrgnkx" }
 

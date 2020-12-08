@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 6: Custom Customs" do
+RSpec.describe "Day 6: Custom Customs" do
   let(:runner) { Runner.new("2020/06") }
 
   describe "Part One" do

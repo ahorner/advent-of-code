@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 21: Fractal Art" do
+RSpec.describe "Day 21: Fractal Art" do
   let(:runner) { Runner.new("2017/21") }
   let(:input) do
     <<~TXT

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 1: The Tyranny of the Rocket Equation" do
+RSpec.describe "Day 1: The Tyranny of the Rocket Equation" do
   let(:runner) { Runner.new("2019/01") }
   let(:input) do
     <<~TXT

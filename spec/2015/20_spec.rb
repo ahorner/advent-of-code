@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 20: Infinite Elves and Infinite Houses" do
+RSpec.describe "Day 20: Infinite Elves and Infinite Houses" do
   let(:runner) { Runner.new("2015/20") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 3: Crossed Wires" do
+RSpec.describe "Day 3: Crossed Wires" do
   let(:runner) { Runner.new("2019/03") }
 
   describe "Part One" do

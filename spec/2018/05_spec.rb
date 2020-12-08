@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 5: Alchemical Reduction" do
+RSpec.describe "Day 5: Alchemical Reduction" do
   let(:runner) { Runner.new("2018/05") }
   let(:input) { "dabAcCaCBAcCcaDA" }
 

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 12: JSAbacusFramework.io" do
+RSpec.describe "Day 12: JSAbacusFramework.io" do
   let(:runner) { Runner.new("2015/12") }
 
   describe "Part One" do

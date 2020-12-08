@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 4: High-Entropy Passphrases" do
+RSpec.describe "Day 4: High-Entropy Passphrases" do
   let(:runner) { Runner.new("2017/04") }
 
   describe "Part One" do

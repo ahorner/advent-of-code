@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 4: Passport Processing" do
+RSpec.describe "Day 4: Passport Processing" do
   let(:runner) { Runner.new("2020/04") }
 
   describe "Part One" do

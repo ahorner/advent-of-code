@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 11: Chronal Charge" do
+RSpec.describe "Day 11: Chronal Charge" do
   let(:runner) { Runner.new("2018/11") }
 
   describe "Part One" do

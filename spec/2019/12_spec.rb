@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 12: The N-Body Problem" do
+RSpec.describe "Day 12: The N-Body Problem" do
   let(:runner) { Runner.new("2019/12") }
 
   describe "Part One" do

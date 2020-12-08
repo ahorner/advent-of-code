@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 5: Binary Boarding" do
+RSpec.describe "Day 5: Binary Boarding" do
   let(:runner) { Runner.new("2020/05") }
 
   describe "Part One" do

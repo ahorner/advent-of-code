@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 5: A Maze of Twisty Trampolines, All Alike" do
+RSpec.describe "Day 5: A Maze of Twisty Trampolines, All Alike" do
   let(:runner) { Runner.new("2017/05") }
   let(:input) do
     <<~TXT

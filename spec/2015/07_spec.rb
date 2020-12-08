@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 7: Some Assembly Required" do
+RSpec.describe "Day 7: Some Assembly Required" do
   let(:runner) { Runner.new("2015/07") }
   let(:input) do
     <<~TXT

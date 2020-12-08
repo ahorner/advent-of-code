@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 3: Perfectly Spherical Houses in a Vacuum" do
+RSpec.describe "Day 3: Perfectly Spherical Houses in a Vacuum" do
   let(:runner) { Runner.new("2015/03") }
 
   describe "Part One" do

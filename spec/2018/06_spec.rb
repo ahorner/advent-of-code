@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 6: Chronal Coordinates" do
+RSpec.describe "Day 6: Chronal Coordinates" do
   let(:runner) { Runner.new("2018/06") }
   let(:input) do
     <<~TXT

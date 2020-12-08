@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 20: Particle Swarm" do
+RSpec.describe "Day 20: Particle Swarm" do
   let(:runner) { Runner.new("2017/20") }
 
   describe "Part One" do

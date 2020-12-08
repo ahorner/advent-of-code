@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 7: Internet Protocol Version 7" do
+RSpec.describe "Day 7: Internet Protocol Version 7" do
   let(:runner) { Runner.new("2016/07") }
 
   describe "Part One" do

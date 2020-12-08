@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 11: Radioisotope Thermoelectric Generators" do
+RSpec.describe "Day 11: Radioisotope Thermoelectric Generators" do
   let(:runner) { Runner.new("2016/11") }
   let(:input) do
     <<~TXT

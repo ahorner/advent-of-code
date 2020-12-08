@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 2: Corruption Checksum" do
+RSpec.describe "Day 2: Corruption Checksum" do
   let(:runner) { Runner.new("2017/02") }
 
   describe "Part One" do

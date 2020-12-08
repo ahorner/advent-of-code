@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 13: A Maze of Twisty Little Cubicles" do
+RSpec.describe "Day 13: A Maze of Twisty Little Cubicles" do
   let(:runner) { Runner.new("2016/13") }
   let(:input) { "10" }
 

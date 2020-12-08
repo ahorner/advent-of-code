@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 19: Medicine for Rudolph" do
+RSpec.describe "Day 19: Medicine for Rudolph" do
   let(:runner) { Runner.new("2015/19") }
   let(:calibration_molecule) { "HOH" }
   let(:input) do

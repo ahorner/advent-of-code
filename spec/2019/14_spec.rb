@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 14: Space Stoichiometry" do
+RSpec.describe "Day 14: Space Stoichiometry" do
   let(:runner) { Runner.new("2019/14") }
   let(:examples) do
     {

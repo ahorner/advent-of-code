@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 14: One-Time Pad" do
+RSpec.describe "Day 14: One-Time Pad" do
   let(:runner) { Runner.new("2016/14") }
   let(:input) { "abc" }
 

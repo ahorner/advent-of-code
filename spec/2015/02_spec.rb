@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 2: I Was Told There Would Be No Math" do
+RSpec.describe "Day 2: I Was Told There Would Be No Math" do
   let(:runner) { Runner.new("2015/02") }
 
   describe "Part One" do

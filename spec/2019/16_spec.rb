@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 16: Flawed Frequency Transmission" do
+RSpec.describe "Day 16: Flawed Frequency Transmission" do
   let(:runner) { Runner.new("2019/16") }
 
   describe "Part One" do

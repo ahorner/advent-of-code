@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 4: Secure Container" do
+RSpec.describe "Day 4: Secure Container" do
   let(:runner) { Runner.new("2019/04") }
 
   describe "Part One" do

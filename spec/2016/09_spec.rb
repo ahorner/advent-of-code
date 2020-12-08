@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 9: Explosives in Cyberspace" do
+RSpec.describe "Day 9: Explosives in Cyberspace" do
   let(:runner) { Runner.new("2016/09") }
 
   describe "Part One" do

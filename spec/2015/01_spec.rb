@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 1: Not Quite Lisp" do
+RSpec.describe "Day 1: Not Quite Lisp" do
   let(:runner) { Runner.new("2015/01") }
 
   describe "Part One" do

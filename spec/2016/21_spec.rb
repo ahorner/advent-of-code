@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 21: Scrambled Letters and Hash" do
+RSpec.describe "Day 21: Scrambled Letters and Hash" do
   let(:runner) { Runner.new("2016/21") }
   let(:input) do
     <<~TXT

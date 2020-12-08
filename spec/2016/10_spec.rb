@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 10: Balance Bots" do
+RSpec.describe "Day 10: Balance Bots" do
   let(:runner) { Runner.new("2016/10") }
   let(:input) do
     <<~TXT

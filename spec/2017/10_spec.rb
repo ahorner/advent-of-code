@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 10: Knot Hash" do
+RSpec.describe "Day 10: Knot Hash" do
   let(:runner) { Runner.new("2017/10") }
 
   describe "Part One" do

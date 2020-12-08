@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 6: Universal Orbit Map" do
+RSpec.describe "Day 6: Universal Orbit Map" do
   let(:runner) { Runner.new("2019/06") }
 
   describe "Part One" do

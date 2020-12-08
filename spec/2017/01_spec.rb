@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 1: Inverse Captcha" do
+RSpec.describe "Day 1: Inverse Captcha" do
   let(:runner) { Runner.new("2017/01") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 25: Let It Snow" do
+RSpec.describe "Day 25: Let It Snow" do
   let(:runner) { Runner.new("2015/25") }
 
   describe "Part One" do

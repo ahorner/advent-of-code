@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 20: Firewall Rules" do
+RSpec.describe "Day 20: Firewall Rules" do
   let(:runner) { Runner.new("2016/20") }
   let(:input) do
     <<~TXT

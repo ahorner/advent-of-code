@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 22: Wizard Simulator 20XX" do
+RSpec.describe "Day 22: Wizard Simulator 20XX" do
   let(:runner) { Runner.new("2015/22") }
 
   describe "Part One" do

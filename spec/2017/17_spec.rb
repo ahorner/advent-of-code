@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 17: Spinlock" do
+RSpec.describe "Day 17: Spinlock" do
   let(:runner) { Runner.new("2017/17") }
   let(:input) { "3" }
 

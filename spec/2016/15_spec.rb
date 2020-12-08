@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 15: Timing is Everything" do
+RSpec.describe "Day 15: Timing is Everything" do
   let(:runner) { Runner.new("2016/15") }
   let(:input) do
     <<~TXT

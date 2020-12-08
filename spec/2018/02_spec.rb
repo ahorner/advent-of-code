@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 2: Inventory Management System" do
+RSpec.describe "Day 2: Inventory Management System" do
   let(:runner) { Runner.new("2018/02") }
 
   describe "Part One" do

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 5: Doesn't He Have Intern-Elves For This?" do
+RSpec.describe "Day 5: Doesn't He Have Intern-Elves For This?" do
   let(:runner) { Runner.new("2015/05") }
 
   describe "Part One" do

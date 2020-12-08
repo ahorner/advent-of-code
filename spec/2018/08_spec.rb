@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Day 8: Memory Maneuver" do
+RSpec.describe "Day 8: Memory Maneuver" do
   let(:runner) { Runner.new("2018/08") }
   let(:input) { "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2" }
 
