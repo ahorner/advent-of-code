@@ -2,14 +2,10 @@ ROWS = INPUT.split("\n").map do |row|
   row.split.map(&:to_i)
 end
 
-def total(&block)
-  ROWS.map(&block).inject(:+)
-end
-
-checksum = total { |row| row.max - row.min }
+checksum = ROWS.sum { |row| row.max - row.min }
 solve!("The checksum by difference is:", checksum)
 
-checksum = total do |row|
+checksum = ROWS.sum do |row|
   row.detect do |i|
     divisor = row.detect { |j| i != j && i % j == 0 }
     break (i / divisor) if divisor

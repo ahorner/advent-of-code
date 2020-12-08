@@ -37,7 +37,7 @@ def grid_to(input, &value_for)
 end
 
 def distance(input)
-  grid_to(input) { |last| last + 1 }.key(input).map(&:abs).inject(:+)
+  grid_to(input) { |last| last + 1 }.key(input).sum(&:abs)
 end
 
 def above(input)

@@ -5,7 +5,7 @@ def valid?(sides)
   others = sides.dup
 
   others.delete_at(sides.index(maximum))
-  others.inject(:+) > maximum
+  others.sum > maximum
 end
 
 def parse_lines
