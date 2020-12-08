@@ -1,11 +1,6 @@
 class Runner
   class SolutionFound < RuntimeError; end
 
-  def self.reset!
-    Object.send(:remove_const, "INPUT")
-    (constants - [:SolutionFound]).each { |c| remove_const(c) }
-  end
-
   def initialize(date, logger: StringIO.new)
     @date = date
     @logger = logger
@@ -13,18 +8,27 @@ class Runner
 
   def execute!(input, part: nil, **overrides)
     @part_number = part
-    @solutions = []
+    read, write = IO.pipe
 
-    overrides.each { |key, value| self.class.const_set(key, value) }
+    Process.wait(fork do
+      read.close
+      @solutions = []
+      overrides.each { |key, value| self.class.const_set(key, value) }
 
-    path = File.expand_path("../#{@date}.rb", File.dirname(__FILE__))
-    eval(File.read(path), run_context(input.chomp("\n")).call, path) # rubocop:disable Security/Eval
+      path = File.expand_path("../#{@date}.rb", File.dirname(__FILE__))
+      eval(File.read(path), run_context(input.chomp("\n")).call, path)
 
-    @solutions
-  rescue SolutionFound
-    @solutions[@part_number - 1]
+      Marshal.dump(@solutions, write)
+    rescue SolutionFound
+      Marshal.dump(@solutions[@part_number - 1], write)
+    ensure
+      write.close
+    end)
+
+    write.close
+    Marshal.load(read.read)
   ensure
-    self.class.reset!
+    read.close
   end
 
   private

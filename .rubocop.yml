@@ -34,6 +34,12 @@ Metrics/PerceivedComplexity:
 Naming/MethodParameterName:
   Enabled: false
 
+Security/Eval:
+  Enabled: false
+
+Security/MarshalLoad:
+  Enabled: false
+
 Style/CaseEquality:
   Enabled: false
 
