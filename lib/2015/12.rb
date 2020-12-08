@@ -5,7 +5,7 @@ input = JSON.parse(INPUT)
 def deep_sum(object, ignore: nil)
   case object
   when Array
-    object.map { |i| deep_sum(i, ignore: ignore) }.inject(:+)
+    object.map { |i| deep_sum(i, ignore: ignore) }.sum
   when Hash
     return 0 if object.values.include?(ignore)
 
@@ -15,5 +15,5 @@ def deep_sum(object, ignore: nil)
   end
 end
 
-puts "Total Value: ", deep_sum(input), nil
-puts "Total Adjusted Value: ", deep_sum(input, ignore: "red")
+solve!("Total Value: ", deep_sum(input))
+solve!("Total Adjusted Value: ", deep_sum(input, ignore: "red"))

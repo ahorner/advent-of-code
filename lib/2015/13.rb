@@ -66,9 +66,9 @@ party.parse(INPUT.split("\n"))
 
 seating_chart = party.seating_chart
 
-puts "Best arrangement:", seating_chart.to_s, seating_chart.happiness, nil
+solve!("Best arrangement:", seating_chart.to_s, seating_chart.happiness)
 
 party.people << "Me"
 seating_chart = party.seating_chart
 
-puts "Best arrangement (with me):", seating_chart.to_s, seating_chart.happiness
+solve!("Best arrangement (with me):", seating_chart.to_s, seating_chart.happiness)

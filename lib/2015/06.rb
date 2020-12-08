@@ -24,7 +24,7 @@ INSTRUCTIONS.each do |line|
   adjust_lights(line, grid)
 end
 
-puts "All of the lights:", (grid.count { |_, light| !light.nil? }), "\n"
+solve!("All of the lights:", grid.count { |_, light| !light.nil? })
 
 def adjust_brightness(instruction, lights)
   for_step(instruction) do |step, x, y|
@@ -41,4 +41,4 @@ INSTRUCTIONS.each do |line|
   adjust_brightness(line, grid)
 end
 
-puts "Required holiday SPF:", grid.values.inject(:+)
+solve!("Required holiday SPF:", grid.values.sum)

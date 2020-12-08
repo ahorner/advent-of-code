@@ -11,7 +11,7 @@ class Reaction
   def possible_formulas(formula)
     new_formulas = []
 
-    sequence = formula.scan(/[A-Z][a-z]*/)
+    sequence = formula.scan(/[A-Z][a-z]?/)
     sequence.each_with_index do |component, position|
       next unless component == base
 
@@ -36,39 +36,39 @@ lines = INPUT.split("\n").reject(&:empty?)
 
 FORMULA = lines.pop
 REACTIONS = lines.map { |line| Reaction.new(*line.split(" => ")) }
+ELECTRON = "e"
 
 all_reactions = REACTIONS.each_with_object(Set.new) do |reaction, set|
   set.merge(reaction.possible_formulas(FORMULA))
 end
 
-puts "Total possible results:", all_reactions.size, nil
+solve!("Total possible results:", all_reactions.size)
 
 def decompose(formula, reactions)
   steps = 0
 
-  while formula != "e"
+  loop do
     return if reactions.none? { |reaction| reaction.can_decompose?(formula) }
 
     reactions.each do |reaction|
+      break if reaction.base == "e" && formula.length > reaction.result.length
       next unless reaction.can_decompose?(formula)
 
       formula = reaction.decompose(formula)
       steps += 1
-      break if formula == "e"
+
+      return steps if formula == ELECTRON
     end
   end
-
-  steps
 end
 
 def decomposition_steps(formula)
-  reactions = REACTIONS
-
-  loop do
+  REACTIONS.permutation.each do |reactions|
     steps = decompose(formula, reactions)
-    reactions = reactions.shuffle
-    break steps unless steps.nil?
+    return steps if steps
   end
+
+  nil
 end
 
-puts "Steps required to compose formula:", decomposition_steps(FORMULA)
+solve!("Steps required to compose formula:", decomposition_steps(FORMULA))

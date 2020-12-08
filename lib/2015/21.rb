@@ -1,4 +1,5 @@
 WEAPONS = {
+  "Unarmed" => { cost: 0,  attack: 0, defense: 0 },
   "Dagger" => { cost: 8,  attack: 4, defense: 0 },
   "Shortsword" => { cost: 10, attack: 5, defense: 0 },
   "Warhammer" => { cost: 25, attack: 6, defense: 0 },
@@ -81,14 +82,16 @@ def loadouts
   combinations.map { |loadout| Equipment.new(loadout) }
 end
 
-enemy_stats = INPUT.split("\n").map { |line| line.scan(/\d+/).join.to_i }
-enemy = Character.new(*enemy_stats)
-hero = Character.new(100, 0, 0)
+ENEMY_STATS = INPUT.split("\n").map { |line| line.scan(/\d+/).join.to_i }
+enemy = Character.new(*ENEMY_STATS)
+
+HERO_STATS ||= [100, 0, 0].freeze
+hero = Character.new(*HERO_STATS)
 
 winning_loadouts, losing_loadouts = loadouts.partition do |equipment|
   hero.equip(equipment)
   hero.beats?(enemy)
 end
 
-puts "Cheapest winning loadout:", winning_loadouts.min_by(&:cost).cost, nil
-puts "Most expensive losing loadout:", losing_loadouts.max_by(&:cost).cost
+solve!("Cheapest winning loadout:", winning_loadouts.min_by(&:cost).cost)
+solve!("Most expensive losing loadout:", losing_loadouts.max_by(&:cost).cost)

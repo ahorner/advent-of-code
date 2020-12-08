@@ -38,7 +38,7 @@ end
 generator = PasswordGenerator.new(INPUT)
 
 next_password = generator.next
-puts "Next password should be:", next_password, nil
+solve!("Next password should be:", next_password)
 
 next_password = generator.next
-puts "And then it should be:", next_password
+solve!("And then it should be:", next_password)

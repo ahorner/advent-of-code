@@ -41,10 +41,10 @@ end
 registers = Hash.new(0)
 run(registers)
 
-puts "Register B:", registers["b"], nil
+solve!("Register B:", registers["b"])
 
 registers = Hash.new(0)
 registers["a"] = 1
 run(registers)
 
-puts "Register B (with A starting at 1):", registers["b"]
+solve!("Register B (with A starting at 1):", registers["b"])

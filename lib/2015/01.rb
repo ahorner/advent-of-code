@@ -1,7 +1,7 @@
 STEPS = INPUT.split("")
 
 final_floor = STEPS.count("(") - STEPS.count(")")
-puts "Final floor: #{final_floor}"
+solve!("Final floor:", final_floor)
 
 def first_step(target)
   floor = 0
@@ -12,4 +12,4 @@ def first_step(target)
   end
 end
 
-puts "First basement step: #{first_step(-1)}"
+solve!("First basement step:", first_step(-1))

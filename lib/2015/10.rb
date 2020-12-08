@@ -7,8 +7,9 @@ def loop_and_say(string, times)
   string
 end
 
-result = loop_and_say(INPUT, 40)
-puts "After 40 iterations:", result.length, nil
+TIMES ||= 40
+result = loop_and_say(INPUT, TIMES)
+solve!("After 40 iterations:", result.length)
 
 result = loop_and_say(result, 10)
-puts "After 50 iterations:", result.length
+solve!("After 50 iterations:", result.length)

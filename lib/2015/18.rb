@@ -49,6 +49,7 @@ end
 
 class Grid
   def initialize(instructions)
+    @size = instructions.split("\n").count
     @lights = {}
 
     instructions.split("\n").each_with_index do |row, x|
@@ -69,19 +70,28 @@ class Grid
   def count
     @lights.values.count(&:on?)
   end
+
+  def corners
+    [
+      [0, 0],
+      [0, @size - 1],
+      [@size - 1, 0],
+      [@size - 1, @size - 1],
+    ].map do |(x, y)|
+      self[x, y]
+    end
+  end
 end
 
 grid = Grid.new(INPUT)
-100.times { grid.tick! }
+STEPS ||= 100
+STEPS.times { grid.tick! }
 
-puts "Lights on:", grid.count, nil
+solve!("Lights on:", grid.count)
 
 grid = Grid.new(INPUT)
-grid[0, 0].stuck!
-grid[0, 99].stuck!
-grid[99, 0].stuck!
-grid[99, 99].stuck!
+grid.corners.each(&:stuck!)
 
-100.times { grid.tick! }
+STEPS.times { grid.tick! }
 
-puts "Lights on (stuck corners):", grid.count, nil
+solve!("Lights on (stuck corners):", grid.count)

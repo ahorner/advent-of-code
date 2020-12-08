@@ -28,9 +28,8 @@ class Cookie
 end
 
 class Kitchen
-  # rubocop:disable Layout/LineLength
-  INGREDIENT_PATTERN = /(?<ingredient>.+): capacity (?<capacity>.+), durability (?<durability>.+), flavor (?<flavor>.+), texture (?<texture>.+), calories (?<calories>.+)/.freeze
-  # rubocop:enable Layout/LineLength
+  INGREDIENT_PATTERN = /^(?<name>.+): (?<attributes>.+)$/.freeze
+  ATTRIBUTE_MATCHER = /\b(?<name>\w+) (?<value>-?\d+)\b/.freeze
 
   def initialize
     @ingredients = {}
@@ -38,15 +37,13 @@ class Kitchen
 
   def stock(ingredients)
     ingredients.each do |ingredient|
-      qualities = INGREDIENT_PATTERN.match(ingredient)
+      ingredient = INGREDIENT_PATTERN.match(ingredient)
+      attributes = ingredient[:attributes].split(", ").map do |attribute|
+        attribute = attribute.match(ATTRIBUTE_MATCHER)
+        [attribute[:name].to_sym, attribute[:value].to_i]
+      end
 
-      @ingredients[qualities[:ingredient]] = {
-        capacity: qualities[:capacity].to_i,
-        durability: qualities[:durability].to_i,
-        flavor: qualities[:flavor].to_i,
-        texture: qualities[:texture].to_i,
-        calories: qualities[:calories].to_i,
-      }
+      @ingredients[ingredient[:name]] = Hash[attributes]
     end
   end
 
@@ -71,5 +68,5 @@ end
 kitchen = Kitchen.new
 kitchen.stock(INPUT.split("\n"))
 
-puts "Best cookie:", kitchen.best_cookie(100).score, nil
-puts "Best cookie (500 cal):", kitchen.best_cookie(100, 500).score
+solve!("Best cookie:", kitchen.best_cookie(100).score)
+solve!("Best cookie (500 cal):", kitchen.best_cookie(100, 500).score)

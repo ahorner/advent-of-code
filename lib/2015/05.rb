@@ -8,10 +8,8 @@ def nice?(line)
   !!(vowels && double_char && !bad_words)
 end
 
-nice, naughty = LIST.partition { |line| nice?(line) }
-
-puts "Making a list:"
-puts "Nice: #{nice.size}", "Naughty: #{naughty.size}", nil
+nice = LIST.select { |line| nice?(line) }
+solve!("Making a list:", nice.size)
 
 def still_nice?(line)
   matching_pairs = (line =~ /(..).*\1/)
@@ -20,7 +18,5 @@ def still_nice?(line)
   !!(matching_pairs && sandwich)
 end
 
-nice, naughty = LIST.partition { |line| still_nice?(line) }
-
-puts "Checking it twice:"
-puts "Nice: #{nice.size}", "Naughty: #{naughty.size}"
+nice = LIST.select { |line| still_nice?(line) }
+solve!("Checking it twice:", nice.size)

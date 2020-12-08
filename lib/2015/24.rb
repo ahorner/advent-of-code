@@ -1,5 +1,5 @@
 PACKAGES = INPUT.split("\n").map(&:to_i)
-TOTAL_WEIGHT = PACKAGES.inject(:+)
+TOTAL_WEIGHT = PACKAGES.sum
 
 def target_subsets(array, sum)
   return [] if array.empty?
@@ -28,5 +28,5 @@ def minimal_entanglement(group_weight)
   sets.select { |set| set.size == min_size }.map { |set| quantum_entanglement(set) }.min
 end
 
-puts "Optimal QE with good legroom:", minimal_entanglement(TOTAL_WEIGHT / 3), nil
-puts "Optimal QE with good legroom (and a trunk):", minimal_entanglement(TOTAL_WEIGHT / 4)
+solve!("Optimal QE with good legroom:", minimal_entanglement(TOTAL_WEIGHT / 3))
+solve!("Optimal QE with good legroom (and a trunk):", minimal_entanglement(TOTAL_WEIGHT / 4))

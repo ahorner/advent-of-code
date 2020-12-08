@@ -21,22 +21,20 @@ def parse(lines)
   end
 end
 
-def correct_sue(sues, validity_checker = :valid?)
+def correct_sue(sues, checker)
   matches = EXPECTED_READINGS.reduce(sues) do |remaining, (reading, value)|
-    remaining.select { |sue| send(validity_checker, reading, value, sue) }
+    remaining.select { |sue| checker.call(reading, value, sue) }
   end
 
   sues.index(matches.first) + 1
 end
 
-def valid?(reading, value, sue)
-  sue[reading].nil? || sue[reading] == value
-end
+validity = lambda { |reading, value, sue| sue[reading].nil? || sue[reading] == value }
 
-sues = parse(INPUT.split("\n"))
-puts "The number of the correct Sue:", correct_sue(sues), nil
+SUES = parse(INPUT.split("\n"))
+solve!("The number of the correct Sue:", correct_sue(SUES, validity))
 
-def valid_with_adjustments?(reading, value, sue)
+adjusted_validity = lambda do |reading, value, sue|
   return true if sue[reading].nil?
 
   case reading
@@ -49,4 +47,4 @@ def valid_with_adjustments?(reading, value, sue)
   end
 end
 
-puts "The number of the correct Sue (with adjustments):", correct_sue(sues, :valid_with_adjustments?)
+solve!("The number of the correct Sue (with adjustments):", correct_sue(SUES, adjusted_validity))

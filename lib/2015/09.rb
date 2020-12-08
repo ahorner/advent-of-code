@@ -29,7 +29,7 @@ class Map
   private
 
   def route(distance)
-    [routes.key(distance).join(" -> "), "(#{distance} km)"]
+    [routes.key(distance).join(" -> "), distance]
   end
 
   def routes
@@ -43,7 +43,7 @@ class Map
         next if origin.nil?
 
         distance(origin, destination)
-      end.compact.inject(:+)
+      end.compact.sum
 
       distances[route] = distance
     end
@@ -57,8 +57,5 @@ end
 map = Map.new
 map.fill(INPUT.split("\n"))
 
-puts "Best route:"
-puts(*map.best_route, nil)
-
-puts "Worst route:"
-puts(*map.worst_route)
+solve!("Best route:", *map.best_route)
+solve!("Worst route:", *map.worst_route)

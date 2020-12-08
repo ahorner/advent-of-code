@@ -13,5 +13,5 @@ def matching_digest(pattern)
   [digest, value]
 end
 
-puts(*matching_digest("00000"), nil)
-puts(*matching_digest("000000"))
+solve!(*matching_digest("00000"))
+solve!(*matching_digest("000000"))

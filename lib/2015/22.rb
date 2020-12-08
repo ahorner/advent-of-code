@@ -66,7 +66,7 @@ end
 
 SKILLS = [
   # DRAIN is less efficient than MAGIC MISSILE, and only prolongs the battle
-  # Skill.new("DRAIN", 73) { |hero, enemy| enemy.hit(2) && hero.hp += 2 },
+  Skill.new("DRAIN", 73) { |hero, enemy| enemy.hit(2) && hero.hp += 2 },
   Skill.new("MAGIC MISSILE", 53) { |_hero, enemy| enemy.hit(4) },
   Skill.new("SHIELD", 113, 6) { |hero, _enemy| hero.armor = 7 },
   Skill.new("POISON", 173, 6) { |_hero, enemy| enemy.hit(3) },
@@ -136,12 +136,14 @@ class Battle
   end
 end
 
+HERO_STATS ||= [50, 0, 500]
+
 enemy_stats = INPUT.split("\n").map { |i| i.scan(/\d+/).join.to_i }
 enemy = Character.new(*enemy_stats)
-hero = Character.new(50, 0, 500)
+hero = Character.new(*HERO_STATS)
 
 best = Battle.new(hero, enemy, SKILLS).optimal_strategy
-puts "Cheapest strategy:", best, nil
+solve!("Cheapest strategy:", best)
 
 best = Battle.new(hero, enemy, SKILLS, hard_mode: true).optimal_strategy
-puts "Cheapest strategy (hard mode):", best
+solve!("Cheapest strategy (hard mode):", best)

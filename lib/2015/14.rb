@@ -69,7 +69,9 @@ class Race
 
     (1..time).each do |_t|
       @flights.each(&:go!)
-      @flights.max_by(&:distance).good_job!
+
+      maximum = @flights.max_by(&:distance).distance
+      @flights.select { |f| f.distance == maximum }.each(&:good_job!)
     end
   end
 end
@@ -77,8 +79,9 @@ end
 race = Race.new
 race.enter(INPUT.split("\n"))
 
-winner = race.run_for_distance(2503)
-puts "The winner by distance is:", winner.reindeer, "#{winner.distance} km", nil
+TIME ||= 2503
+winner = race.run_for_distance(TIME)
+solve!("The winner by distance is:", winner.reindeer, winner.distance)
 
-winner = race.run_for_points(2503)
-puts "The winner by points is:", winner.reindeer, "#{winner.points} pts"
+winner = race.run_for_points(TIME)
+solve!("The winner by points is:", winner.reindeer, winner.points)

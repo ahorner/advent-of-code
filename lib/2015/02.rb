@@ -9,25 +9,21 @@ def area(w, h, l)
 end
 
 def total_area
-  boxes.map do |edges|
-    area(*edges)
-  end.inject(:+)
+  boxes.sum { |edges| area(*edges) }
 end
 
-puts "Wrapping paper: #{total_area} sqft"
+solve!("Total sqft of wrapping paper:", total_area)
 
 def length(w, h, l)
   smallest = [w, h, l].sort.take(2)
-  wrapping = smallest.map { |edge| edge * 2 }.inject(:+)
+  wrapping = smallest.sum { |edge| edge * 2 }
   bow = w * h * l
 
   wrapping + bow
 end
 
 def total_length
-  boxes.map do |edges|
-    length(*edges)
-  end.inject(:+)
+  boxes.sum { |edges| length(*edges) }
 end
 
-puts "Ribbon: #{total_length} ft"
+solve!("Total ft of ribbon:", total_length)

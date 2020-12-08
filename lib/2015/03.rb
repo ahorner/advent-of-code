@@ -40,7 +40,7 @@ def flyover
   map
 end
 
-puts "Flyover: #{flyover.count} happy houses"
+solve!("Happy houses after flyover:", flyover.count)
 
 def robo_flyover
   map = base_map
@@ -58,4 +58,4 @@ def robo_flyover
   map
 end
 
-puts "Tandem Robo-flyover: #{robo_flyover.count} happy houses"
+solve!("Happy houses after tandem robo-flyover:", robo_flyover.count)

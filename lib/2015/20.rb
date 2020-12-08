@@ -12,26 +12,27 @@ def elves_for(house)
   end
 end
 
-def first_house(elf_sum)
+def first_house(target, multiplier)
   house = 1
+  elves = [1]
 
   loop do
+    total = elves.sum
+    break if total * multiplier >= target
+
     house += 1
     elves = elves_for(house)
     elves = yield(house, elves) if block_given?
-
-    elf_total = elves.inject(:+)
-    break unless elf_total < elf_sum
   end
 
   house
 end
 
-door = first_house(GIFTS / 10)
-puts "First house to receive #{GIFTS}:", door, nil
+door = first_house(GIFTS, 10)
+solve!("First house to receive #{GIFTS}:", door)
 
-door = first_house(GIFTS / 11) do |house, elves|
+door = first_house(GIFTS, 11) do |house, elves|
   cutoff = house / 50
   elves.reject { |elf| elf < cutoff }
 end
-puts "First house to receive #{GIFTS} (lazy elves):", door
+solve!("First house to receive #{GIFTS} (lazy elves):", door)
