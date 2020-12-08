@@ -15,7 +15,7 @@ class Runner
       @solutions = []
       overrides.each { |key, value| self.class.const_set(key, value) }
 
-      path = File.expand_path("../#{@date}.rb", File.dirname(__FILE__))
+      path = File.expand_path("./#{@date}.rb", File.dirname(__FILE__))
       eval(File.read(path), run_context(input.chomp("\n")).call, path)
 
       Marshal.dump(@solutions, write)
