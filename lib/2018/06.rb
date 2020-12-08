@@ -18,10 +18,12 @@ northmost, southmost = coordinates.minmax_by(&:y)
 paranoid_grid = {}
 friendly_grid = {}
 
+MAX_DISTANCE ||= 10_000
+
 (westmost.x..eastmost.x).each do |x|
   (northmost.y..southmost.y).each do |y|
     distances = coordinates.map { |c| c.distance_to(x, y) }
-    friendly_grid[[x, y]] = distances.sum < 10_000
+    friendly_grid[[x, y]] = distances.sum < MAX_DISTANCE
 
     minimum = distances.min
     next if distances.count(minimum) > 1

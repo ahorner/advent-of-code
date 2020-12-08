@@ -5,9 +5,12 @@ RULES = INPUT.split("\n").map do |line|
 end
 TASKS = RULES.flatten.uniq.sort
 
+TIME_OFFSET ||= 4
+WORKER_COUNT ||= 5
+
 def job_for(tasks, rules, starts)
   task = tasks.detect { |task| rules.none? { |_, s| s == task } }
-  [task, task.ord - 4 + starts] if task
+  [task, task.ord - TIME_OFFSET + starts] if task
 end
 
 def work(tasks, rules, worker_count = 1)
@@ -36,4 +39,4 @@ def work(tasks, rules, worker_count = 1)
 end
 
 solve!("The necessary sequence of tasks is:", work(TASKS, RULES)[:sequence])
-solve!("The time to complete with helpers is:", work(TASKS, RULES, 5)[:time])
+solve!("The time to complete with helpers is:", work(TASKS, RULES, WORKER_COUNT)[:time])

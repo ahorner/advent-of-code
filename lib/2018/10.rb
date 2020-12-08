@@ -33,7 +33,7 @@ def area(photons)
 end
 
 def render(photons)
-  map = Hash.new(" ")
+  map = Hash.new(".")
   photons.each { |p| map[p.position] = "#" }
 
   minx, maxx = photons.map(&:x).minmax

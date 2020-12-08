@@ -1,5 +1,5 @@
-COUNT = INPUT.to_i
 STARTING_RECIPES = [3, 7].freeze
+COUNT = INPUT.to_i
 
 class Search
   attr_reader :previous
@@ -12,9 +12,10 @@ class Search
 
   def add(recipes)
     recipes.each do |r|
+      break if found?
+
       @current.shift && @previous += 1 if @current.size == @term.size
       @current << r
-      break if found?
     end
   end
 
@@ -26,7 +27,7 @@ end
 recipes = STARTING_RECIPES.dup
 elves = [0, 1]
 
-search = Search.new(COUNT.digits.reverse)
+search = Search.new(INPUT.chars.map(&:to_i))
 search.add(recipes)
 
 loop do
@@ -36,7 +37,7 @@ loop do
   recipes.concat(new_recipes)
   search.add(new_recipes)
 
-  break if search.found?
+  break if search.found? && recipes.size >= COUNT + 10
 
   elves.each_index { |i| elves[i] = (elves[i] + scores[i] + 1) % recipes.size }
 end
