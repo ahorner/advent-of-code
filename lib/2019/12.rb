@@ -42,7 +42,9 @@ def tick!(moons)
 end
 
 moons = MOONS.map { |position| Moon.new(position) }
-1000.times { tick!(moons) }
+
+STEPS ||= 1_000
+STEPS.times { tick!(moons) }
 
 solve!("The total energy after 1000 steps is:", moons.sum(&:energy))
 

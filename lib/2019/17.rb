@@ -86,7 +86,7 @@ end
 x = 0
 y = 0
 
-map = Computer.new(INTCODE).run.each_with_object({}) do |tile, map|
+MAP = Computer.new(INTCODE).run.each_with_object({}) do |tile, map|
   if tile == 10
     x = 0
     y += 1
@@ -97,13 +97,13 @@ map = Computer.new(INTCODE).run.each_with_object({}) do |tile, map|
   end
 end
 
-intersections = map.select do |(x, y), tile|
-  tile == "#" && Navigator::MOVES.all? { |_, (i, j)| map[[x + i, y + j]] == "#" }
+intersections = MAP.select do |(x, y), tile|
+  tile == "#" && Navigator::MOVES.all? { |_, (i, j)| MAP[[x + i, y + j]] == "#" }
 end
 
 solve!("The sum of alignment parameters is:", intersections.sum { |(i, j), _| i * j })
 
-path = Navigator.new(map).path
+path = Navigator.new(MAP).path
 compressor = PathCompressor.new(path)
 instructions = [compressor.main_routine, *compressor.functions, "n"]
 

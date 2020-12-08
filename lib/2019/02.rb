@@ -11,7 +11,8 @@ def run(noun, verb)
   computer[0]
 end
 
-output = run(12, 2)
+SETTING ||= [12, 2].freeze
+output = run(*SETTING)
 solve!("The output of the program is:", output)
 
 TARGET_OUTPUT = 19_690_720

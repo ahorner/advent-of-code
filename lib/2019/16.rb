@@ -12,7 +12,8 @@ def pattern_for(position, index)
 end
 
 signal = SIGNAL.dup
-100.times { signal = fft(signal) }
+PHASES ||= 100
+PHASES.times { signal = fft(signal) }
 
 solve!("The first eight digits are:", signal.first(8).join)
 
@@ -27,6 +28,6 @@ end
 
 offset = SIGNAL.first(7).join.to_i
 signal = (SIGNAL * 10_000)[offset..]
-100.times { |_i| signal = partial_fft(signal) }
+PHASES.times { |_i| signal = partial_fft(signal) }
 
 solve!("The eight-digit message is:", signal.first(8).join)
