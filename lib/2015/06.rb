@@ -24,7 +24,7 @@ INSTRUCTIONS.each do |line|
   adjust_lights(line, grid)
 end
 
-solve!("All of the lights:", grid.count { |_, light| !light.nil? })
+solve!("All of the lights:", grid.values.count(&:itself))
 
 def adjust_brightness(instruction, lights)
   for_step(instruction) do |step, x, y|

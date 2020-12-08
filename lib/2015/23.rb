@@ -41,10 +41,11 @@ end
 registers = Hash.new(0)
 run(registers)
 
-solve!("Register B:", registers["b"])
+REGISTER ||= "b".freeze
+solve!("Register B:", registers[REGISTER])
 
 registers = Hash.new(0)
 registers["a"] = 1
 run(registers)
 
-solve!("Register B (with A starting at 1):", registers["b"])
+solve!("Register B (with A starting at 1):", registers[REGISTER])
