@@ -29,7 +29,7 @@ def correct_sue(sues, checker)
   sues.index(matches.first) + 1
 end
 
-validity = lambda { |reading, value, sue| sue[reading].nil? || sue[reading] == value }
+validity = ->(reading, value, sue) { sue[reading].nil? || sue[reading] == value }
 
 SUES = parse(INPUT.split("\n"))
 solve!("The number of the correct Sue:", correct_sue(SUES, validity))

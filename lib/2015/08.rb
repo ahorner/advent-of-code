@@ -1,7 +1,7 @@
 LINES = INPUT.split("\n")
 
 def evaluated_difference(line)
-  line.length - eval(line).length # rubocop:disable Security/Eval
+  line.length - eval(line).length
 end
 
 total = LINES.map { |line| evaluated_difference(line) }.sum

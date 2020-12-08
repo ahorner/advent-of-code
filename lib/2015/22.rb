@@ -136,7 +136,7 @@ class Battle
   end
 end
 
-HERO_STATS ||= [50, 0, 500]
+HERO_STATS ||= [50, 0, 500].freeze
 
 enemy_stats = INPUT.split("\n").map { |i| i.scan(/\d+/).join.to_i }
 enemy = Character.new(*enemy_stats)

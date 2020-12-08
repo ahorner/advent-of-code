@@ -19,7 +19,7 @@ describe "Day 7: Some Assembly Required" do
     let(:solution) { runner.execute!(input, part: 1, WIRE: "i") }
 
     it "finds the signal on the target wire" do
-      expect(solution).to eq(65079)
+      expect(solution).to eq(65_079)
     end
   end
 end

@@ -1,5 +1,5 @@
 WEAPONS = {
-  "Unarmed" => { cost: 0,  attack: 0, defense: 0 },
+  "Unarmed" => { cost: 0, attack: 0, defense: 0 },
   "Dagger" => { cost: 8,  attack: 4, defense: 0 },
   "Shortsword" => { cost: 10, attack: 5, defense: 0 },
   "Warhammer" => { cost: 25, attack: 6, defense: 0 },

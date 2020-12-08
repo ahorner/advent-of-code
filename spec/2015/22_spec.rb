@@ -12,7 +12,7 @@ describe "Day 22: Wizard Simulator 20XX" do
     end
 
     describe "for a harder battle" do
-      let(:input) {  "Hit Points: 14\nDamage: 8" }
+      let(:input) { "Hit Points: 14\nDamage: 8" }
 
       it "finds the optimal strategy" do
         expect(solution).to eq(641)

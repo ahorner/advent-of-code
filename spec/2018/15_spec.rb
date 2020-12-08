@@ -5,7 +5,7 @@ describe "Day 15: Beverage Bandits" do
 
   describe "Part One" do
     it "calculates the outcomes of various battles" do
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(27730)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(27_730)
         #######
         #.G...#
         #...EG#
@@ -14,7 +14,7 @@ describe "Day 15: Beverage Bandits" do
         #.....#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(36334)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(36_334)
         #######
         #G..#E#
         #E#E.E#
@@ -23,7 +23,7 @@ describe "Day 15: Beverage Bandits" do
         #...E.#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(39514)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(39_514)
         #######
         #E..EG#
         #.#G.E#
@@ -32,7 +32,7 @@ describe "Day 15: Beverage Bandits" do
         #..E#.#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(27755)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(27_755)
         #######
         #E.G#.#
         #.#G..#
@@ -41,7 +41,7 @@ describe "Day 15: Beverage Bandits" do
         #...E.#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(28944)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(28_944)
         #######
         #.E...#
         #.#..G#
@@ -50,7 +50,7 @@ describe "Day 15: Beverage Bandits" do
         #...#G#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 1)).to eq(18740)
+      expect(runner.execute!(<<~TXT, part: 1)).to eq(18_740)
         #########
         #G......#
         #.E.#...#
@@ -77,7 +77,7 @@ describe "Day 15: Beverage Bandits" do
         #.....#
         #######
       TXT
-      expect(runner.execute!(<<~TXT, part: 2)).to eq(31284)
+      expect(runner.execute!(<<~TXT, part: 2)).to eq(31_284)
         #######
         #E..EG#
         #.#G.E#

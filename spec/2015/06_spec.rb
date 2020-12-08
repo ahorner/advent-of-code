@@ -16,7 +16,6 @@ describe "Day 6: Probably a Fire Hazard" do
     it "counts the active lights after running" do
       expect(solution).to eq(1_000_000 - 1_000 - 4)
     end
-
   end
 
   describe "Part Two" do

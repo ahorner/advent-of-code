@@ -13,7 +13,7 @@ describe "Day 15: Science for Hungry People" do
     let(:solution) { runner.execute!(input, part: 1) }
 
     it "finds the score for the optimal cookie" do
-      expect(solution).to eq(62842880)
+      expect(solution).to eq(62_842_880)
     end
   end
 
@@ -21,7 +21,7 @@ describe "Day 15: Science for Hungry People" do
     let(:solution) { runner.execute!(input, part: 2) }
 
     it "finds the score for the optimal calorie-conscious cookie" do
-      expect(solution).to eq(57600000)
+      expect(solution).to eq(57_600_000)
     end
   end
 end

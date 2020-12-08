@@ -36,7 +36,7 @@ lines = INPUT.split("\n").reject(&:empty?)
 
 FORMULA = lines.pop
 REACTIONS = lines.map { |line| Reaction.new(*line.split(" => ")) }
-ELECTRON = "e"
+ELECTRON = "e".freeze
 
 all_reactions = REACTIONS.each_with_object(Set.new) do |reaction, set|
   set.merge(reaction.possible_formulas(FORMULA))

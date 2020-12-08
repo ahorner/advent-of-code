@@ -45,7 +45,7 @@ end
 circuit = Circuit.new
 circuit.assemble!(INPUT.split("\n"))
 
-WIRE ||= "a"
+WIRE ||= "a".freeze
 a = circuit.signal(WIRE)
 solve!("First pass:", a)
 
