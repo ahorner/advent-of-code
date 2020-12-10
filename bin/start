@@ -1,27 +1,43 @@
 #!/usr/bin/env ruby
 
-require "date"
-require "fileutils"
+require "time"
 require "thor"
+require "open-uri"
+
+TIME_FORMAT = "%Y/%d".freeze
 
 class CodeGenerator < Thor::Group
   include Thor::Actions
 
   argument :date
+  argument :datepath
 
   def self.source_root
     File.expand_path("../", File.dirname(__FILE__))
   end
 
   def generate!
-    create_file("inputs/#{date}.txt", skip: true)
-    create_file("lib/#{date}.rb", skip: true)
-    template("templates/spec/code_spec.rb.tt", "spec/#{date}_spec.rb", skip: true)
+    create_file("inputs/#{datepath}.txt", force: true) { get_input(date) }
+    create_file("lib/#{datepath}.rb", skip: true)
+    template("templates/spec/code_spec.rb.tt", "spec/#{datepath}_spec.rb", skip: true)
+  end
+
+  private
+
+  def get_input(date)
+    URI.open("https://adventofcode.com/#{date.year}/day/#{date.day}/input", headers).read
+  rescue OpenURI::HTTPError, Errno::ENOENT
+    ""
+  end
+
+  def headers
+    @headers ||= { "Cookie" => ENV.fetch("COOKIE") { File.read(".session/cookie") } }
   end
 end
 
-date = ARGV[0] || (Time.new.localtime("-05:00") + 3600).strftime("%Y/%d")
+date = ARGV[0] ? Time.strptime(ARGV[0], TIME_FORMAT) : Time.new.localtime("-05:00")
+datepath = date.strftime(TIME_FORMAT)
 
-puts "Creating code and input placeholders for #{date}"
-CodeGenerator.start([date])
+puts "Creating code and input placeholders for #{datepath}"
+CodeGenerator.start([date, datepath])
 puts "DONE"
