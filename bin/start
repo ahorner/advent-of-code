@@ -38,6 +38,6 @@ end
 date = ARGV[0] ? Time.strptime(ARGV[0], TIME_FORMAT) : Time.new.localtime("-05:00")
 datepath = date.strftime(TIME_FORMAT)
 
-puts "Creating code and input placeholders for #{datepath}"
+puts("Creating placeholders for https://adventofcode.com/#{date.year}/day/#{date.day}")
 CodeGenerator.start([date, datepath])
 puts "DONE"
