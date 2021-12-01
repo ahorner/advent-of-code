@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe "Day N: Challenge Title" do
+RSpec.describe "Day <%= date.day %>: Challenge Title" do
   let(:runner) { Runner.new("<%= datepath %>") }
   let(:input) do
     <<~TXT
