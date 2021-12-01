@@ -30,7 +30,7 @@ class RuleSet
   end
 end
 
-RULESET = RuleSet.new(Hash[INPUT.scan(RULE_MATCHER)])
+RULESET = RuleSet.new(INPUT.scan(RULE_MATCHER).to_h)
 solve!("The number of matching messages is:", MESSAGES.count { |message| RULESET.match?(message) })
 
 RULESET.rules["8"] = "(#{RULESET['42']}+)" # 8: 42 | 42 8

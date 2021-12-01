@@ -13,6 +13,9 @@ Layout/ArgumentAlignment:
 Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: false
 
+Lint/OrAssignmentToConstant:
+  Enabled: false
+
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 

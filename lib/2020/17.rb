@@ -1,5 +1,5 @@
 INITIAL = INPUT.split("\n").each_with_object({}).with_index do |(row, grid), y|
-  row.split("").each_with_index { |cube, x| grid[[x, y]] = cube }
+  row.chars.each_with_index { |cube, x| grid[[x, y]] = cube }
 end
 
 ACTIVE = "#".freeze
@@ -9,7 +9,7 @@ def cycle(grid, dimensions: 3)
   adjacencies = ([-1, 0, 1].repeated_permutation(dimensions).to_a - [[0] * dimensions]).freeze
 
   grid = grid.each_with_object({}) do |(coord, cube), final|
-    extended_coord = coord + [0] * (dimensions - coord.length)
+    extended_coord = coord + ([0] * (dimensions - coord.length))
     final[extended_coord] = cube
   end
 

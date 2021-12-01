@@ -1,4 +1,4 @@
-STEPS = INPUT.split("")
+STEPS = INPUT.chars
 
 final_floor = STEPS.count("(") - STEPS.count(")")
 solve!("Final floor:", final_floor)

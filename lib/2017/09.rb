@@ -1,4 +1,4 @@
-STREAM = INPUT.split("")
+STREAM = INPUT.chars
 
 group_score = 0
 garbage_score = 0

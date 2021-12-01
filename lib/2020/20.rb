@@ -122,6 +122,6 @@ IMAGE = Image.new(arrangement.flat_map do |tiles|
 end)
 
 monsters = MonsterScanner.new(MONSTER).count_for(IMAGE)
-roughness = IMAGE.flatten.count("#") - MONSTER.flatten.count("#") * monsters
+roughness = IMAGE.flatten.count("#") - (MONSTER.flatten.count("#") * monsters)
 
 solve!("The water roughness of the sea monster habitat is:", roughness)

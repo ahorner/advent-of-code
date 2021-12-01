@@ -52,7 +52,7 @@ class ScheduleSolver
     quotient, remainder = a.divmod(b)
     s, t = extended_gcd(b, remainder)
 
-    [t, s - quotient * t]
+    [t, s - (quotient * t)]
   end
 end
 

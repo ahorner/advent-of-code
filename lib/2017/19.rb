@@ -6,7 +6,7 @@ class Tube
     @opening = nil
 
     input.split("\n").each_with_index do |row, y|
-      row.split("").each_with_index do |cell, x|
+      row.chars.each_with_index do |cell, x|
         @grid[[x, y]] =
           case cell
           when " "

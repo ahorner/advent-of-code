@@ -1,4 +1,4 @@
-LABELS = INPUT.split("").map(&:to_i).freeze
+LABELS = INPUT.chars.map(&:to_i).freeze
 
 class Cup
   attr_reader :label

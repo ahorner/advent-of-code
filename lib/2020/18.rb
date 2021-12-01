@@ -24,7 +24,7 @@ class Expression
       stack = []
       operators = []
 
-      @expression.tr(" ", "").split("").each do |token|
+      @expression.tr(" ", "").chars.each do |token|
         case token
         when *OPERATIONS.keys
           op2 = operators.last

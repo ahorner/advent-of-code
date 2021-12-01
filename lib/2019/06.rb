@@ -1,4 +1,4 @@
-ORBITS = Hash[INPUT.split("\n").map { |orbit| orbit.split(")").reverse }]
+ORBITS = INPUT.split("\n").map { |orbit| orbit.split(")").reverse }.to_h
 
 class OrbitMap
   CENTER = "COM".freeze

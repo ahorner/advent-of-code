@@ -73,7 +73,7 @@ INPUT.split("\n").each do |line|
       data[:damage].to_i,
       data[:damage_type].to_sym,
       data[:initiative].to_i,
-      Hash[multipliers],
+      multipliers.to_h,
     )
   when "Infection:"
     team = Group::TEAMS[:infection]

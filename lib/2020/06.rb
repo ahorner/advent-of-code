@@ -1,5 +1,5 @@
 GROUPED_ANSWERS = INPUT.split("\n\n").map do |group|
-  group.split("\n").map { |person| person.split("") }
+  group.split("\n").map(&:chars)
 end
 
 solve!("The number of positive responses is:",

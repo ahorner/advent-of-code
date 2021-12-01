@@ -23,4 +23,4 @@ end
 
 noun, verb = search(INTCODE, TARGET_OUTPUT)
 
-solve!("The noun/verb code for the target output is:", noun * 100 + verb)
+solve!("The noun/verb code for the target output is:", (noun * 100) + verb)

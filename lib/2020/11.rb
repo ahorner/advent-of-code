@@ -1,5 +1,5 @@
 FLOORPLAN = INPUT.split("\n").each_with_object({}).with_index do |(line, grid), y|
-  line.split("").each_with_index { |seat, x| grid[[x, y]] = seat }
+  line.chars.each_with_index { |seat, x| grid[[x, y]] = seat }
 end
 
 ADJACENCIES = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]].freeze

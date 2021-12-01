@@ -28,7 +28,7 @@ class Blueprint
 end
 
 class Droid
-  MOVEMENTS = Hash[[1, 2, 3, 4].zip(Blueprint::DIRECTIONS)].freeze
+  MOVEMENTS = [1, 2, 3, 4].zip(Blueprint::DIRECTIONS).to_h.freeze
   REVERSE = { 1 => 2, 2 => 1, 3 => 4, 4 => 3 }.freeze
   SUCCESS_CODES = [1, 2].freeze
 

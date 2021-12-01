@@ -110,7 +110,7 @@ start = nil
 goals = []
 
 INPUT.split("\n").each_with_index do |line, row|
-  line.split("").each_with_index do |char, column|
+  line.chars.each_with_index do |char, column|
     node = [row, column]
 
     case char

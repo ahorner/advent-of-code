@@ -25,6 +25,6 @@ solve!("The check value of the knot is:", knot_value)
 
 MAGIC_NUMBERS = [17, 31, 73, 47, 23].freeze
 result = tie_knot(INPUT.bytes + MAGIC_NUMBERS, 64)
-knot_hash = result.each_slice(16).map { |block| format("%02x", block.inject(:"^")) }.join
+knot_hash = result.each_slice(16).map { |block| format("%02x", block.inject(:^)) }.join
 
 solve!("The Knot Hash for the input is:", knot_hash)

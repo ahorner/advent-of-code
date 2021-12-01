@@ -6,7 +6,7 @@ def seat_id(boarding_pass)
   row = boarding_pass[:row].tr("FB", "01").to_i(2)
   column = boarding_pass[:column].tr("LR", "01").to_i(2)
 
-  row * 8 + column
+  (row * 8) + column
 end
 
 PASSES = INPUT.split("\n").each_with_object(Set.new) do |pass, seat_ids|

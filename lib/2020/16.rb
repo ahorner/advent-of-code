@@ -2,7 +2,7 @@ TICKET_MATCHER = /your ticket:\n(?<ticket>[0-9,]+)/.freeze
 NEARBY_MATCHER = /nearby tickets:\n(?<tickets>[0-9,\n]+)/.freeze
 FIELD_MATCHER = /^(?<field>.+): (?<ranges>.+)$/.freeze
 
-FIELDS = Hash[INPUT.scan(FIELD_MATCHER)].transform_values do |ranges|
+FIELDS = INPUT.scan(FIELD_MATCHER).to_h.transform_values do |ranges|
   ranges.split(" or ").map do |range|
     starts, ends = range.split("-").map(&:to_i)
     starts..ends

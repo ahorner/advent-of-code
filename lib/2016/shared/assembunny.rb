@@ -28,11 +28,11 @@ class Assembunny
 
   def valid?(instruction, x, y, z)
     arity = [x, y, z].compact.count
-    case instruction.to_sym
-    when :mul then arity == 3
-    when :cpy, :jnz then arity == 2
-    else arity == 1
-    end
+    arity == case instruction.to_sym
+             when :mul then 3
+             when :cpy, :jnz then 2
+             else 1
+             end
   end
 
   def toggled(line)

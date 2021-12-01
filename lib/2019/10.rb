@@ -1,5 +1,5 @@
 GRID = INPUT.split("\n").each_with_object({}).with_index do |(line, field), y|
-  line.split("").each_with_index { |c, x| field[[x, y]] = (c == "#") }
+  line.chars.each_with_index { |c, x| field[[x, y]] = (c == "#") }
 end
 
 class AsteroidField
@@ -65,4 +65,4 @@ solve!("The number of detectable asteroids from the station is:", field.visible_
 TARGET = 200
 x, y = field.sweep_from!(*station)[TARGET - 1]
 
-solve!("The number of the 200th vaporized asteroid will be:", x * 100 + y)
+solve!("The number of the 200th vaporized asteroid will be:", (x * 100) + y)

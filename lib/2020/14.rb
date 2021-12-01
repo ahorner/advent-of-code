@@ -9,7 +9,7 @@ class InputMask
   end
 
   def apply(value)
-    value & zeroes | ones
+    (value & zeroes) | ones
   end
 
   private
@@ -40,7 +40,7 @@ class AddressMask
   end
 
   def base_for(n)
-    mask.each_with_index.reduce(0) { |base, (c, i)| c == n ? base | 1 << i : base }
+    mask.each_with_index.reduce(0) { |base, (c, i)| c == n ? base | (1 << i) : base }
   end
 
   def address_base
@@ -55,9 +55,9 @@ class AddressMask
     @address_masks ||= begin
       floating_bits = mask.map.with_index { |c, i| i if c == "X" }.compact
 
-      (0..2**floating_bits.size).map do |template|
+      (0..(2**floating_bits.size)).map do |template|
         floating_bits.each_with_index.reduce(mask_base) do |address, (bit, index)|
-          address | (template & (1 << index)) << (bit - index)
+          address | ((template & (1 << index)) << (bit - index))
         end
       end
     end

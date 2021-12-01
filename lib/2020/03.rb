@@ -1,4 +1,4 @@
-PATTERN = INPUT.split("\n").map { |line| line.split("") }
+PATTERN = INPUT.split("\n").map(&:chars)
 SLOPES = [
   [1, 1],
   [3, 1],

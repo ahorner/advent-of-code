@@ -1,4 +1,4 @@
-SEQUENCE = INPUT.split("").map(&:to_i)
+SEQUENCE = INPUT.chars.map(&:to_i)
 
 def sum(sequence, gap = 1)
   sum = 0

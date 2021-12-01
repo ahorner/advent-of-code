@@ -53,7 +53,7 @@ class Grid
     @lights = {}
 
     instructions.split("\n").each_with_index do |row, x|
-      row.split("").each_with_index do |state, y|
+      row.chars.each_with_index do |state, y|
         @lights[[x, y]] = Light.new(self, x, y, state == "#")
       end
     end

@@ -39,7 +39,7 @@ end
 
 def grid_for(input, size)
   first_row = Row.new
-  input.split("").each { |char| first_row << (char == "^") }
+  input.chars.each { |char| first_row << (char == "^") }
 
   current_row = first_row
   grid = (size - 1).times.map { current_row = current_row.next }

@@ -38,7 +38,7 @@ solve!("The number of `mul` instructions run is:", runs["mul"])
 require "prime"
 
 values = INSTRUCTIONS.map { |i| i[2].to_i }
-starts = values[0] * values[4] - values[5]
+starts = (values[0] * values[4]) - values[5]
 ends = starts - values[7]
 nonprimes = (starts..ends).step(-values[30]).count { |n| !Prime.prime?(n) }
 

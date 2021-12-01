@@ -1,4 +1,4 @@
-PIXELS = INPUT.split("").map(&:to_i)
+PIXELS = INPUT.chars.map(&:to_i)
 WIDTH ||= 25
 HEIGHT ||= 6
 
@@ -17,7 +17,7 @@ IMAGE = LAYERS.each_with_object(Array.new(WIDTH * HEIGHT)) do |layer, image|
 end
 
 screen = HEIGHT.times.each_with_object("") do |y, output|
-  WIDTH.times { |x| output << OUTPUTS[IMAGE[WIDTH * y + x]] }
+  WIDTH.times { |x| output << OUTPUTS[IMAGE[(WIDTH * y) + x]] }
   output << "\n"
 end
 

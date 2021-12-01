@@ -7,7 +7,7 @@ class KnotHash
 
   def hash
     tie_knot(64).each_slice(16).map do |block|
-      format("%02x", block.inject(:"^"))
+      format("%02x", block.inject(:^))
     end.join
   end
 
@@ -35,7 +35,7 @@ end
 GRID_SIZE = 128
 
 def hash_row(row)
-  KnotHash.new("#{INPUT}-#{row}").hash.hex.to_s(2).rjust(GRID_SIZE, "0").split("")
+  KnotHash.new("#{INPUT}-#{row}").hash.hex.to_s(2).rjust(GRID_SIZE, "0").chars
 end
 
 MAP = (0...GRID_SIZE).each_with_object({}) do |i, grid|

@@ -1,7 +1,7 @@
 SIZE = 5
 ADJACENCIES = [[0, -1, 0], [1, 0, 0], [0, 1, 0], [-1, 0, 0]].freeze
 GRID = INPUT.split("\n").each_with_index.each_with_object(Hash.new(".")) do |(line, y), grid|
-  line.split("").each_with_index { |tile, x| grid[[x, y, 0]] = tile }
+  line.chars.each_with_index { |tile, x| grid[[x, y, 0]] = tile }
 end
 
 def tick(grid, neighbors)
@@ -19,7 +19,7 @@ end
 def biodiversity(grid)
   (0...SIZE).sum do |y|
     (0...SIZE).sum do |x|
-      grid[[x, y, 0]] == "#" ? 2**(y * SIZE + x) : 0
+      grid[[x, y, 0]] == "#" ? 2**((y * SIZE) + x) : 0
     end
   end
 end
@@ -62,7 +62,7 @@ recursive_neighbors = proc do |(x, y, z)|
     if x + i == SIZE / 2 && y + j == SIZE / 2
       SIZE.times.map(&RECURSIVE_ADJACENCIES[[i, j, k]]).map { |m, n| [m, n, z + 1] }
     elsif x + i < 0 || y + j < 0 || x + i >= SIZE || y + j >= SIZE
-      [[SIZE / 2 + i, SIZE / 2 + j, z - 1]]
+      [[(SIZE / 2) + i, (SIZE / 2) + j, z - 1]]
     else
       [[x + i, y + j, z + k]]
     end

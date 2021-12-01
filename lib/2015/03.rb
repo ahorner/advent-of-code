@@ -24,7 +24,7 @@ class Sled
 end
 
 def instructions
-  INPUT.split("")
+  INPUT.chars
 end
 
 def base_map

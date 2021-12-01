@@ -28,7 +28,7 @@ def evolve(state, generations)
   generations.times do |gen|
     state, offset = result(state, offset)
     new_score = score(state, offset)
-    score_deltas << new_score - current_score
+    score_deltas << (new_score - current_score)
 
     if score_deltas.size >= 3 && score_deltas.last(3).uniq.size == 1
       current_score += score_deltas.last * (generations - gen)

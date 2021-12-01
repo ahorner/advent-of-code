@@ -1,5 +1,5 @@
 MAZE = INPUT.split("\n").each_with_index.each_with_object({}) do |(line, y), maze|
-  line.split("").each_with_index { |cell, x| maze[[x, y]] = cell }
+  line.chars.each_with_index { |cell, x| maze[[x, y]] = cell }
 end
 
 class Donut
@@ -25,7 +25,7 @@ class Donut
 
   def estimator(target)
     if @recursive
-      proc { |(x, y, z)| (target[0] - x).abs + (target[1] - y).abs + (target[2] - z).abs**3 }
+      proc { |(x, y, z)| (target[0] - x).abs + (target[1] - y).abs + ((target[2] - z).abs**3) }
     else
       proc { 0 }
     end

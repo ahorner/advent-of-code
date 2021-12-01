@@ -1,4 +1,4 @@
-SIGNAL = INPUT.split("").map(&:to_i)
+SIGNAL = INPUT.chars.map(&:to_i)
 BASE_PATTERN = [0, 1, 0, -1].freeze
 
 def fft(signal)

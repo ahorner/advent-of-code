@@ -30,4 +30,4 @@ grid = {}
 solve!("The number of beam points in a 50x50 grid is:", grid.count(&:last))
 
 x, y = beam.fit_point(100)
-solve!("The best 100x100 is:", x * 10_000 + y)
+solve!("The best 100x100 is:", (x * 10_000) + y)

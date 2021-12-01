@@ -43,7 +43,7 @@ class Kitchen
         [attribute[:name].to_sym, attribute[:value].to_i]
       end
 
-      @ingredients[ingredient[:name]] = Hash[attributes]
+      @ingredients[ingredient[:name]] = attributes.to_h
     end
   end
 

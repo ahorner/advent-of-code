@@ -1,5 +1,5 @@
 GRID = INPUT.split("\n").each_with_index.each_with_object({}) do |(line, y), grid|
-  line.split("").each_with_index { |tile, x| grid[[x, y]] = tile }
+  line.chars.each_with_index { |tile, x| grid[[x, y]] = tile }
 end.freeze
 
 class Vault
@@ -57,7 +57,7 @@ class Vault
   def entrances
     @entrances ||= begin
       entrance_tiles = @map.select { |_, c| c == ENTRANCE }
-      Hash[entrance_tiles.map.with_index { |(tile, _), chamber| ["@#{chamber}", tile] }]
+      entrance_tiles.map.with_index { |(tile, _), chamber| ["@#{chamber}", tile] }.to_h
     end
   end
 
