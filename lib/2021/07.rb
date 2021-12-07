@@ -4,7 +4,7 @@ RANGE = Range.new(*POSITIONS.minmax)
 def fuel_needed(position, increasing: false)
   POSITIONS.sum do |i|
     fuel = (i - position).abs
-    increasing ? fuel * (fuel+1) / 2 : fuel
+    increasing ? fuel * (fuel + 1) / 2 : fuel
   end
 end
 

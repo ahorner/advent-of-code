@@ -22,5 +22,3 @@ end
 
 solve!("The number of lanternfish after 80 days is:", fish_after(80))
 solve!("The number of lanternfish after 256 days is:", fish_after(256))
-
-

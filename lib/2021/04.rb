@@ -19,14 +19,13 @@ class Board
         next unless @numbers[i][j] == number
 
         @marks[i][j] = true
-        return
+        return true
       end
     end
   end
 
   def solved?
-    @marks.any? { |line| line.all? } ||
-      @width.times.any? { |i| @marks.all? { |row| row[i] } }
+    @marks.any?(&:all?) || @width.times.any? { |i| @marks.all? { |row| row[i] } }
   end
 
   def score
@@ -40,7 +39,7 @@ participants = BOARDS.map { |b| Board.new(b) }
 scores = DRAW_ORDER.each_with_object([]) do |number, scores|
   participants.each { |p| p.mark!(number) }
   winners, participants = participants.partition(&:solved?)
-  winners.each { |board| scores << board.score * number }
+  winners.each { |board| scores << (board.score * number) }
 end
 
 solve!("The score of the winning board is:", scores.first)
