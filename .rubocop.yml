@@ -64,6 +64,9 @@ Style/SpecialGlobalVars:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Style/StructInheritance:
+  Enabled: false
+
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
