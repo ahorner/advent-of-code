@@ -109,7 +109,7 @@ def organize(rooms)
   queue = Heap.new { |a, b| a[0] < b[0] }
   queue << [0, burrow, [burrow]]
 
-  costs = Hash.new
+  costs = {}
   costs[burrow] = 0
 
   loop do
@@ -117,6 +117,7 @@ def organize(rooms)
     break energy if burrow.solved?
 
     next if energy > costs[burrow]
+
     costs[burrow] = energy
 
     burrow.hallway.each_with_index do |a, i|
