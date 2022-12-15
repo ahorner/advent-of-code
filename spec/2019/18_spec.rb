@@ -33,7 +33,7 @@ RSpec.describe "Day 18: Many-Worlds Interpretation" do
           #.....@.a.B.c.d.A.e.F.g#
           ########################
         TXT
-        136 => <<~TXT,
+        136 => <<~TXT
           #################
           #i.G..c...e..H.p#
           ########.########
@@ -84,7 +84,7 @@ RSpec.describe "Day 18: Many-Worlds Interpretation" do
           #fEbA.#.FgHi#
           #############
         TXT
-        72 => <<~TXT,
+        72 => <<~TXT
           #############
           #g#f.D#..h#l#
           #F###e#E###.#

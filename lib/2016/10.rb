@@ -27,8 +27,8 @@ class Node
   end
 end
 
-GRANT_PATTERN = /value (?<value>\d+) goes to (?<bot>bot \d+)/.freeze
-ASSIGN_PATTERN = /(?<bot>bot \d+) gives low to (?<low_output>.+ \d+) and high to (?<high_output>.+ \d+)/.freeze
+GRANT_PATTERN = /value (?<value>\d+) goes to (?<bot>bot \d+)/
+ASSIGN_PATTERN = /(?<bot>bot \d+) gives low to (?<low_output>.+ \d+) and high to (?<high_output>.+ \d+)/
 TARGET_VALUES ||= [17, 61].freeze
 TARGET_NODES = ["output 0", "output 1", "output 2"].freeze
 

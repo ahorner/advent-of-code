@@ -1,4 +1,4 @@
-MATCHER = /(?<players>\d+) players; last marble is worth (?<points>\d+) points/.freeze
+MATCHER = /(?<players>\d+) players; last marble is worth (?<points>\d+) points/
 
 class Marble
   attr_accessor :next, :prev

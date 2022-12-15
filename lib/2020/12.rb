@@ -1,4 +1,4 @@
-INSTRUCTION_MATCHER = /^(?<direction>[A-Z])(?<count>\d+)$/.freeze
+INSTRUCTION_MATCHER = /^(?<direction>[A-Z])(?<count>\d+)$/
 INSTRUCTIONS = INPUT.split("\n").map { |line| line.match(INSTRUCTION_MATCHER) }.freeze
 
 class Ship
@@ -6,7 +6,7 @@ class Ship
     "N" => [0, -1],
     "E" => [1, 0],
     "S" => [0, 1],
-    "W" => [-1, 0],
+    "W" => [-1, 0]
   }.freeze
 
   def initialize(origin: [0, 0], direction: [1, 0])
@@ -31,7 +31,7 @@ class Ship
 
   def turn!(amount)
     (amount.abs / 90).times do
-      @dx, @dy = amount > 0 ? [-@dy, @dx] : [@dy, -@dx]
+      @dx, @dy = (amount > 0) ? [-@dy, @dx] : [@dy, -@dx]
     end
   end
 

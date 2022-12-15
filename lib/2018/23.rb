@@ -17,14 +17,14 @@ class Nanobot
   end
 end
 
-MATCHER = /pos=<(?<x>-?\d+),(?<y>-?\d+),(?<z>-?\d+)>, r=(?<range>\d+)/.freeze
+MATCHER = /pos=<(?<x>-?\d+),(?<y>-?\d+),(?<z>-?\d+)>, r=(?<range>\d+)/
 NANOBOTS = INPUT.split("\n").map do |line|
   data = line.match(MATCHER)
   Nanobot.new(
     data[:x].to_i,
     data[:y].to_i,
     data[:z].to_i,
-    data[:range].to_i,
+    data[:range].to_i
   )
 end
 
@@ -44,7 +44,7 @@ downsample *= RESOLUTION until downsample > signal.range
 ranges = [
   NANOBOTS.map { |n| n.x / downsample }.minmax,
   NANOBOTS.map { |n| n.y / downsample }.minmax,
-  NANOBOTS.map { |n| n.z / downsample }.minmax,
+  NANOBOTS.map { |n| n.z / downsample }.minmax
 ]
 
 distance = loop do

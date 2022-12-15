@@ -7,7 +7,7 @@ def deep_sum(object, ignore: nil)
   when Array
     object.map { |i| deep_sum(i, ignore: ignore) }.sum
   when Hash
-    return 0 if object.values.include?(ignore)
+    return 0 if object.value?(ignore)
 
     deep_sum(object.values, ignore: ignore)
   else

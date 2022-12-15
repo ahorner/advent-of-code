@@ -10,7 +10,7 @@ puts "Running code for #{date}:", nil
 input_file = "inputs/#{date}.txt"
 if File.exist?(input_file)
   runner = Runner.new(date, logger: $stdout)
-  runner.execute!(File.open(input_file).read)
+  runner.execute!(File.read(input_file))
 end
 
 puts "DONE"

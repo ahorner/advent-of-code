@@ -12,7 +12,7 @@ class Image < SimpleDelegator
       base.transpose,
       base.transpose.map(&:reverse),
       base.transpose.reverse,
-      base.transpose.reverse.map(&:reverse),
+      base.transpose.reverse.map(&:reverse)
     ].uniq.map { |grid| Image.new(grid) }
   end
 end
@@ -43,7 +43,7 @@ class Tile
   end
 end
 
-TILE_MATCHER = /Tile (\d+):\n([.#\n]+)/.freeze
+TILE_MATCHER = /Tile (\d+):\n([.#\n]+)/
 TILES = INPUT.scan(TILE_MATCHER).map do |id, grid|
   grid = Image.new(grid.split("\n").map(&:chars))
   Tile.new(grid, id: id.to_i)
@@ -60,11 +60,11 @@ def arrangement_for(tiles, x, y, layout = Array.new(SIZE) { Array.new(SIZE) })
     tile.variants.each do |variant|
       next unless
         (x == 0 || layout[y][x - 1].fits?(variant, :right)) &&
-        (y == 0 || layout[y - 1][x].fits?(variant, :bottom))
+          (y == 0 || layout[y - 1][x].fits?(variant, :bottom))
 
       updated = layout.dup.tap { |l| l[y][x] = variant }
       i = (x + 1) % SIZE
-      j = i == 0 ? y + 1 : y
+      j = (i == 0) ? y + 1 : y
 
       arrangement = arrangement_for(tiles, i, j, updated)
       return arrangement if arrangement

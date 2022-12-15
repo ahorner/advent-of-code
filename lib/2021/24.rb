@@ -13,9 +13,9 @@
 # that other inputs have the same characteristics, but different values.
 
 HANDLERS = INPUT.split("inp w\n").drop(1).freeze
-DIVISOR_MATCHER = /^div z (?<divisor>\d+)$/.freeze
-HEAD_MATCHER = /\Aadd y -?\d+\z/.freeze
-TAIL_MATCHER = /\Aadd x -?\d+\z/.freeze
+DIVISOR_MATCHER = /^div z (?<divisor>\d+)$/
+HEAD_MATCHER = /\Aadd y -?\d+\z/
+TAIL_MATCHER = /\Aadd x -?\d+\z/
 
 PAIRS = begin
   pairs = {}
@@ -45,15 +45,15 @@ end.freeze
 
 def max_for(pairs)
   pairs.each_with_object(Array.new(pairs.length * 2)) do |((i, j), diff), value|
-    value[i] = diff < 0 ? 9 : 9 - diff
-    value[j] = diff < 0 ? 9 + diff : 9
+    value[i] = (diff < 0) ? 9 : 9 - diff
+    value[j] = (diff < 0) ? 9 + diff : 9
   end.join
 end
 
 def min_for(pairs)
   pairs.each_with_object(Array.new(pairs.length * 2)) do |((i, j), diff), value|
-    value[i] = diff < 0 ? 1 - diff : 1
-    value[j] = diff < 0 ? 1 : 1 + diff
+    value[i] = (diff < 0) ? 1 - diff : 1
+    value[j] = (diff < 0) ? 1 : 1 + diff
   end.join
 end
 

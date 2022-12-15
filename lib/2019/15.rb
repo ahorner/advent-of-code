@@ -29,7 +29,7 @@ end
 
 class Droid
   MOVEMENTS = [1, 2, 3, 4].zip(Blueprint::DIRECTIONS).to_h.freeze
-  REVERSE = { 1 => 2, 2 => 1, 3 => 4, 4 => 3 }.freeze
+  REVERSE = {1 => 2, 2 => 1, 3 => 4, 4 => 3}.freeze
   SUCCESS_CODES = [1, 2].freeze
 
   def initialize(_program)
@@ -39,8 +39,8 @@ class Droid
   end
 
   def blueprint
-    map = { [@x, @y] => Blueprint::DROID }
-    queues = { [@x, @y] => MOVEMENTS.keys }
+    map = {[@x, @y] => Blueprint::DROID}
+    queues = {[@x, @y] => MOVEMENTS.keys}
     path = []
 
     loop do
@@ -129,7 +129,7 @@ class Pathfinder
 
         queue.add(
           new_steps + estimator.call(new_spot),
-          [new_spot, [*path, new_spot], new_steps],
+          [new_spot, [*path, new_spot], new_steps]
         )
       end
     end

@@ -1,4 +1,4 @@
-MATCHER = /\AStep (\w+) must be finished before step (\w+) can begin\.\z/.freeze
+MATCHER = /\AStep (\w+) must be finished before step (\w+) can begin\.\z/
 RULES = INPUT.split("\n").map do |line|
   match = line.match(MATCHER)
   [match[1], match[2]]
@@ -34,7 +34,7 @@ def work(tasks, rules, worker_count = 1)
       tasks -= [job&.first]
     end
 
-    break { sequence: sequence, time: time } if workers.all?(&:nil?)
+    break {sequence: sequence, time: time} if workers.all?(&:nil?)
   end
 end
 

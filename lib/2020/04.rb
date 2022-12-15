@@ -1,4 +1,4 @@
-FIELD_MATCHER = /(?<name>.{3}):(?<value>.*)/.freeze
+FIELD_MATCHER = /(?<name>.{3}):(?<value>.*)/
 PASSPORTS = INPUT.split("\n\n").map do |data|
   data.split(/\n| /).each_with_object({}) do |field, passport|
     field_data = field.match(FIELD_MATCHER)
@@ -27,7 +27,7 @@ VALIDITY_RULES = {
   "hcl" => /^\#\h{6}$/,
   "ecl" => /^(amb|blu|brn|gry|grn|hzl|oth)$/,
   "pid" => /^\d{9}$/,
-  "cid" => ->(_) { true },
+  "cid" => ->(_) { true }
 }.freeze
 
 def required_fields?(passport)

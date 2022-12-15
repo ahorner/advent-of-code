@@ -39,7 +39,7 @@ class SnailfishNumber < Struct.new(:pair)
     case number
     when Numeric
       half = number / 2.0
-      number >= SPLIT_AT ? [true, [half.floor, half.ceil]] : [false, number]
+      (number >= SPLIT_AT) ? [true, [half.floor, half.ceil]] : [false, number]
     else
       changed, n = split(number[0])
       return [true, [n, number[1]]] if changed
@@ -67,5 +67,5 @@ SNAILFISH_NUMBERS = INPUT.split("\n").map { |line| SnailfishNumber.new(eval(line
 solve!("The magnitude of the final sum is:", SNAILFISH_NUMBERS.inject(:+).magnitude)
 solve!(
   "The largest magnitude of any sum is:",
-  SNAILFISH_NUMBERS.permutation(2).map { |a, b| (a + b).magnitude }.max,
+  SNAILFISH_NUMBERS.permutation(2).map { |a, b| (a + b).magnitude }.max
 )

@@ -1,5 +1,5 @@
 class Particle
-  PARTICLE_MATCHER = /p=<(?<position>.+)>, v=<(?<velocity>.+)>, a=<(?<acceleration>.+)>/.freeze
+  PARTICLE_MATCHER = /p=<(?<position>.+)>, v=<(?<velocity>.+)>, a=<(?<acceleration>.+)>/
 
   attr_reader :id, :position
 

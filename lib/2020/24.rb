@@ -4,7 +4,7 @@ NEIGHBORS = {
   "se" => [1, 0, -1],
   "sw" => [0, 1, -1],
   "e" => [1, -1, 0],
-  "w" => [-1, 1, 0],
+  "w" => [-1, 1, 0]
 }.freeze
 
 DIRECTIONS = INPUT.split("\n").map { |line| line.scan(Regexp.union(NEIGHBORS.keys)).to_a }.freeze

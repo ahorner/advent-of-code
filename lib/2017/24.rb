@@ -9,7 +9,7 @@ class Bridge
   def extended_with(component)
     Bridge.new(
       @components + [component],
-      component[0] == @open ? component[1] : component[0],
+      (component[0] == @open) ? component[1] : component[0]
     )
   end
 

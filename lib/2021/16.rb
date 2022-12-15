@@ -32,9 +32,9 @@ class Transmission
     1 => ->(signals) { signals.map(&:value).inject(:*) },
     2 => ->(signals) { signals.map(&:value).min },
     3 => ->(signals) { signals.map(&:value).max },
-    5 => ->(signals) { signals[0].value > signals[1].value ? 1 : 0 },
-    6 => ->(signals) { signals[0].value < signals[1].value ? 1 : 0 },
-    7 => ->(signals) { signals[0].value == signals[1].value ? 1 : 0 },
+    5 => ->(signals) { (signals[0].value > signals[1].value) ? 1 : 0 },
+    6 => ->(signals) { (signals[0].value < signals[1].value) ? 1 : 0 },
+    7 => ->(signals) { (signals[0].value == signals[1].value) ? 1 : 0 }
   }.freeze
 
   def initialize(packet)
@@ -53,7 +53,7 @@ class Transmission
 
       Signal.new(
         version + signals.sum(&:version),
-        CALCULATIONS[type_id].call(signals),
+        CALCULATIONS[type_id].call(signals)
       )
     end
   end

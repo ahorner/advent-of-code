@@ -34,8 +34,8 @@ standard_keypad = Keypad.new(
   [
     %w[1 2 3],
     %w[4 5 6],
-    %w[7 8 9],
-  ],
+    %w[7 8 9]
+  ]
 )
 
 solve!("The first keycode is:", code(standard_keypad))
@@ -46,7 +46,7 @@ wonky_keypad = Keypad.new(
     [nil, "2", "3", "4", nil],
     %w[5 6 7 8 9],
     [nil, "A", "B", "C", nil],
-    [nil, nil, "D", nil, nil],
-  ],
+    [nil, nil, "D", nil, nil]
+  ]
 )
 solve!("The second keycode is:", code(wonky_keypad))

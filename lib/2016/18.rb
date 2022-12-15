@@ -3,7 +3,7 @@ class Row
     [true, false, false],
     [true, true, false],
     [false, true, true],
-    [false, false, true],
+    [false, false, true]
   ].freeze
 
   def initialize

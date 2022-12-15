@@ -1,7 +1,7 @@
 require_relative "./shared/intcode"
 
 class Room
-  NAME_MATCHER = /^== (?<name>.+) ==$/.freeze
+  NAME_MATCHER = /^== (?<name>.+) ==$/
   DIRECTIONS = %w[north east south west].freeze
   TRAPS = ["escape pod", "giant electromagnet", "infinite loop", "molten lava", "photons"].freeze
   CHECKPOINT = "Security Checkpoint".freeze
@@ -27,9 +27,9 @@ end
 
 class Droid
   # rubocop:disable Layout/LineLength
-  PASSWORD_MATCHER = /You should be able to get in by typing (?<password>\d+) on the keypad at the main airlock\./.freeze
+  PASSWORD_MATCHER = /You should be able to get in by typing (?<password>\d+) on the keypad at the main airlock\./
   # rubocop:enable Layout/LineLength
-  OVERWEIGHT_MATCHER = /lighter/.freeze
+  OVERWEIGHT_MATCHER = /lighter/
 
   def initialize(intcode)
     @computer = Computer.new(intcode)

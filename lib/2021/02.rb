@@ -1,4 +1,4 @@
-INSTRUCTION_MATCHER = /(?<instruction>\w+) (?<value>\d+)/.freeze
+INSTRUCTION_MATCHER = /(?<instruction>\w+) (?<value>\d+)/
 INSTRUCTIONS = INPUT.split("\n").map do |line|
   match = line.match(INSTRUCTION_MATCHER)
   [match[:instruction].to_sym, match[:value].to_i]

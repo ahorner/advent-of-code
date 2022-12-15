@@ -50,7 +50,7 @@ def group_members(x, y, members = [])
     [x, y + 1],
     [x + 1, y],
     [x, y - 1],
-    [x - 1, y],
+    [x - 1, y]
   ].each do |i, j|
     next unless MAP[[i, j]] == "1"
     next if members.include?([i, j])

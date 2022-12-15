@@ -11,7 +11,7 @@ loop do
   NETWORK.each_with_index do |computer, id|
     outputs = computer.run(inputs: queues[id].shift || [-1])
     outputs.each_slice(3) do |address, x, y|
-      address == NAT_ADDRESS ? nat << [x, y] : queues[address] << [x, y]
+      (address == NAT_ADDRESS) ? nat << [x, y] : queues[address] << [x, y]
     end
   end
 

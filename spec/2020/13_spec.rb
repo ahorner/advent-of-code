@@ -30,7 +30,7 @@ RSpec.describe "Day 13: Shuttle Search" do
         "67,7,59,61" => 754_018,
         "67,x,7,59,61" => 779_210,
         "67,7,x,59,61" => 1_261_476,
-        "1789,37,47,1889" => 1_202_161_486,
+        "1789,37,47,1889" => 1_202_161_486
       }.each do |bus_ids, timestamp|
         expect(runner.execute!("0\n#{bus_ids}", part: 2)).to eq(timestamp)
       end

@@ -4,7 +4,7 @@ WIDTH = CUCUMBERS[0].size
 
 HERDS = %w[> v].freeze
 EMPTY = ".".freeze
-MOVEMENTS = { ">" => [1, 0], "v" => [0, 1] }.freeze
+MOVEMENTS = {">" => [1, 0], "v" => [0, 1]}.freeze
 
 def step(cucumbers)
   HERDS.each_with_object(Array.new(HEIGHT) { Array.new(WIDTH) { "." } }) do |herd, updated|
@@ -16,7 +16,7 @@ def step(cucumbers)
         nx = (x + dx) % WIDTH
         ny = (y + dy) % HEIGHT
 
-        move = herd == ">" ? cucumbers[ny][nx] == "." : cucumbers[ny][nx] != herd && updated[ny][nx] == "."
+        move = (herd == ">") ? cucumbers[ny][nx] == "." : cucumbers[ny][nx] != herd && updated[ny][nx] == "."
 
         fx, fy = move ? [nx, ny] : [x, y]
         updated[fy][fx] = cucumber

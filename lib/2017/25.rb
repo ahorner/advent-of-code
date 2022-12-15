@@ -1,21 +1,21 @@
-START_MATCHER = /Begin in state (?<state>\w)\./.freeze
-STEPS_MATCHER = /Perform a diagnostic checksum after (?<steps>\d+) steps\./.freeze
+START_MATCHER = /Begin in state (?<state>\w)\./
+STEPS_MATCHER = /Perform a diagnostic checksum after (?<steps>\d+) steps\./
 
 # rubocop:disable Layout/LineLength
-RULE_MATCHER = /In state (?<state>\w):\n  If the current value is 0:\n    - Write the value (?<zero_value>\d)\.\n    - Move one slot to the (?<zero_direction>\w+)\.\n    - Continue with state (?<zero_state>\w)\.\n  If the current value is 1:\n    - Write the value (?<one_value>\d)\.\n    - Move one slot to the (?<one_direction>\w+)\.\n    - Continue with state (?<one_state>\w)\./.freeze
+RULE_MATCHER = /In state (?<state>\w):\n  If the current value is 0:\n    - Write the value (?<zero_value>\d)\.\n    - Move one slot to the (?<zero_direction>\w+)\.\n    - Continue with state (?<zero_state>\w)\.\n  If the current value is 1:\n    - Write the value (?<one_value>\d)\.\n    - Move one slot to the (?<one_direction>\w+)\.\n    - Continue with state (?<one_state>\w)\./
 # rubocop:enable Layout/LineLength
 
 rules = {}
 INPUT.scan(RULE_MATCHER) do
   rules[[$~[:state], 0]] = {
     value: $~[:zero_value].to_i,
-    move: $~[:zero_direction] == "left" ? -1 : 1,
-    state: $~[:zero_state],
+    move: ($~[:zero_direction] == "left") ? -1 : 1,
+    state: $~[:zero_state]
   }
   rules[[$~[:state], 1]] = {
     value: $~[:one_value].to_i,
-    move: $~[:one_direction] == "left" ? -1 : 1,
-    state: $~[:one_state],
+    move: ($~[:one_direction] == "left") ? -1 : 1,
+    state: $~[:one_state]
   }
 end
 

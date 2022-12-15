@@ -1,6 +1,6 @@
 require "matrix"
 
-POSITION_MATCHER = /x=(?<x>-?\d+), y=(?<y>-?\d+)/.freeze
+POSITION_MATCHER = /x=(?<x>-?\d+), y=(?<y>-?\d+)/
 ROW ||= 2_000_000
 SEARCH_SPACE ||= 4_000_000
 FREQUENCY_KEY = 4_000_000
@@ -60,7 +60,7 @@ end
 
 solve!(
   "The number of beacon-less positions is:",
-  impossible_spaces(ROW),
+  impossible_spaces(ROW)
 )
 
 x, y =
@@ -71,5 +71,5 @@ x, y =
 
 solve!(
   "The tuning frequency of the distress beacon is:",
-  (x * FREQUENCY_KEY) + y,
+  (x * FREQUENCY_KEY) + y
 )

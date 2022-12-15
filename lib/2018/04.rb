@@ -1,5 +1,5 @@
-MATCHER = /\A\[(?<year>\d+)-(?<month>\d+)-(?<date>\d+) (?<hour>\d+):(?<minute>\d+)\] (?<activity>.+)\z/.freeze
-SHIFT_MATCHER = /Guard #(?<id>\d+) begins shift/.freeze
+MATCHER = /\A\[(?<year>\d+)-(?<month>\d+)-(?<date>\d+) (?<hour>\d+):(?<minute>\d+)\] (?<activity>.+)\z/
+SHIFT_MATCHER = /Guard #(?<id>\d+) begins shift/
 
 class Guard
   attr_reader :id

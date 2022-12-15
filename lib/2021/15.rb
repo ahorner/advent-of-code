@@ -49,7 +49,7 @@ class Spelunker
     queue = Heap.new { |a, b| a[0] < b[0] }
     queue << [0, start]
 
-    costs = { start => 0 }
+    costs = {start => 0}
 
     loop do
       break if queue.empty?

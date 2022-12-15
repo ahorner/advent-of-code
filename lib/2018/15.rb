@@ -1,5 +1,5 @@
 class Unit
-  TEAMS = { elf: "E", goblin: "G" }.freeze
+  TEAMS = {elf: "E", goblin: "G"}.freeze
 
   attr_reader :team, :attack
   attr_accessor :hp, :position
@@ -29,7 +29,7 @@ class Map
 
   def search(start, targets)
     queue = [[start, 0]]
-    graph = { start => nil }
+    graph = {start => nil}
     destinations = []
 
     loop do
@@ -120,7 +120,7 @@ outcome, = combat!(GRID.dup)
 solve!("Outcome after standard combat:", outcome)
 
 outcome = 1.step do |elf_bonus|
-  score, deaths = combat!(GRID.dup, { Unit::TEAMS[:elf] => elf_bonus })
+  score, deaths = combat!(GRID.dup, {Unit::TEAMS[:elf] => elf_bonus})
   break score unless deaths[Unit::TEAMS[:elf]] > 0
 end
 

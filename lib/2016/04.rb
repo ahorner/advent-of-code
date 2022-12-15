@@ -1,4 +1,4 @@
-MATCHER = /\A(?<code>.*)-(?<sector_id>[0-9]+)\[(?<checksum>.*)\]\z/.freeze
+MATCHER = /\A(?<code>.*)-(?<sector_id>[0-9]+)\[(?<checksum>.*)\]\z/
 ALPHABET = ("a".."z").to_a.freeze
 TARGET_ROOM ||= "northpoleobjectstorage".freeze
 
@@ -16,7 +16,7 @@ end
 
 def decrypt(code, shift)
   code.chars.map do |c|
-    c == "-" ? " " : ALPHABET[(ALPHABET.index(c) + shift.to_i) % ALPHABET.size]
+    (c == "-") ? " " : ALPHABET[(ALPHABET.index(c) + shift.to_i) % ALPHABET.size]
   end.join
 end
 

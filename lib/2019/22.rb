@@ -1,7 +1,7 @@
 OPERATION_MATCHERS = {
   cut: /\Acut (?<count>.+)\z/,
   deal: /\Adeal with increment (?<count>.+)\z/,
-  flip: /\Adeal into new stack\z/,
+  flip: /\Adeal into new stack\z/
 }.freeze
 
 OPERATIONS = INPUT.split("\n").map do |operation|
@@ -44,7 +44,7 @@ class Deck
       operations = simplify(operations + operations)
     end
 
-    operations = phases.flat_map { |power, ops| shuffles & power == 0 ? [] : ops }
+    operations = phases.flat_map { |power, ops| (shuffles & power == 0) ? [] : ops }
     simplify(operations).reverse_each do |operation, argument|
       position =
         case operation

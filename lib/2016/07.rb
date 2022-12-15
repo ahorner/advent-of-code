@@ -1,4 +1,4 @@
-ABBA_MATCHER = /(.)((?!\1).)\2\1/.freeze
+ABBA_MATCHER = /(.)((?!\1).)\2\1/
 
 def supports_tls?(supernet, hypernet)
   supernet.any? { |s| s =~ ABBA_MATCHER } && hypernet.none? { |s| s =~ ABBA_MATCHER }
@@ -15,7 +15,7 @@ end
 count = count_ips { |supernet, hypernet| supports_tls?(supernet, hypernet) }
 solve!("The number of IPs that support TLS:", count)
 
-ABA_MATCHER = /\A.*([^,])((?!\1)[^,])\1.*~.*\2\1\2.*\z/.freeze
+ABA_MATCHER = /\A.*([^,])((?!\1)[^,])\1.*~.*\2\1\2.*\z/
 
 def supports_ssl?(supernet, hypernet)
   [supernet.join(","), hypernet.join(",")].join("~") =~ ABA_MATCHER

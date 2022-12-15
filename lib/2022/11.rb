@@ -17,7 +17,7 @@ class Monkey
     @items = data[:items].split(", ").map(&:to_i)
     @operation = {
       operator: data[:operator].to_sym,
-      value: data[:value],
+      value: data[:value]
     }
 
     @test = data[:test].to_i
@@ -35,7 +35,7 @@ class Monkey
       item = @items.pop
 
       value = @operation[:value]
-      value = value == "old" ? item : value.to_i
+      value = (value == "old") ? item : value.to_i
 
       item =
         case @operation[:operator]
@@ -85,7 +85,7 @@ end
 
 solve!(
   "The level of monkey business is:",
-  monkey_business(20),
+  monkey_business(20)
 )
 
 # We can reset the worry level of an item via modulo when it exceeds
@@ -93,5 +93,5 @@ solve!(
 LIMITER = MONKEYS.values.map(&:test).reduce(:*)
 solve!(
   "The level of very worrisome monkey business is:",
-  monkey_business(10_000, LIMITER),
+  monkey_business(10_000, LIMITER)
 )

@@ -6,7 +6,7 @@ end
 def checksum(string)
   hash = ""
   string.chars.each_slice(2) do |(x, y)|
-    hash << (x == y ? "1" : "0")
+    hash << ((x == y) ? "1" : "0")
   end
 
   hash.length.even? ? checksum(hash) : hash

@@ -29,7 +29,7 @@ def cycle(grid, dimensions: 3)
     result[coord] =
       case grid[coord]
       when ACTIVE then [2, 3].include?(count) ? ACTIVE : INACTIVE
-      else count == 3 ? ACTIVE : INACTIVE
+      else (count == 3) ? ACTIVE : INACTIVE
       end
   end
 

@@ -1,7 +1,7 @@
 require "digest"
 
 class Maze
-  OPEN_MATCHER = /[b-f]/.freeze
+  OPEN_MATCHER = /[b-f]/
 
   def initialize(width = 4, height = 4)
     @grid = {}
@@ -14,7 +14,7 @@ class Maze
       [x, y - 1, :U],
       [x, y + 1, :D],
       [x - 1, y, :L],
-      [x + 1, y, :R],
+      [x + 1, y, :R]
     ].select do |(i, j, direction)|
       open?(string, direction) &&
         i >= 0 && i < @width &&
@@ -30,7 +30,7 @@ class Maze
         U: digest[0] =~ OPEN_MATCHER,
         D: digest[1] =~ OPEN_MATCHER,
         L: digest[2] =~ OPEN_MATCHER,
-        R: digest[3] =~ OPEN_MATCHER,
+        R: digest[3] =~ OPEN_MATCHER
       }
     end
 
@@ -101,7 +101,7 @@ class Pathfinder
 
         queue.add(
           new_steps,
-          [new_spot, [*path, new_spot], new_steps],
+          [new_spot, [*path, new_spot], new_steps]
         )
       end
     end

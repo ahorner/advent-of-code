@@ -1,8 +1,8 @@
-MATCHER = /(?<static>x|y)=(?<point>\d+), (?<range>x|y)=(?<min>\d+)..(?<max>\d+)/.freeze
+MATCHER = /(?<static>x|y)=(?<point>\d+), (?<range>x|y)=(?<min>\d+)..(?<max>\d+)/
 CLAY = INPUT.split("\n").each_with_object(Hash.new(false)) do |line, clay|
   data = line.match(MATCHER)
   (data[:min].to_i..data[:max].to_i).each do |i|
-    point = { data[:static].to_sym => data[:point].to_i, data[:range].to_sym => i }
+    point = {data[:static].to_sym => data[:point].to_i, data[:range].to_sym => i}
     clay[[point[:x], point[:y]]] = true
   end
 end
@@ -39,7 +39,7 @@ class Spring
     left -= 1 until @clay[[left - 1, y]] || !rests?(left, y)
     right += 1 until @clay[[right + 1, y]] || !rests?(right, y)
 
-    state = rests?(left, y) && rests?(right, y) ? RESTING : FLOWING
+    state = (rests?(left, y) && rests?(right, y)) ? RESTING : FLOWING
     (left..right).each { |i| @water[[i, y]] = state }
     [left, right].each { |i| flow!(i, y) unless rests?(i, y) }
   end

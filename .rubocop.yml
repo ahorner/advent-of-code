@@ -1,80 +1,12 @@
+require: standard
+
+inherit_gem:
+  standard: config/base.yml
+
 AllCops:
-  DisplayCopNames: true
-  TargetRubyVersion: 2.7.2
-  NewCops: enable
+  TargetRubyVersion: 3.1.3
   SuggestExtensions: false
-
-Layout/LineLength:
-  Max: 120
-
-Layout/ArgumentAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Lint/BinaryOperatorWithIdenticalOperands:
-  Enabled: false
-
 Lint/OrAssignmentToConstant:
   Enabled: false
-
-Lint/ShadowingOuterLocalVariable:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Enabled: false
-
-Naming/MethodParameterName:
-  Enabled: false
-
 Security/Eval:
   Enabled: false
-
-Security/MarshalLoad:
-  Enabled: false
-
-Style/CaseEquality:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/NumericPredicate:
-  EnforcedStyle: comparison
-
-Style/SignalException:
-  EnforcedStyle: only_raise
-
-Style/SpecialGlobalVars:
-  EnforcedStyle: use_perl_names
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Style/StructInheritance:
-  Enabled: false
-
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
-
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: comma
-
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
-
-Style/TrivialAccessors:
-  ExactNameMatch: true

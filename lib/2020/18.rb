@@ -3,10 +3,10 @@ LINES = INPUT.split("\n")
 class Expression
   OPERATIONS = {
     "+" => ->(a, b) { a + b },
-    "*" => ->(a, b) { a * b },
+    "*" => ->(a, b) { a * b }
   }.freeze
 
-  def initialize(expression, precedence: { "*" => 2, "+" => 1 })
+  def initialize(expression, precedence: {"*" => 2, "+" => 1})
     @expression = expression
     @precedence = precedence
   end
@@ -45,8 +45,8 @@ class Expression
   end
 end
 
-values = LINES.map { |line| Expression.new(line, precedence: { "*" => 1, "+" => 1 }).evaluate }
+values = LINES.map { |line| Expression.new(line, precedence: {"*" => 1, "+" => 1}).evaluate }
 solve!("The total with neutral-precedence operations is:", values.sum)
 
-values = LINES.map { |line| Expression.new(line, precedence: { "*" => 1, "+" => 2 }).evaluate }
+values = LINES.map { |line| Expression.new(line, precedence: {"*" => 1, "+" => 2}).evaluate }
 solve!("The total with reverse-precedence operations is:", values.sum)

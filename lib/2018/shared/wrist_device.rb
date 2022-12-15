@@ -35,12 +35,12 @@ class WristDevice
       when :bori then registers[a] | b
       when :setr then registers[a]
       when :seti then a
-      when :gtir then a > registers[b] ? 1 : 0
-      when :gtri then registers[a] > b ? 1 : 0
-      when :gtrr then registers[a] > registers[b] ? 1 : 0
-      when :eqir then a == registers[b] ? 1 : 0
-      when :eqri then registers[a] == b ? 1 : 0
-      when :eqrr then registers[a] == registers[b] ? 1 : 0
+      when :gtir then (a > registers[b]) ? 1 : 0
+      when :gtri then (registers[a] > b) ? 1 : 0
+      when :gtrr then (registers[a] > registers[b]) ? 1 : 0
+      when :eqir then (a == registers[b]) ? 1 : 0
+      when :eqri then (registers[a] == b) ? 1 : 0
+      when :eqrr then (registers[a] == registers[b]) ? 1 : 0
       end
 
     registers

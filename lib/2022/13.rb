@@ -33,7 +33,7 @@ end
 
 solve!(
   "The sum of ordered pair indices is:",
-  PAIRS.each_with_index.sum { |(l, r), i| l < r ? i + 1 : 0 },
+  PAIRS.each_with_index.sum { |(l, r), i| (l < r) ? i + 1 : 0 }
 )
 
 DIVIDERS = [Packet.new([[2]]), Packet.new([[6]])].freeze
@@ -41,5 +41,5 @@ PACKETS = (PAIRS.flatten(1) + DIVIDERS).sort
 
 solve!(
   "The decoder key for the distress signal is:",
-  DIVIDERS.map { |p| PACKETS.index(p) + 1 }.reduce(:*),
+  DIVIDERS.map { |p| PACKETS.index(p) + 1 }.reduce(:*)
 )

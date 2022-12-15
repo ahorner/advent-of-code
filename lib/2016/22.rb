@@ -1,5 +1,5 @@
 # rubocop:disable Layout/LineLength
-NODE_PATTERN = %r{/dev/grid/node-x(?<x>\d+)-y(?<y>\d+)\s+(?<size>\d+)T\s+(?<used>\d+)T\s+(?<avail>\d+)T\s+(?<percent>\d+)%}.freeze
+NODE_PATTERN = %r{/dev/grid/node-x(?<x>\d+)-y(?<y>\d+)\s+(?<size>\d+)T\s+(?<used>\d+)T\s+(?<avail>\d+)T\s+(?<percent>\d+)%}
 # rubocop:enable Layout/LineLength
 
 class DevNode
@@ -50,7 +50,7 @@ def adjacent_nodes(nodes, x, y)
     [x + 1, y],
     [x - 1, y],
     [x, y + 1],
-    [x, y - 1],
+    [x, y - 1]
   ].select { |(i, j)| nodes.key?([i, j]) }
 end
 
@@ -59,7 +59,7 @@ nodes = INPUT.split("\n")[2..].each_with_object({}) do |line, list|
   list[[matches[:x].to_i, matches[:y].to_i]] = DevNode.new(
     matches[:size].to_i,
     matches[:used].to_i,
-    matches[:avail].to_i,
+    matches[:avail].to_i
   )
 end
 

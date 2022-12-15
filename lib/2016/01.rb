@@ -12,7 +12,7 @@ class Dude
 
   def turn(direction)
     pos = DIRECTIONS.index(@facing)
-    pos += (direction == "L" ? -1 : 1)
+    pos += ((direction == "L") ? -1 : 1)
     @facing = DIRECTIONS[pos % DIRECTIONS.length]
   end
 

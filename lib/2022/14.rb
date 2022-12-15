@@ -51,7 +51,7 @@ end
 
 solve!(
   "The count of resting grains of sand above the void is:",
-  cave.grains,
+  cave.grains
 )
 
 loop do
@@ -61,5 +61,5 @@ end
 
 solve!(
   "The count of resting grains of sand with a floor is:",
-  cave.grains,
+  cave.grains
 )

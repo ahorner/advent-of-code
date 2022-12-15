@@ -70,7 +70,7 @@ SKILLS = [
   Skill.new("MAGIC MISSILE", 53) { |_hero, enemy| enemy.hit(4) },
   Skill.new("SHIELD", 113, 6) { |hero, _enemy| hero.armor = 7 },
   Skill.new("POISON", 173, 6) { |_hero, enemy| enemy.hit(3) },
-  Skill.new("RECHARGE", 229, 5) { |hero, _enemy| hero.mp += 101 },
+  Skill.new("RECHARGE", 229, 5) { |hero, _enemy| hero.mp += 101 }
 ].freeze
 
 class Battle

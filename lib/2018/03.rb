@@ -1,6 +1,6 @@
 require "set"
 
-MATCHER = /\#(?<id>\d+) @ (?<x>\d+),(?<y>\d+): (?<width>\d+)x(?<height>\d+)/.freeze
+MATCHER = /\#(?<id>\d+) @ (?<x>\d+),(?<y>\d+): (?<width>\d+)x(?<height>\d+)/
 
 Range.class_eval do
   def overlaps?(other)
@@ -49,7 +49,7 @@ claims = INPUT.split("\n").map do |line|
     x: matches[:x].to_i,
     y: matches[:y].to_i,
     width: matches[:width].to_i,
-    height: matches[:height].to_i,
+    height: matches[:height].to_i
   )
 end
 

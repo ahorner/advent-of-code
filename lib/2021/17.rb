@@ -1,4 +1,4 @@
-TARGET_MATCHER = /\Atarget area: x=(?<x>.+), y=(?<y>.+)\z/.freeze
+TARGET_MATCHER = /\Atarget area: x=(?<x>.+), y=(?<y>.+)\z/
 
 ranges = INPUT.match(TARGET_MATCHER)
 

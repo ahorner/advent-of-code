@@ -51,7 +51,7 @@ STEP_MATCHER = /
   x=(?<x>-?\d+\.\.-?\d+),
   y=(?<y>-?\d+\.\.-?\d+),
   z=(?<z>-?\d+\.\.-?\d+)
-/x.freeze
+/x
 
 STEPS = INPUT.split("\n").map do |line|
   match = line.match(STEP_MATCHER)
@@ -61,8 +61,8 @@ STEPS = INPUT.split("\n").map do |line|
     Cuboid.new(
       x: eval(match[:x]),
       y: eval(match[:y]),
-      z: eval(match[:z]),
-    ),
+      z: eval(match[:z])
+    )
   ]
 end.freeze
 

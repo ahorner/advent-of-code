@@ -23,16 +23,17 @@ class Assembunny
   private
 
   def value(string)
-    string =~ /-?\d+/ ? string.to_i : registers[string]
+    /-?\d+/.match?(string.to_s) ? string.to_i : registers[string]
   end
 
   def valid?(instruction, x, y, z)
     arity = [x, y, z].compact.count
-    arity == case instruction.to_sym
-             when :mul then 3
-             when :cpy, :jnz then 2
-             else 1
-             end
+    arity ==
+      case instruction.to_sym
+      when :mul then 3
+      when :cpy, :jnz then 2
+      else 1
+      end
   end
 
   def toggled(line)

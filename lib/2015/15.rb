@@ -16,7 +16,7 @@ class Cookie
       score_for(:capacity),
       score_for(:durability),
       score_for(:flavor),
-      score_for(:texture),
+      score_for(:texture)
     ].inject(:*)
   end
 
@@ -28,8 +28,8 @@ class Cookie
 end
 
 class Kitchen
-  INGREDIENT_PATTERN = /^(?<name>.+): (?<attributes>.+)$/.freeze
-  ATTRIBUTE_MATCHER = /\b(?<name>\w+) (?<value>-?\d+)\b/.freeze
+  INGREDIENT_PATTERN = /^(?<name>.+): (?<attributes>.+)$/
+  ATTRIBUTE_MATCHER = /\b(?<name>\w+) (?<value>-?\d+)\b/
 
   def initialize
     @ingredients = {}

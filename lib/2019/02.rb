@@ -18,7 +18,7 @@ solve!("The output of the program is:", output)
 TARGET_OUTPUT = 19_690_720
 
 def search(_intcode, target)
-  (0..99).each { |n| (0..99).each { |v| return [n, v] if run(n, v) == target } }
+  100.times { |n| 100.times { |v| return [n, v] if run(n, v) == target } }
 end
 
 noun, verb = search(INTCODE, TARGET_OUTPUT)

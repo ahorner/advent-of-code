@@ -64,7 +64,7 @@ class Donut
 
   def portals
     @portals ||= @map.each_with_object(Hash.new { |h, k| h[k] = [] }) do |((x, y), cell), portals|
-      next unless cell =~ /[[:alpha:]]/
+      next unless /[[:alpha:]]/.match?(cell)
 
       if @map[[x + 1, y]] == PATH
         portals[@map[[x - 1, y]] + cell] << [x + 1, y]
@@ -131,7 +131,7 @@ class Pathfinder
         new_steps = steps + 1
         queue.add(
           new_steps + estimator.call(new_spot),
-          [new_spot, [*path, new_spot], new_steps],
+          [new_spot, [*path, new_spot], new_steps]
         )
       end
     end

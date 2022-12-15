@@ -1,11 +1,11 @@
 require "set"
 
 def grid_to(input, &value_for)
-  grid = { [0, 0] => 1 }
-  current = { x: 0, y: 0 }
+  grid = {[0, 0] => 1}
+  current = {x: 0, y: 0}
   used = {
-    min: { x: 0, y: 0 },
-    max: { x: 0, y: 0 },
+    min: {x: 0, y: 0},
+    max: {x: 0, y: 0}
   }
 
   value = 1
@@ -16,8 +16,8 @@ def grid_to(input, &value_for)
     current[direction] = current[direction] + move
 
     if (move < 0 && used[:min][direction] > current[direction]) ||
-       (move > 0 && used[:max][direction] < current[direction])
-      type = move < 0 ? :min : :max
+        (move > 0 && used[:max][direction] < current[direction])
+      type = (move < 0) ? :min : :max
       used[type][direction] = current[direction]
 
       direction, move =

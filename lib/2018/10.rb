@@ -1,4 +1,4 @@
-MATCHER = /position=<(?<x>\s*-?\d+),(?<y>\s*-?\d+)> velocity=<(?<dx>\s*-?\d+),(?<dy>\s*-?\d+)>/.freeze
+MATCHER = /position=<(?<x>\s*-?\d+),(?<y>\s*-?\d+)> velocity=<(?<dx>\s*-?\d+),(?<dy>\s*-?\d+)>/
 
 class Photon
   attr_reader :x, :y

@@ -21,7 +21,7 @@ end
 solve!("The number of steps to escape is:", count)
 
 count = steps(LIST.dup) do |list, index|
-  list[index] += list[index] >= 3 ? -1 : 1
+  list[index] += (list[index] >= 3) ? -1 : 1
 end
 
 solve!("The number of steps to escape (with decrementing) is:", count)

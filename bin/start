@@ -31,7 +31,7 @@ class CodeGenerator < Thor::Group
   end
 
   def headers
-    @headers ||= { "Cookie" => ENV.fetch("COOKIE") { File.read(".session/cookie") } }
+    @headers ||= {"Cookie" => ENV.fetch("COOKIE") { File.read(".session/cookie") }}
   end
 end
 

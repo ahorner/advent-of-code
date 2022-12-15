@@ -5,12 +5,12 @@ GRID = INPUT.split("\n").each_with_index.each_with_object(Hash.new(".")) do |(li
 end
 
 def tick(grid, neighbors)
-  positions = grid.flat_map { |position, tile| tile == "#" ? [position] + neighbors.call(position) : [] }.uniq
+  positions = grid.flat_map { |position, tile| (tile == "#") ? [position] + neighbors.call(position) : [] }.uniq
   positions.each_with_object(Hash.new(".")) do |position, updated|
     bugs = neighbors.call(position).count { |neighbor| grid[neighbor] == "#" }
     updated[position] =
       case grid[position]
-      when "#" then bugs == 1 ? "#" : "."
+      when "#" then (bugs == 1) ? "#" : "."
       when "." then [1, 2].include?(bugs) ? "#" : "."
       end
   end
@@ -19,7 +19,7 @@ end
 def biodiversity(grid)
   (0...SIZE).sum do |y|
     (0...SIZE).sum do |x|
-      grid[[x, y, 0]] == "#" ? 2**((y * SIZE) + x) : 0
+      (grid[[x, y, 0]] == "#") ? 2**((y * SIZE) + x) : 0
     end
   end
 end
@@ -54,7 +54,7 @@ RECURSIVE_ADJACENCIES = {
   [0, -1, 0] => ->(x) { [x, SIZE - 1] },
   [1, 0, 0] => ->(y) { [0, y] },
   [0, 1, 0] => ->(x) { [x, 0] },
-  [-1, 0, 0] => ->(y) { [SIZE - 1, y] },
+  [-1, 0, 0] => ->(y) { [SIZE - 1, y] }
 }.freeze
 
 recursive_neighbors = proc do |(x, y, z)|

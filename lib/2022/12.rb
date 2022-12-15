@@ -38,7 +38,7 @@ class Climber
     queue = Heap.new { |a, b| a[0] < b[0] }
     queue << [0, goal]
 
-    costs = { goal => 0 }
+    costs = {goal => 0}
 
     loop do
       break costs if queue.empty?
@@ -70,11 +70,11 @@ steps = climber.steps_to(GOAL)
 
 solve!(
   "The minimum step count from S to E is:",
-  steps[START],
+  steps[START]
 )
 
 trailheads = MAP.filter_map { |spot, elevation| steps[spot] if elevation == "a" }
 solve!(
   "The minimum step count from an optimal trailhead is:",
-  trailheads.min,
+  trailheads.min
 )

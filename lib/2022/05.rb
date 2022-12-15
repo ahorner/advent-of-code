@@ -7,7 +7,7 @@ STACKS =
     stack.flatten.compact.reject { |crate| crate == " " }
   end
 
-STEP_MATCHER = /move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/.freeze
+STEP_MATCHER = /move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/
 PROCEDURE = procedure.enum_for(:scan, STEP_MATCHER).map { Regexp.last_match }
 
 def rearrange(stacks, step, multiple: false)
@@ -23,11 +23,11 @@ end
 stacks = PROCEDURE.reduce(STACKS) { |result, step| rearrange(result, step) }
 solve!(
   "The top crates after rearranging are:",
-  stacks.map(&:last).join,
+  stacks.map(&:last).join
 )
 
 stacks = PROCEDURE.reduce(STACKS) { |result, step| rearrange(result, step, multiple: true) }
 solve!(
   "The top crates after rearranging with the CrateMover 9001 are:",
-  stacks.map(&:last).join,
+  stacks.map(&:last).join
 )

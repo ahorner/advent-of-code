@@ -63,7 +63,7 @@ class State
   end
 
   def pair_layout
-    locations = Hash.new { |h, k| h[k] = { generator: nil, chip: nil } }
+    locations = Hash.new { |h, k| h[k] = {generator: nil, chip: nil} }
 
     @floorplan.each_with_index do |items, floor|
       items.each { |item| locations[item.element][item.type] = floor }
@@ -89,9 +89,9 @@ def steps(floorplan)
   end
 end
 
-FLOOR_MATCHER = /\AThe (?<floor>.+) floor contains (?<contents>.+)\.\z/.freeze
-CHIP_MATCHER = /a (?<element>\w+)-compatible microchip/.freeze
-GENERATOR_MATCHER = /a (?<element>\w+) generator/.freeze
+FLOOR_MATCHER = /\AThe (?<floor>.+) floor contains (?<contents>.+)\.\z/
+CHIP_MATCHER = /a (?<element>\w+)-compatible microchip/
+GENERATOR_MATCHER = /a (?<element>\w+) generator/
 
 floorplan = INPUT.split("\n").map do |line|
   floor = line.match(FLOOR_MATCHER)
@@ -109,7 +109,7 @@ new_items = [
   Item.new("elerium", :generator),
   Item.new("elerium", :chip),
   Item.new("dilithium", :generator),
-  Item.new("dilithium", :chip),
+  Item.new("dilithium", :chip)
 ]
 
 new_floorplan = [floorplan[0] + new_items, *floorplan[1..]]

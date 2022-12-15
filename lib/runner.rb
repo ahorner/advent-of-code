@@ -42,7 +42,7 @@ class Runner
 
   def run_context(input)
     lambda do
-      Object.const_set("INPUT", input)
+      Object.const_set(:INPUT, input)
       binding
     end
   end

@@ -12,7 +12,7 @@ def path_for(x, y, (dx, dy))
       x += dx
       y += dy
 
-      break if x < 0 || y < 0 || x >= width || y >= height
+      break if x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT
 
       enum.yield [x, y]
     end
@@ -34,7 +34,7 @@ def scenic_score(x, y)
 
   DIRECTIONS.reduce(1) do |score, dir|
     count = path_for(x, y, dir).reduce(0) do |count, (i, j)|
-      TREES[i][j] >= height ? (break count + 1) : count + 1
+      (TREES[i][j] >= height) ? (break count + 1) : count + 1
     end
 
     score * count

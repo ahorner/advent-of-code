@@ -1,8 +1,8 @@
-RULE_MATCHER = /^(\d+): (.+)$/.freeze
+RULE_MATCHER = /^(\d+): (.+)$/
 MESSAGES = INPUT.scan(/^\w+$/).freeze
 
 class RuleSet
-  CHAR_MATCHER = /\A"(?<chars>\w+)"\z/.freeze
+  CHAR_MATCHER = /\A"(?<chars>\w+)"\z/
 
   attr_reader :rules
 
@@ -25,7 +25,7 @@ class RuleSet
         $~[:chars]
       else
         pattern = pattern.scan(/\d+/).reduce(pattern) { |r, t| r.gsub(/\b#{t}\b/, self[t]) }
-        "(#{pattern.delete(' ')})"
+        "(#{pattern.delete(" ")})"
       end
   end
 end
@@ -33,8 +33,8 @@ end
 RULESET = RuleSet.new(INPUT.scan(RULE_MATCHER).to_h)
 solve!("The number of matching messages is:", MESSAGES.count { |message| RULESET.match?(message) })
 
-RULESET.rules["8"] = "(#{RULESET['42']}+)" # 8: 42 | 42 8
-RULESET.rules["11"] = "(?<l>#{RULESET['42']}\\g<l>?#{RULESET['31']})" # 11: 42 31 | 42 11 31
+RULESET.rules["8"] = "(#{RULESET["42"]}+)" # 8: 42 | 42 8
+RULESET.rules["11"] = "(?<l>#{RULESET["42"]}\\g<l>?#{RULESET["31"]})" # 11: 42 31 | 42 11 31
 RULESET.rules["0"] = nil
 
 solve!("The number of matching looped messages is:", MESSAGES.count { |message| RULESET.match?(message) })

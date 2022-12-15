@@ -20,7 +20,7 @@ value = 0
 password = [nil] * 8
 loop do
   digest, value = matching_digest("00000", value)
-  next unless digest[5] =~ /\A[0-7]\z/
+  next unless /\A[0-7]\z/.match?(digest[5])
 
   password[digest[5].to_i] ||= digest[6]
   break unless password.any?(&:nil?)

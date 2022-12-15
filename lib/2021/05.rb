@@ -1,9 +1,9 @@
-VENT_MATCHER = /(?<x1>\d+),(?<y1>\d+) -> (?<x2>\d+),(?<y2>\d+)/.freeze
+VENT_MATCHER = /(?<x1>\d+),(?<y1>\d+) -> (?<x2>\d+),(?<y2>\d+)/
 VENTS = INPUT.split("\n").map { |line| line.match(VENT_MATCHER) }
 
 def range_for(begins, ends)
   min = [begins, ends].min
-  min == begins ? (begins..ends).to_a : begins.downto(ends).to_a
+  (min == begins) ? (begins..ends).to_a : begins.downto(ends).to_a
 end
 
 def map_for(vents, diagonals: false)

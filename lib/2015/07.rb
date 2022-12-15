@@ -18,7 +18,7 @@ class Circuit
   end
 
   def signal(wire)
-    return wire.to_i if wire =~ /\A\d+\z/
+    return wire.to_i if /\A\d+\z/.match?(wire)
 
     @signals[wire] ||= begin
       sources = @wires[wire]

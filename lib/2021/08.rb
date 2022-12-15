@@ -3,7 +3,7 @@ ENTRIES = INPUT.split("\n").map do |line|
 
   [
     input.split.map(&:chars).map(&:sort),
-    output.split.map(&:chars).map(&:sort),
+    output.split.map(&:chars).map(&:sort)
   ]
 end
 
@@ -18,7 +18,7 @@ SEGMENT_MAPPINGS = {
   6 => %w[a b d e f g],
   7 => %w[a c f],
   8 => %w[a b c d e f g],
-  9 => %w[a b c d f g],
+  9 => %w[a b c d f g]
 }.freeze
 
 UNIQUE_DIGITS = [1, 4, 7, 8].freeze
@@ -36,7 +36,7 @@ final = ENTRIES.sum do |inputs, outputs|
     1 => inputs.detect { |i| i.size == 2 },
     4 => inputs.detect { |i| i.size == 4 },
     7 => inputs.detect { |i| i.size == 3 },
-    8 => inputs.detect { |i| i.size == 7 },
+    8 => inputs.detect { |i| i.size == 7 }
   }
 
   patterns[9] = inputs.detect { |i| i.size == 6 && (i & patterns[4]).size == 4 }

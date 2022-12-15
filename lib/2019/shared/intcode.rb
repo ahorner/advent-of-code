@@ -67,14 +67,14 @@ class Computer
         outputs << @memory[arguments[0]]
         @pointer += 2
       when 5
-        @pointer = @memory[arguments[0]] == 0 ? @pointer + 3 : @memory[arguments[1]]
+        @pointer = (@memory[arguments[0]] == 0) ? @pointer + 3 : @memory[arguments[1]]
       when 6
-        @pointer = @memory[arguments[0]] == 0 ? @memory[arguments[1]] : @pointer + 3
+        @pointer = (@memory[arguments[0]] == 0) ? @memory[arguments[1]] : @pointer + 3
       when 7
-        @memory[arguments[2]] = @memory[arguments[0]] < @memory[arguments[1]] ? 1 : 0
+        @memory[arguments[2]] = (@memory[arguments[0]] < @memory[arguments[1]]) ? 1 : 0
         @pointer += 4
       when 8
-        @memory[arguments[2]] = @memory[arguments[0]] == @memory[arguments[1]] ? 1 : 0
+        @memory[arguments[2]] = (@memory[arguments[0]] == @memory[arguments[1]]) ? 1 : 0
         @pointer += 4
       when 9
         @memory.base += @memory[arguments[0]]

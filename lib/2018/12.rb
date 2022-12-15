@@ -1,5 +1,5 @@
-INITIAL_MATCHER = /initial state: (?<state>.+)/.freeze
-CONVERSION_MATCHER = /(?<pattern>.+) => (?<result>.)/.freeze
+INITIAL_MATCHER = /initial state: (?<state>.+)/
+CONVERSION_MATCHER = /(?<pattern>.+) => (?<result>.)/
 
 RULES = Hash.new(".")
 
@@ -17,7 +17,7 @@ def result(state, offset)
 end
 
 def score(state, offset)
-  state.chars.map.with_index { |c, i| c == "#" ? i - offset : 0 }.sum
+  state.chars.map.with_index { |c, i| (c == "#") ? i - offset : 0 }.sum
 end
 
 def evolve(state, generations)

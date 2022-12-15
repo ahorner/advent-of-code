@@ -32,7 +32,7 @@ end
 
 class Race
   # rubocop:disable Layout/LineLength
-  FLIGHT_PATTERN = %r{(?<reindeer>.+) can fly (?<speed>\d+) km/s for (?<duration>\d+) seconds, but then must rest for (?<recovery>\d+) seconds\.}.freeze
+  FLIGHT_PATTERN = %r{(?<reindeer>.+) can fly (?<speed>\d+) km/s for (?<duration>\d+) seconds, but then must rest for (?<recovery>\d+) seconds\.}
   # rubocop:enable Layout/LineLength
 
   def initialize
@@ -47,7 +47,7 @@ class Race
         matches[:reindeer],
         matches[:speed].to_i,
         matches[:duration].to_i,
-        matches[:recovery].to_i,
+        matches[:recovery].to_i
       )
     end
   end

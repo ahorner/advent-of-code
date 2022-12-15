@@ -7,10 +7,10 @@ end
 
 solve!(
   "The number of pairs where one range fully contains the other is:",
-  RANGES.count { |a, b| a.cover?(b) || b.cover?(a) },
+  RANGES.count { |a, b| a.cover?(b) || b.cover?(a) }
 )
 
 solve!(
   "The number of pairs with any overlap in their ranges is:",
-  RANGES.count { |a, b| a.begin <= b.end && a.end >= b.begin },
+  RANGES.count { |a, b| a.begin <= b.end && a.end >= b.begin }
 )

@@ -29,7 +29,7 @@ groups = []
 
 while programs.count > 0
   groups << group(programs, programs.keys.first)
-  programs = programs.reject { |k, _| groups.last.include?(k) }
+  programs = programs.except(*groups.last)
 end
 
 solve!("The total number of groups is:", groups.count)

@@ -1,7 +1,7 @@
 timestamp, bus_ids = INPUT.split("\n")
 
 TIMESTAMP = timestamp.to_i
-BUS_IDS = bus_ids.split(",").map { |id| id == "x" ? nil : id.to_i }.freeze
+BUS_IDS = bus_ids.split(",").map { |id| (id == "x") ? nil : id.to_i }.freeze
 
 def wait_for(bus_ids, timestamp)
   loop do

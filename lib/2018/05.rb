@@ -6,7 +6,7 @@ end
 
 def reduce(polymer)
   polymer.bytes.each_with_object([]) do |c, result|
-    result.empty? || !opposite?(result.last, c) ? result << c : result.pop
+    (result.empty? || !opposite?(result.last, c)) ? result << c : result.pop
   end.pack("c*")
 end
 

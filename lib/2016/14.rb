@@ -1,7 +1,7 @@
 require "digest"
 
 class ScratchPad
-  TRIPLE_MATCHER = /(\w)\1\1/.freeze
+  TRIPLE_MATCHER = /(\w)\1\1/
 
   def initialize(salt, stretch = 0)
     @salt = salt

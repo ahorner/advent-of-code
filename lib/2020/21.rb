@@ -1,4 +1,4 @@
-RECIPE_MATCHER = /^(?<ingredients>.+) \(contains (?<allergens>.+)\)$/.freeze
+RECIPE_MATCHER = /^(?<ingredients>.+) \(contains (?<allergens>.+)\)$/
 
 allergens = {}
 

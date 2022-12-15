@@ -1,9 +1,9 @@
-SWAP_POSITION_PATTERN = /swap position (?<x>\d) with position (?<y>\d)/.freeze
-SWAP_LETTER_PATTERN = /swap letter (?<x>\w) with letter (?<y>\w)/.freeze
-ABSOLUTE_ROTATE_PATTERN = /rotate (?<direction>\w+) (?<steps>\d+) step/.freeze
-RELATIVE_ROTATE_PATTERN = /rotate based on position of letter (?<char>\w)/.freeze
-REVERSE_POSITIONS_PATTERN = /reverse positions (?<x>\d) through (?<y>\d)/.freeze
-MOVE_POSITIONS_PATTERN = /move position (?<x>\d) to position (?<y>\d)/.freeze
+SWAP_POSITION_PATTERN = /swap position (?<x>\d) with position (?<y>\d)/
+SWAP_LETTER_PATTERN = /swap letter (?<x>\w) with letter (?<y>\w)/
+ABSOLUTE_ROTATE_PATTERN = /rotate (?<direction>\w+) (?<steps>\d+) step/
+RELATIVE_ROTATE_PATTERN = /rotate based on position of letter (?<char>\w)/
+REVERSE_POSITIONS_PATTERN = /reverse positions (?<x>\d) through (?<y>\d)/
+MOVE_POSITIONS_PATTERN = /move position (?<x>\d) to position (?<y>\d)/
 
 def act(chars, command)
   chars = chars.dup
@@ -27,12 +27,12 @@ def act(chars, command)
     matches = command.match(ABSOLUTE_ROTATE_PATTERN)
     dir = matches[:direction]
     steps = matches[:steps].to_i
-    chars.rotate!(dir == "left" ? steps : -steps)
+    chars.rotate!((dir == "left") ? steps : -steps)
   when RELATIVE_ROTATE_PATTERN
     matches = command.match(RELATIVE_ROTATE_PATTERN)
     char = matches[:char]
     shift = chars.index(char)
-    additional = (shift >= 4 ? 1 : 0)
+    additional = ((shift >= 4) ? 1 : 0)
     chars.rotate!(-1 - shift - additional)
   when REVERSE_POSITIONS_PATTERN
     matches = command.match(REVERSE_POSITIONS_PATTERN)
@@ -63,7 +63,7 @@ def undo(result, command)
     matches = command.match(ABSOLUTE_ROTATE_PATTERN)
     dir = matches[:direction]
     steps = matches[:steps].to_i
-    chars.rotate!(dir == "left" ? -steps : steps)
+    chars.rotate!((dir == "left") ? -steps : steps)
   when RELATIVE_ROTATE_PATTERN
     chars.rotate!(1) while result != act(chars, command)
   when MOVE_POSITIONS_PATTERN
@@ -85,6 +85,6 @@ solve!("Your scrambled password is:", chars.join)
 
 UNSCRAMBLE ||= %w[f b g d c e a h].freeze
 chars = UNSCRAMBLE
-INPUT.split("\n").reverse.each { |line| chars = undo(chars, line) }
+INPUT.split("\n").reverse_each { |line| chars = undo(chars, line) }
 
 solve!("Your unscrambled password is:", chars.join)

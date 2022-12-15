@@ -4,7 +4,7 @@ NEIGHBORS = [
   [-1, 0],
   [1, 0],
   [0, -1],
-  [0, 1],
+  [0, 1]
 ].freeze
 
 def neighbors_for(x, y)

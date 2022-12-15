@@ -1,6 +1,6 @@
 require "set"
 
-INSTRUCTION_MATCHER = /^(?<opcode>\w+) (?<value>\+?-?\d+)$/.freeze
+INSTRUCTION_MATCHER = /^(?<opcode>\w+) (?<value>\+?-?\d+)$/
 INSTRUCTIONS = INPUT.split("\n").map { |line| line.match(INSTRUCTION_MATCHER) }
 
 def run(instructions)
@@ -32,8 +32,8 @@ final = INSTRUCTIONS.each_with_index do |instruction, index|
   next unless TEST_CODES.include?(instruction[:opcode])
 
   new_instruction = [{
-    opcode: (instruction[:opcode] == "nop" ? "jmp" : "nop"),
-    value: instruction[:value],
+    opcode: ((instruction[:opcode] == "nop") ? "jmp" : "nop"),
+    value: instruction[:value]
   }]
 
   success, value = run(INSTRUCTIONS[0...index] + new_instruction + INSTRUCTIONS[index + 1..])

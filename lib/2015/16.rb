@@ -8,7 +8,7 @@ EXPECTED_READINGS = {
   goldfish: 5,
   trees: 3,
   cars: 2,
-  perfumes: 1,
+  perfumes: 1
 }.freeze
 
 def parse(lines)

@@ -28,7 +28,7 @@ class Program
 end
 
 # rubocop:disable Lint/MixedRegexpCaptureTypes
-PROGRAM_MATCHER = /(?<name>\w+) \((?<weight>\d+)\)( -> (?<children>.+))?/.freeze
+PROGRAM_MATCHER = /(?<name>\w+) \((?<weight>\d+)\)( -> (?<children>.+))?/
 # rubocop:enable Lint/MixedRegexpCaptureTypes
 
 def stack(input)
@@ -39,7 +39,7 @@ def stack(input)
     programs[match[:name]] = Program.new(
       match[:name],
       match[:weight].to_i,
-      match[:children]&.split(", ") || [],
+      match[:children]&.split(", ") || []
     )
   end
 

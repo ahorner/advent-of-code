@@ -8,10 +8,10 @@ end
 
 solve!(
   "The number of characters processed before the first start-of-packet marker is:",
-  processed_characters(DATA_STREAM, 4),
+  processed_characters(DATA_STREAM, 4)
 )
 
 solve!(
   "The number of characters processed before the first start-of-message marker is:",
-  processed_characters(DATA_STREAM, 14),
+  processed_characters(DATA_STREAM, 14)
 )

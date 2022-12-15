@@ -9,7 +9,7 @@ def variants(string)
     base.transpose,
     base.transpose.map(&:reverse),
     base.transpose.reverse,
-    base.transpose.reverse.map(&:reverse),
+    base.transpose.reverse.map(&:reverse)
   ].uniq.map do |variant|
     variant.map(&:join).join("/")
   end
@@ -29,14 +29,14 @@ def enhance(grid)
     end.inject(&:zip)
 
     results = portions.map { |p| RULES[p.join("/")].split("/") }
-    results.size > 1 ? results.inject(&:zip).map(&:join) : results.flatten
+    (results.size > 1) ? results.inject(&:zip).map(&:join) : results.flatten
   end
 end
 
 STARTING_GRID = [
   ".#.",
   "..#",
-  "###",
+  "###"
 ].freeze
 
 ITERATIONS ||= 5

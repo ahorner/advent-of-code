@@ -34,8 +34,8 @@ end
 
 class Carrier
   DIRECTIONS = %i[u r d l].freeze
-  MOVES = { u: [0, -1], r: [1, 0], d: [0, 1], l: [-1, 0] }.freeze
-  TURNS = { "." => -1, "W" => 0, "#" => 1, "F" => 2 }.freeze
+  MOVES = {u: [0, -1], r: [1, 0], d: [0, 1], l: [-1, 0]}.freeze
+  TURNS = {"." => -1, "W" => 0, "#" => 1, "F" => 2}.freeze
 
   attr_accessor :infections
 

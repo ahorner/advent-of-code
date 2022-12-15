@@ -1,4 +1,4 @@
-LINE_MATCHER = /\A\s*(\d+)\s+(\d+)\s+(\d+)\z/.freeze
+LINE_MATCHER = /\A\s*(\d+)\s+(\d+)\s+(\d+)\z/
 
 def valid?(sides)
   maximum = sides.max

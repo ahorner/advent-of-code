@@ -1,6 +1,6 @@
 require "set"
 
-PASS_MATCHER = /^(?<row>[FB]{7})(?<column>[LR]{3})$/.freeze
+PASS_MATCHER = /^(?<row>[FB]{7})(?<column>[LR]{3})$/
 
 def seat_id(boarding_pass)
   row = boarding_pass[:row].tr("FB", "01").to_i(2)

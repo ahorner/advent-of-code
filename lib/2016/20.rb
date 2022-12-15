@@ -31,7 +31,7 @@ def valid_ips(blocklist)
   beginning + missing + ending
 end
 
-VALID_IPS ||= (0..4_294_967_295).freeze
+VALID_IPS ||= (0..4_294_967_295)
 BLOCKLIST = condense_ranges(INPUT.split("\n").map do |line|
   beginning, ending = line.split("-").map(&:to_i)
   (beginning..ending)

@@ -19,8 +19,8 @@ hull_damage = droid.run(
     "AND D J",
     "NOT A T",
     "OR T J",
-    "WALK",
-  ],
+    "WALK"
+  ]
 )
 
 solve!("The amount of hull damage after walking is:", hull_damage)
@@ -35,8 +35,8 @@ hull_damage = droid.run(
     "AND A J",
     "NOT J J",
     "AND D J",
-    "RUN",
-  ],
+    "RUN"
+  ]
 )
 
 solve!("The amount of hull damage after running is:", hull_damage)

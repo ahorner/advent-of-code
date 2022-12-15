@@ -22,7 +22,7 @@ class Path
   end
 
   def visiting(cave)
-    revisit = small?(cave) && @path.include?(cave) ? false : @revisit
+    revisit = (small?(cave) && @path.include?(cave)) ? false : @revisit
 
     Path.new(@path + [cave], revisit: revisit)
   end

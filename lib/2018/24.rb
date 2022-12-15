@@ -1,11 +1,11 @@
 # rubocop:disable Layout/LineLength,Lint/MixedRegexpCaptureTypes
-MATCHER = /(?<unit_count>\d+) units each with (?<health>\d+) hit points(?<specialties>( \(.+\))?) with an attack that does (?<damage>\d+) (?<damage_type>.+) damage at initiative (?<initiative>\d+)/.freeze
+MATCHER = /(?<unit_count>\d+) units each with (?<health>\d+) hit points(?<specialties>( \(.+\))?) with an attack that does (?<damage>\d+) (?<damage_type>.+) damage at initiative (?<initiative>\d+)/
 # rubocop:enable Layout/LineLength,Lint/MixedRegexpCaptureTypes
-WEAKNESS_MATCHER = /weak to (?<damage_types>[^;)]+)+/.freeze
-IMMUNITY_MATCHER = /immune to (?<damage_types>[^;)]+)+/.freeze
+WEAKNESS_MATCHER = /weak to (?<damage_types>[^;)]+)+/
+IMMUNITY_MATCHER = /immune to (?<damage_types>[^;)]+)+/
 
 class Group
-  TEAMS = { immune: "Immune System", infection: "Infection" }.freeze
+  TEAMS = {immune: "Immune System", infection: "Infection"}.freeze
 
   attr_accessor :size, :damage
   attr_reader :team, :multipliers, :health, :initiative
@@ -31,7 +31,7 @@ class Group
     return nil if enemies.empty?
 
     enemy = enemies.max_by { |enemy| [damage_to(enemy), enemy.effective_power, enemy.initiative] }
-    damage_to(enemy) == 0 ? nil : enemy
+    (damage_to(enemy) == 0) ? nil : enemy
   end
 
   def damage_to(enemy)
@@ -73,7 +73,7 @@ INPUT.split("\n").each do |line|
       data[:damage].to_i,
       data[:damage_type].to_sym,
       data[:initiative].to_i,
-      multipliers.to_h,
+      multipliers.to_h
     )
   when "Infection:"
     team = Group::TEAMS[:infection]

@@ -1,7 +1,7 @@
 base, *conversions = INPUT.split("\n").reject(&:empty?)
 
 BASE = base.chars.freeze
-CONVERSION_MATCHER = /\A(?<pair>[A-Z]{2}) -> (?<insert>[A-Z])\z/.freeze
+CONVERSION_MATCHER = /\A(?<pair>[A-Z]{2}) -> (?<insert>[A-Z])\z/
 CONVERSIONS = conversions.each_with_object({}) do |line, mappings|
   match = line.match(CONVERSION_MATCHER)
   mappings[match[:pair].chars] = match[:insert]

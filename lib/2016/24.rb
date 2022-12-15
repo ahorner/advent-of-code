@@ -12,7 +12,7 @@ class Maze
       [x + 1, y],
       [x - 1, y],
       [x, y + 1],
-      [x, y - 1],
+      [x, y - 1]
     ].compact.reject { |spot| wall?(spot) }
   end
 end
@@ -68,7 +68,7 @@ class Pathfinder
 
         queue.add(
           new_steps + estimator.call(new_spot),
-          [new_spot, [*path, new_spot], new_steps],
+          [new_spot, [*path, new_spot], new_steps]
         )
       end
       break if queue.empty?

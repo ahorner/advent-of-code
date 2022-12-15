@@ -1,7 +1,7 @@
 class Program
   INSTRUCTIONS = INPUT.split("\n").map do |line|
     action, *args = line.split
-    [action.to_sym, args.map { |i| i =~ /-?\d+/ ? i.to_i : i }]
+    [action.to_sym, args.map { |i| /-?\d+/.match?(i) ? i.to_i : i }]
   end.freeze
 
   attr_accessor :outputs, :sent

@@ -1,6 +1,6 @@
-TICKET_MATCHER = /your ticket:\n(?<ticket>[0-9,]+)/.freeze
-NEARBY_MATCHER = /nearby tickets:\n(?<tickets>[0-9,\n]+)/.freeze
-FIELD_MATCHER = /^(?<field>.+): (?<ranges>.+)$/.freeze
+TICKET_MATCHER = /your ticket:\n(?<ticket>[0-9,]+)/
+NEARBY_MATCHER = /nearby tickets:\n(?<tickets>[0-9,\n]+)/
+FIELD_MATCHER = /^(?<field>.+): (?<ranges>.+)$/
 
 FIELDS = INPUT.scan(FIELD_MATCHER).to_h.transform_values do |ranges|
   ranges.split(" or ").map do |range|
@@ -36,7 +36,7 @@ def field_sequence(options)
     break if options.all? { |possible| possible.length == 1 }
 
     found = options.select { |possible| possible.length == 1 }.flatten
-    options = options.map { |possible| possible.length == 1 ? possible : possible - found }
+    options = options.map { |possible| (possible.length == 1) ? possible : possible - found }
   end
 
   options.map(&:first)

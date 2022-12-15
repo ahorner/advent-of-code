@@ -14,12 +14,12 @@ shared = RUCKSACKS.flat_map { |rucksack| rucksack.reduce(&:&) }
 
 solve!(
   "The sum of shared item priorities is:",
-  shared.sum { |item| score_for(item) },
+  shared.sum { |item| score_for(item) }
 )
 
 badges = RUCKSACKS.each_slice(3).map { |elves| elves.map(&:flatten).reduce(&:&)[0] }
 
 solve!(
   "The sum of badge priorities is:",
-  badges.sum { |item| score_for(item) },
+  badges.sum { |item| score_for(item) }
 )

@@ -25,7 +25,7 @@ def parse(instruction, line, registers)
   when "jio"
     register = parsed_instruction[1].chomp(",")
     jump = parsed_instruction[2]
-    line += registers[register] == 1 ? jump.to_i : 1
+    line += (registers[register] == 1) ? jump.to_i : 1
   end
 
   line

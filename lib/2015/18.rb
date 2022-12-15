@@ -18,7 +18,7 @@ class Light
       grid[x, y + 1],
       grid[x + 1, y - 1],
       grid[x + 1, y],
-      grid[x + 1, y + 1],
+      grid[x + 1, y + 1]
     ].uniq.compact
   end
 
@@ -76,7 +76,7 @@ class Grid
       [0, 0],
       [0, @size - 1],
       [@size - 1, 0],
-      [@size - 1, @size - 1],
+      [@size - 1, @size - 1]
     ].map do |(x, y)|
       self[x, y]
     end

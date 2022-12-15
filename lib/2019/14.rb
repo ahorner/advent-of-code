@@ -1,17 +1,17 @@
-REACTION_MATCHER = /\A(?<inputs>.+) => (?<output>.+)\z/.freeze
-CHEMICAL_MATCHER = /(?<quantity>\d+) (?<name>.+)/.freeze
+REACTION_MATCHER = /\A(?<inputs>.+) => (?<output>.+)\z/
+CHEMICAL_MATCHER = /(?<quantity>\d+) (?<name>.+)/
 
 REACTIONS = INPUT.split("\n").each_with_object({}) do |line, reactions|
   reaction = line.match(REACTION_MATCHER)
   output = reaction[:output].match(CHEMICAL_MATCHER)
   inputs = reaction[:inputs].split(", ").map do |input|
     input = input.match(CHEMICAL_MATCHER)
-    { name: input[:name], quantity: input[:quantity].to_i }
+    {name: input[:name], quantity: input[:quantity].to_i}
   end
 
   reactions[output[:name]] = {
     quantity: output[:quantity].to_i,
-    inputs: inputs,
+    inputs: inputs
   }
 end
 
@@ -47,7 +47,7 @@ def maximum_output(chemical, ore)
 
     mid = ((low + high) / 2.0).ceil
     req = ore_needed(chemical, mid)
-    req > ore ? high = mid - 1 : low = mid
+    (req > ore) ? high = mid - 1 : low = mid
   end
 
   low

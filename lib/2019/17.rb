@@ -1,9 +1,9 @@
 require_relative "./shared/intcode"
 
 class Navigator
-  MOVES = { "^" => [0, -1], ">" => [1, 0], "v" => [0, 1], "<" => [-1, 0] }.freeze
+  MOVES = {"^" => [0, -1], ">" => [1, 0], "v" => [0, 1], "<" => [-1, 0]}.freeze
   DIRECTIONS = MOVES.keys
-  TURNS = { "L" => -1, "R" => 1 }.freeze
+  TURNS = {"L" => -1, "R" => 1}.freeze
 
   def initialize(map)
     @map = map

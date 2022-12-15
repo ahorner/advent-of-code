@@ -17,7 +17,7 @@ end
 
 FACTORS = {
   a: 16_807,
-  b: 48_271,
+  b: 48_271
 }.freeze
 
 CHECK_MASK = (1 << 16) - 1

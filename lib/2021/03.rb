@@ -6,7 +6,7 @@ def most_common_for(numbers)
     ones = numbers.count { |n| n[i] == 1 }
     zeroes = numbers.length - ones
 
-    ones >= zeroes ? 1 : 0
+    (ones >= zeroes) ? 1 : 0
   end
 end
 
@@ -15,7 +15,7 @@ def value_for(digits)
 end
 
 epsilon = most_common_for(NUMBERS)
-gamma = epsilon.map { |i| i == 1 ? 0 : 1 }
+gamma = epsilon.map { |i| (i == 1) ? 0 : 1 }
 
 solve!("The system's power consumption is:", value_for(epsilon) * value_for(gamma))
 

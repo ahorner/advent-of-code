@@ -1,4 +1,4 @@
-POLICY_MATCHER = /(?<minimum>\d+)-(?<maximum>\d+) (?<char>\w): (?<password>\w+)/.freeze
+POLICY_MATCHER = /(?<minimum>\d+)-(?<maximum>\d+) (?<char>\w): (?<password>\w+)/
 LINES = INPUT.split("\n").map { |line| line.match(POLICY_MATCHER) }
 
 def valid_by_count?(line)

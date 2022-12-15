@@ -32,8 +32,8 @@ class Screen
   end
 end
 
-RECT_PATTERN = /rect (?<width>[0-9]+)x(?<height>[0-9]+)/.freeze
-ROTATE_PATTERN = /rotate (?<type>\w*) .=(?<index>[0-9]+) by (?<shift>[0-9]+)/.freeze
+RECT_PATTERN = /rect (?<width>[0-9]+)x(?<height>[0-9]+)/
+ROTATE_PATTERN = /rotate (?<type>\w*) .=(?<index>[0-9]+) by (?<shift>[0-9]+)/
 
 SCREEN_DIMENSIONS ||= [50, 6].freeze
 screen = Screen.new(*SCREEN_DIMENSIONS)

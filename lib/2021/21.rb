@@ -1,4 +1,4 @@
-PLAYER_MATCHER = /\APlayer \d+ starting position: (?<position>\d+)\z/.freeze
+PLAYER_MATCHER = /\APlayer \d+ starting position: (?<position>\d+)\z/
 STARTING_POSITIONS = INPUT.split("\n").map do |line|
   match = line.match(PLAYER_MATCHER)
   match[:position].to_i - 1
@@ -58,7 +58,7 @@ class QuantumGame
   def play(positions, scores = positions.map { 0 }, player = 0)
     @universes[[positions, scores, player]] ||= begin
       winner = scores.any? { |score| score >= WINNING_SCORE }
-      return scores.map { |s| s >= WINNING_SCORE ? 1 : 0 } if winner # rubocop:disable Lint/NoReturnInBeginEndBlocks
+      return scores.map { |s| (s >= WINNING_SCORE) ? 1 : 0 } if winner # rubocop:disable Lint/NoReturnInBeginEndBlocks
 
       POSSIBILITIES.map do |roll|
         position = positions[player]

@@ -12,8 +12,8 @@ def stabilize(grid, tolerance, neighbors)
     result = grid.each_with_object({}) do |((x, y), seat), updated|
       updated[[x, y]] =
         case seat
-        when EMPTY then neighbors.call(grid, x, y) == 0 ? OCCUPIED : EMPTY
-        when OCCUPIED then neighbors.call(grid, x, y) >= tolerance ? EMPTY : OCCUPIED
+        when EMPTY then (neighbors.call(grid, x, y) == 0) ? OCCUPIED : EMPTY
+        when OCCUPIED then (neighbors.call(grid, x, y) >= tolerance) ? EMPTY : OCCUPIED
         else seat
         end
     end

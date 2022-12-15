@@ -13,7 +13,7 @@ class Maze
       [x + 1, y],
       ([x - 1, y] if x - 1 >= 0),
       [x, y + 1],
-      ([x, y - 1] if y - 1 >= 0),
+      ([x, y - 1] if y - 1 >= 0)
     ].compact.reject { |spot| wall?(spot) }
   end
 end
@@ -79,7 +79,7 @@ class Pathfinder
 
         queue.add(
           new_steps + estimator.call(new_spot),
-          [new_spot, [*path, new_spot], new_steps],
+          [new_spot, [*path, new_spot], new_steps]
         )
       end
     end

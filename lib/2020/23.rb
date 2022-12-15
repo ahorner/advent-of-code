@@ -22,7 +22,7 @@ def move!(cups, current)
   target = current.label
 
   loop do
-    target = target == 1 ? cups.count : target - 1
+    target = (target == 1) ? cups.count : target - 1
     break if taken.none? { |cup| cup.label == target }
   end
 

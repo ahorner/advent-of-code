@@ -2,12 +2,12 @@ require_relative "./shared/wrist_device"
 
 OPCODES = %i[addr addi mulr muli banr bani borr bori setr seti gtir gtri gtrr eqir eqri eqrr].freeze
 
-SAMPLE_MATCHER = /Before: \[(?<input>.+)\]\n(?<command>.+)\nAfter:  \[(?<output>.+)\]/.freeze
+SAMPLE_MATCHER = /Before: \[(?<input>.+)\]\n(?<command>.+)\nAfter:  \[(?<output>.+)\]/
 SAMPLES = INPUT.scan(SAMPLE_MATCHER).map do |input, command, output|
   {
     command: command.split.map(&:to_i),
     input: input.split(", ").map(&:to_i),
-    output: output.split.map(&:to_i),
+    output: output.split.map(&:to_i)
   }
 end.freeze
 
@@ -21,7 +21,7 @@ end
 
 solve!("The number of samples that behave like 3+ opcodes is:", behaviors.count { |_k, v| v.size >= 3 })
 
-INSTRUCTION_MATCHER = /\n\n\n\n([0-9 \n]+)/.freeze
+INSTRUCTION_MATCHER = /\n\n\n\n([0-9 \n]+)/
 INSTRUCTIONS = INPUT.match(INSTRUCTION_MATCHER)[1].split("\n").map { |i| i.split.map(&:to_i) }.freeze
 OPCODE_MAPPINGS = begin
   mappings = {}

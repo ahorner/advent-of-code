@@ -1,7 +1,7 @@
 LINES = INPUT.split("\n")
 
-MASK_MATCHER = /^mask = (?<mask>[01X]+)$/.freeze
-INPUT_MATCHER = /^mem\[(?<address>\d+)\] = (?<value>\d+)$/.freeze
+MASK_MATCHER = /^mask = (?<mask>[01X]+)$/
+INPUT_MATCHER = /^mem\[(?<address>\d+)\] = (?<value>\d+)$/
 
 class InputMask
   def initialize(mask_string)
@@ -40,7 +40,7 @@ class AddressMask
   end
 
   def base_for(n)
-    mask.each_with_index.reduce(0) { |base, (c, i)| c == n ? base | (1 << i) : base }
+    mask.each_with_index.reduce(0) { |base, (c, i)| (c == n) ? base | (1 << i) : base }
   end
 
   def address_base

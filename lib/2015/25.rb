@@ -1,4 +1,4 @@
-INSTRUCTION_MATCHER = /row (?<row>\d+), column (?<column>\d+)/.freeze
+INSTRUCTION_MATCHER = /row (?<row>\d+), column (?<column>\d+)/
 
 instructions = INSTRUCTION_MATCHER.match(INPUT)
 row = instructions[:row].to_i
@@ -16,7 +16,7 @@ def code_for(row, column)
   loop do
     break if r == row && c == column
 
-    r, c = r == 1 ? [c + 1, 1] : [r - 1, c + 1]
+    r, c = (r == 1) ? [c + 1, 1] : [r - 1, c + 1]
     num = generate(num)
   end
 

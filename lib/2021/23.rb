@@ -1,8 +1,8 @@
 require "rb_heap/heap"
 
 class Amphipod
-  COSTS = { A: 1, B: 10, C: 100, D: 1_000 }.freeze
-  ROOMS = { A: 0, B: 1, C: 2, D: 3 }.freeze
+  COSTS = {A: 1, B: 10, C: 100, D: 1_000}.freeze
+  ROOMS = {A: 0, B: 1, C: 2, D: 3}.freeze
 
   attr_reader :type
 

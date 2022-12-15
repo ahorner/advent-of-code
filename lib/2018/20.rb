@@ -19,7 +19,7 @@ class Base
     "N" => [0, -1],
     "E" => [1, 0],
     "S" => [0, 1],
-    "W" => [-1, 0],
+    "W" => [-1, 0]
   }.freeze
 
   attr_accessor :rooms
@@ -45,7 +45,7 @@ class Base
   end
 
   def explore_from(room)
-    explored = { room => 0 }
+    explored = {room => 0}
     queue = [[room, 0]]
 
     loop do

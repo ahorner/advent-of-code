@@ -46,7 +46,7 @@ RSpec.describe "Day 14: Space Stoichiometry" do
         1 VJHF, 6 MNCFX => 4 RFSQX
         176 ORE => 6 VJHF
       TXT
-      2_210_736 => <<~TXT,
+      2_210_736 => <<~TXT
         171 ORE => 8 CNZTR
         7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL
         114 ORE => 4 BHXH

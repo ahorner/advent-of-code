@@ -36,7 +36,7 @@ class Packet
     up: [0, -1],
     down: [0, 1],
     left: [-1, 0],
-    right: [1, 0],
+    right: [1, 0]
   }.freeze
 
   attr_reader :collection, :steps
@@ -84,7 +84,7 @@ class Packet
   def move(direction)
     [
       @position[0] + DIRECTIONS[direction][0],
-      @position[1] + DIRECTIONS[direction][1],
+      @position[1] + DIRECTIONS[direction][1]
     ]
   end
 end

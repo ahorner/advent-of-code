@@ -1,4 +1,4 @@
-MATCHER = /depth: (?<depth>\d+)\ntarget: (?<x>\d+),(?<y>\d+)/.freeze
+MATCHER = /depth: (?<depth>\d+)\ntarget: (?<x>\d+),(?<y>\d+)/
 
 class Cave
   EROSION_MOD = 20_183
@@ -69,7 +69,7 @@ end
 EQUIPMENT = {
   neither: 0,
   torch: 1,
-  gear: 2,
+  gear: 2
 }.freeze
 
 queue = PriorityQueue.new

@@ -4,12 +4,12 @@ VECTORS = {
   up: [0, -1],
   left: [-1, 0],
   down: [0, 1],
-  right: [1, 0],
+  right: [1, 0]
 }.freeze
 DIRECTIONS = %i[up right down left].freeze
 
 def rotate_by(direction, rotate)
-  rotation = rotate == 0 ? -1 : 1
+  rotation = (rotate == 0) ? -1 : 1
   (direction + rotation) % DIRECTIONS.size
 end
 
@@ -47,7 +47,7 @@ minx, maxx = hull.keys.map(&:first).minmax
 miny, maxy = hull.keys.map(&:last).minmax
 
 screen = (miny..maxy).each_with_object("") do |j, output|
-  (minx..maxx).each { |i| output << (hull[[i, j]] == 0 ? " " : "#") }
+  (minx..maxx).each { |i| output << ((hull[[i, j]] == 0) ? " " : "#") }
   output << "\n"
 end
 

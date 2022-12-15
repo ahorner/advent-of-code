@@ -37,8 +37,8 @@ def align(a, b)
   [false, nil, nil]
 end
 
-positions = { 0 => [0, 0, 0] }
-beacons = { 0 => Set.new(SCANS[0]) }
+positions = {0 => [0, 0, 0]}
+beacons = {0 => Set.new(SCANS[0])}
 tried = Set.new
 
 loop do

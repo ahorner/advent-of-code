@@ -6,7 +6,7 @@ def run(cycles)
 
   loop do
     SIGNALS.each do |(instruction, value)|
-      delay, dx = 
+      delay, dx =
         case instruction
         when "noop" then [1, 0]
         when "addx" then [2, value.to_i]
@@ -30,7 +30,7 @@ end
 
 solve!(
   "The total signal strength from interesting cycles is:",
-  total,
+  total
 )
 
 crt = ""
@@ -42,5 +42,5 @@ end
 
 solve!(
   "The message displayed on the CRT is as follows:",
-  crt,
+  crt
 )

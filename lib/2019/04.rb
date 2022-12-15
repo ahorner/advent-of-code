@@ -1,5 +1,5 @@
 inputs = INPUT.split("-").map(&:to_i)
-RANGE = (inputs[0]..inputs[1]).freeze
+RANGE = (inputs[0]..inputs[1])
 
 def valid_password?(number)
   digits = number.to_s.chars.map(&:to_i)

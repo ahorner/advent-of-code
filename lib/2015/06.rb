@@ -1,4 +1,4 @@
-INSTRUCTION_MATCHER = /(?<step>turn off|turn on|toggle) (?<x>\d+),(?<y>\d+) through (?<x2>\d+),(?<y2>\d+)/.freeze
+INSTRUCTION_MATCHER = /(?<step>turn off|turn on|toggle) (?<x>\d+),(?<y>\d+) through (?<x2>\d+),(?<y2>\d+)/
 INSTRUCTIONS = INPUT.split("\n").map { |line| INSTRUCTION_MATCHER.match(line) }
 
 def for_step(step)

@@ -4,7 +4,7 @@ folds, points = INPUT.split("\n").partition do |line|
   folding
 end
 
-FOLD_MATCHER = /\Afold along (?<axis>x|y)=(?<point>\d+)\z/.freeze
+FOLD_MATCHER = /\Afold along (?<axis>x|y)=(?<point>\d+)\z/
 POINTS = points.map { |line| line.split(",").map(&:to_i) }.freeze
 FOLDS = folds.drop(1).map { |line| line.match(FOLD_MATCHER) }
 
@@ -15,9 +15,9 @@ def fold(paper, fold)
     x, y =
       case fold[:axis]
       when "x"
-        [x > fulcrum ? fulcrum - (x - fulcrum) : x, y]
+        [(x > fulcrum) ? fulcrum - (x - fulcrum) : x, y]
       when "y"
-        [x, y > fulcrum ? fulcrum - (y - fulcrum) : y]
+        [x, (y > fulcrum) ? fulcrum - (y - fulcrum) : y]
       end
 
     folded[[x, y]] = true

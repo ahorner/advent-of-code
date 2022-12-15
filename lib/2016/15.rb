@@ -1,5 +1,5 @@
 # rubocop:disable Layout/LineLength
-DISC_MATCHER = /Disc #\d+ has (?<position_count>\d+) positions; at time=0, it is at position (?<starting_position>\d+)\./.freeze
+DISC_MATCHER = /Disc #\d+ has (?<position_count>\d+) positions; at time=0, it is at position (?<starting_position>\d+)\./
 # rubocop:enable Layout/LineLength
 
 class Disc

@@ -1,8 +1,8 @@
 require "set"
 
-OUTER_BAG_MATCHER = /^(?<color>.+) bags contain (?<contents>.+)\.$/.freeze
-EMPTY_BAG_MATCHER = /^no other bags$/.freeze
-INNER_BAG_MATCHER = /^(?<count>\d+) (?<color>.+) bags?/.freeze
+OUTER_BAG_MATCHER = /^(?<color>.+) bags contain (?<contents>.+)\.$/
+EMPTY_BAG_MATCHER = /^no other bags$/
+INNER_BAG_MATCHER = /^(?<count>\d+) (?<color>.+) bags?/
 
 STARTING_BAG = "shiny gold".freeze
 
