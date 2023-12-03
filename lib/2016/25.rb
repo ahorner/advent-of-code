@@ -1,4 +1,4 @@
-require_relative "./shared/assembunny"
+require_relative "shared/assembunny"
 
 def sequence(&generator)
   Enumerator.new do |yielder|

@@ -1,4 +1,4 @@
-require_relative "./shared/wrist_device"
+require_relative "shared/wrist_device"
 require "prime"
 
 ip, instructions = INPUT.split("\n").partition.with_index { |_, i| i == 0 }

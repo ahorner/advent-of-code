@@ -1,4 +1,4 @@
-require_relative "./shared/intcode"
+require_relative "shared/intcode"
 
 class SpringDroid
   def initialize(program)

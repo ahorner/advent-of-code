@@ -1,4 +1,4 @@
-require_relative "./shared/intcode"
+require_relative "shared/intcode"
 
 def amplify(phase_settings)
   signal = 0

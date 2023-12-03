@@ -5,7 +5,7 @@ class Maze
 
   def wall?((x, y))
     sum = (x * x) + (3 * x) + (2 * x * y) + y + (y * y)
-    (sum + @magic_number).to_s(2).scan(/1/).size.odd?
+    (sum + @magic_number).to_s(2).scan("1").size.odd?
   end
 
   def adjacent_spots((x, y))

@@ -1,4 +1,4 @@
-require_relative "./shared/wrist_device"
+require_relative "shared/wrist_device"
 
 OPCODES = %i[addr addi mulr muli banr bani borr bori setr seti gtir gtri gtrr eqir eqri eqrr].freeze
 

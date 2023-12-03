@@ -1,4 +1,4 @@
-require_relative "./shared/intcode"
+require_relative "shared/intcode"
 
 class Beam
   def initialize(program)

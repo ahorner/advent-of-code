@@ -58,9 +58,11 @@ def arrangement_for(tiles, x, y, layout = Array.new(SIZE) { Array.new(SIZE) })
     next if layout.any? { |row| row.compact.any? { |t| t.id == tile.id } }
 
     tile.variants.each do |variant|
-      next unless
+      fits =
         (x == 0 || layout[y][x - 1].fits?(variant, :right)) &&
-          (y == 0 || layout[y - 1][x].fits?(variant, :bottom))
+        (y == 0 || layout[y - 1][x].fits?(variant, :bottom))
+
+      next unless fits
 
       updated = layout.dup.tap { |l| l[y][x] = variant }
       i = (x + 1) % SIZE

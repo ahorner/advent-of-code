@@ -1,4 +1,4 @@
-require_relative "./shared/assembunny"
+require_relative "shared/assembunny"
 
 registers = Hash.new(0)
 computer = Assembunny.new(registers)

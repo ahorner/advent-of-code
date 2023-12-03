@@ -1,4 +1,4 @@
-require_relative "./shared/intcode"
+require_relative "shared/intcode"
 
 class Blueprint
   DIRECTIONS = [[0, -1], [0, 1], [-1, 0], [1, 0]].freeze

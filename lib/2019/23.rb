@@ -1,4 +1,4 @@
-require_relative "./shared/intcode"
+require_relative "shared/intcode"
 
 NETWORK = 50.times.map { |id| Computer.new(INTCODE).tap { |c| c.run(inputs: [id]) } }.freeze
 NAT_ADDRESS = 255
