@@ -59,7 +59,6 @@ RSpec.describe "Day 10: Pipe Maze" do
         L.L7LFJ|||||FJL7||LJ
         L7JLJL-JLJLJL--JLJ.L
       TXT
-
     end
   end
 end
