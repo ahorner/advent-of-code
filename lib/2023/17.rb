@@ -66,10 +66,10 @@ class Crucible
         new_loss = loss + @city[dest]
         new_path = path + [dir]
 
-        steps = new_path.count(dir)
+        steps = new_path.reverse.index { |d| d != dir }
         key = [dest, dir, steps]
 
-        next if losses.key?(key) && losses[key][0] <= new_loss
+        next if losses.key?(key) && losses[key] <= new_loss
 
         losses[key] = new_loss
         next if dest == to
