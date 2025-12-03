@@ -1,0 +1,20 @@
+BANKS = INPUT.split("\n").map { |bank| bank.chars.map(&:to_i) }
+
+def joltage(bank, batteries: 2)
+  activations = []
+
+  loop do
+    remaining = batteries - activations.size
+    break if remaining <= 0
+
+    battery, index = bank[..-remaining].each_with_index.max_by(&:first)
+
+    bank = bank[(index + 1)..]
+    activations << battery
+  end
+
+  activations.join.to_i
+end
+
+solve!("The total output joltage for 2 batteries is:", BANKS.sum { |bank| joltage(bank) })
+solve!("The total output joltage for 12 batteries is:", BANKS.sum { |bank| joltage(bank, batteries: 12) })
