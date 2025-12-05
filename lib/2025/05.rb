@@ -1,0 +1,44 @@
+ranges, ingredients = input.split("\n\n")
+ranges = ranges.split("\n").map do |line|
+  starts, ends = line.strip.split("-")
+  (starts.to_i..ends.to_i)
+end
+
+def condense_ranges(ranges)
+  remaining = ranges.dup.sort_by(&:begin)
+  condensed = []
+  current = remaining.shift
+
+  loop do
+    if remaining.empty?
+      condensed << current
+      break
+    end
+
+    condensable, remaining = remaining.partition do |range|
+      range.overlap?(current) || range.begin == current.end + 1
+    end
+
+    condensable.each do |range|
+      current = [current.begin, range.begin].min..[current.end, range.end].max
+    end
+
+    if condensable.empty?
+      condensed << current
+      current = remaining.shift
+      next
+    end
+  end
+
+  condensed
+end
+
+INGREDIENTS = ingredients.split("\n").map(&:to_i)
+RANGES = condense_ranges(ranges)
+
+def fresh?(ingredient)
+  RANGES.any? { |range| range.include?(ingredient) }
+end
+
+solve!("The number of fresh ingredients in the list is:", INGREDIENTS.count { |i| fresh?(i) })
+solve!("The total number of fresh ingredients is:", RANGES.sum(&:size))
